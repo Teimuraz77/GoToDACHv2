@@ -54,12 +54,14 @@ export const copy: Record<Lang, Copy> = {
     about: {
       headline: 'Ich bin Temo. Ich verkaufe Software – und helfe anderen, es in DACH auch zu tun.',
       intro: [
-        'Teimuraz Gogodze, alle sagen Temo. Ich sitze in Frankfurt und mache B2B-Vertrieb, vor allem für SaaS.',
+        'Teimuraz Gogodze, alle sagen Temo. Ich sitze in Frankfurt und mache seit mehr als 15 Jahren B2B-Vertrieb, vor allem für SaaS.',
         'Das heißt: Erstgespräche, die keiner annehmen will, Einkaufsabteilungen mit drei Freigabeschleifen und Deals, die im letzten Quartal doch noch rutschen. Ich weiß, wie der DACH-Markt kauft – langsam, gründlich, mit Vertrag auf Deutsch – und wie man trotzdem vorankommt.',
       ],
       bringTitle: 'Was ich mitbringe',
       bring: [
-        'B2B-SaaS-Vertrieb von der Akquise bis zum Abschluss',
+        'Mehr als 15 Jahre B2B-Vertrieb, vor allem SaaS – von der Akquise bis zum Abschluss',
+        'Sprachen: Deutsch, Englisch, Russisch',
+        'Eigene Produkte gebaut, z. B. CoRe (NIS2-Compliance-as-a-Service) – ich weiß also auch, wie es sich anfühlt, selbst etwas verkaufen zu müssen',
       ],
       wayTitle: 'Wie ich arbeite',
       way: 'Direkt, ohne Folienschlacht. Erst verstehen, was Sie verkaufen und an wen. Dann ein Plan, der in eine Seite passt. Dann umsetzen – und messen, ob es funktioniert. Wenn etwas nicht passt, sage ich das früh. Das spart uns beiden Geld.',
@@ -144,7 +146,7 @@ export const copy: Record<Lang, Copy> = {
         {
           title: 'Anbieter',
           paragraphs: [
-            '[TODO: Anbieter – Firmenname bzw. Inhaber und Rechtsform, z. B. „Teimuraz Gogodze, GoToDACH (Einzelunternehmen)“]',
+            'Teimuraz Gogodze, GoToDACH (Einzelunternehmen)',
             'Schlossstraße 28',
             '60486 Frankfurt am Main',
             'Deutschland',
@@ -153,13 +155,13 @@ export const copy: Record<Lang, Copy> = {
         {
           title: 'Kontakt',
           paragraphs: [
-            'Telefon: [TODO: Telefonnummer – öffentlich zeigen ja/nein?]',
+            'Telefon: +49 172 319 61 88',
             'E-Mail: temo@gotodach.com',
           ],
         },
         {
           title: 'Umsatzsteuer-ID',
-          paragraphs: ['Umsatzsteuer-ID gemäß § 27a UStG: [TODO: USt-IdNr. oder Zeile streichen]'],
+          paragraphs: ['Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG: DE813113094'],
         },
         {
           title: 'Verantwortlich für den Inhalt',
@@ -179,13 +181,13 @@ export const copy: Record<Lang, Copy> = {
         {
           title: '1. Verantwortlicher',
           paragraphs: [
-            '[TODO: wie Anbieter im Impressum], Schlossstraße 28, 60486 Frankfurt am Main, temo@gotodach.com',
+            'Teimuraz Gogodze, GoToDACH (Einzelunternehmen), Schlossstraße 28, 60486 Frankfurt am Main, temo@gotodach.com',
           ],
         },
         {
           title: '2. Hosting',
           paragraphs: [
-            'Diese Website wird bei [TODO: Netlify Inc. / Cloudflare Inc.] gehostet. Beim Aufruf werden technisch notwendige Daten (IP-Adresse, Zeitpunkt, aufgerufene Seite, Browser) in Server-Logfiles verarbeitet, um die Website auszuliefern und abzusichern. Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO. Der Anbieter sitzt in den USA; die Übermittlung stützt sich auf das EU-US Data Privacy Framework bzw. Standardvertragsklauseln. [TODO: mit Auftragsverarbeitungsvertrag des Hosters abgleichen]',
+            'Diese Website wird bei Netlify, Inc., 101 2nd Street, San Francisco, CA 94105, USA, gehostet. Beim Aufruf werden technisch notwendige Daten (IP-Adresse, Zeitpunkt, aufgerufene Seite, Browser) in Server-Logfiles verarbeitet, um die Website auszuliefern und abzusichern. Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO. Mit Netlify besteht ein Auftragsverarbeitungsvertrag (Data Processing Addendum). Netlify ist unter dem EU-US Data Privacy Framework zertifiziert; die Übermittlung in die USA stützt sich auf diesen Angemessenheitsbeschluss. Weitere Informationen: https://www.netlify.com/privacy/',
           ],
         },
         {
@@ -201,26 +203,19 @@ export const copy: Record<Lang, Copy> = {
           ],
         },
         {
-          title: '5. Terminbuchung',
+          title: '5. Bewerberdaten (GoToDACH Talent)',
           paragraphs: [
-            '[TODO: nur falls Calendly o. Ä. verlinkt wird]',
-            'Für Termine verlinken wir auf [Anbieter]. Erst beim Klick gelten dessen Datenschutzbestimmungen.',
+            'Wenn Sie uns Lebenslauf oder Profil schicken, verarbeiten wir diese Daten, um Ihnen passende Unternehmen vorzuschlagen. An Unternehmen geben wir Ihr Profil nur mit Ihrer ausdrücklichen Zustimmung weiter (Art. 6 Abs. 1 lit. a und b DSGVO). Ohne Vermittlung löschen wir Ihre Daten spätestens nach 12 Monaten, sofern Sie nicht länger zustimmen.',
           ],
         },
         {
-          title: '6. Bewerberdaten (GoToDACH Talent)',
-          paragraphs: [
-            'Wenn Sie uns Lebenslauf oder Profil schicken, verarbeiten wir diese Daten, um Ihnen passende Unternehmen vorzuschlagen. An Unternehmen geben wir Ihr Profil nur mit Ihrer ausdrücklichen Zustimmung weiter (Art. 6 Abs. 1 lit. a und b DSGVO). Ohne Vermittlung löschen wir Ihre Daten spätestens nach [TODO: z. B. 12 Monaten], sofern Sie nicht länger zustimmen.',
-          ],
-        },
-        {
-          title: '7. Deine Rechte',
+          title: '6. Ihre Rechte',
           paragraphs: [
             'Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit und Widerspruch (Art. 15–21 DSGVO); Widerruf einer Einwilligung jederzeit mit Wirkung für die Zukunft. Anfrage genügt an temo@gotodach.com.',
           ],
         },
         {
-          title: '8. Beschwerderecht',
+          title: '7. Beschwerderecht',
           paragraphs: [
             'Sie können sich bei einer Aufsichtsbehörde beschweren, z. B. beim Hessischen Beauftragten für Datenschutz und Informationsfreiheit (HBDI), Wiesbaden.',
           ],
@@ -233,12 +228,14 @@ export const copy: Record<Lang, Copy> = {
     about: {
       headline: 'I am Temo. I sell software, and I help others do it in DACH too.',
       intro: [
-        'Teimuraz Gogodze, everyone says Temo. I am based in Frankfurt and do B2B sales, mostly for SaaS.',
+        'Teimuraz Gogodze, everyone says Temo. I am based in Frankfurt and have been doing B2B sales for more than 15 years, mostly for SaaS.',
         'That means first calls nobody wants to take, buying committees with three approval loops, and deals that slip into the last quarter anyway. I know how the DACH market buys: slowly, thoroughly, with contracts in German. And I know how to make progress anyway.',
       ],
       bringTitle: 'What I bring',
       bring: [
-        'B2B SaaS sales from prospecting to closing',
+        'More than 15 years of B2B sales, mostly SaaS – from prospecting to closing',
+        'Languages: German, English, Russian',
+        'Built my own products, e.g. CoRe (NIS2 compliance as a service) – so I also know what it feels like to have to sell something of my own',
       ],
       wayTitle: 'How I work',
       way: 'Direct, without slide battles. First understand what you sell and to whom. Then a plan that fits on one page. Then implement, and measure whether it works. If something does not fit, I say so early. That saves us both money.',
