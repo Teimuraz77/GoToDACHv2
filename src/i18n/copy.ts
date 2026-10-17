@@ -1,4 +1,5 @@
-// Seitentexte aus INHALTE.md. Platzhalter [TODO: …] bleiben unverändert stehen.
+// Seitentexte aus INHALTE.md. Rechtsangaben-Platzhalter bleiben sichtbar.
+// Alle anderen offenen Punkte stehen als HTML-Kommentar in den jeweiligen Komponenten.
 // EN-Texte sind Übersetzungen der deutschen Fassung und warten auf Prüfung durch Temo.
 import type { Lang } from './ui';
 
@@ -30,14 +31,11 @@ export interface Copy {
     bring: string[];
     wayTitle: string;
     way: string;
-    photoTodo: string;
-    photoNote: string;
   };
   gtm: ServicePage;
   ren: ServicePage;
   talent: {
     feeText: string;
-    feeTodo: string;
   };
   imprint: {
     h1: string;
@@ -56,20 +54,15 @@ export const copy: Record<Lang, Copy> = {
     about: {
       headline: 'Ich bin Temo. Ich verkaufe Software – und helfe anderen, es in DACH auch zu tun.',
       intro: [
-        'Teimuraz Gogodze, alle sagen Temo. Ich sitze in Frankfurt und mache seit [TODO: Anzahl] Jahren B2B-Vertrieb, vor allem für SaaS.',
+        'Teimuraz Gogodze, alle sagen Temo. Ich sitze in Frankfurt und mache B2B-Vertrieb, vor allem für SaaS.',
         'Das heißt: Erstgespräche, die keiner annehmen will, Einkaufsabteilungen mit drei Freigabeschleifen und Deals, die im letzten Quartal doch noch rutschen. Ich weiß, wie der DACH-Markt kauft – langsam, gründlich, mit Vertrag auf Deutsch – und wie man trotzdem vorankommt.',
       ],
       bringTitle: 'Was ich mitbringe',
       bring: [
         'B2B-SaaS-Vertrieb von der Akquise bis zum Abschluss',
-        '[TODO: 2–3 konkrete Stationen/Branchen, ohne vertrauliche Kundennamen]',
-        '[TODO: Sprachen, z. B. Deutsch, Englisch, …]',
-        'Eigene Produkte gebaut, z. B. CoRe (NIS2-Compliance-as-a-Service) – ich weiß also auch, wie es sich anfühlt, selbst etwas verkaufen zu müssen [TODO: CoRe erwähnen – ja/nein?]',
       ],
       wayTitle: 'Wie ich arbeite',
       way: 'Direkt, ohne Folienschlacht. Erst verstehen, was Sie verkaufen und an wen. Dann ein Plan, der in eine Seite passt. Dann umsetzen – und messen, ob es funktioniert. Wenn etwas nicht passt, sage ich das früh. Das spart uns beiden Geld.',
-      photoTodo: '[TODO: Porträtfoto, Querformat oder 4:5, mind. 1200 px breit, nach `src/assets/temo.jpg`]',
-      photoNote: 'Bis dahin: neutraler Platzhalter in Markenfarben mit Initialen „TG“.',
     },
     gtm: {
       headline: 'In DACH verkaufen. Ohne zwei Jahre Lehrgeld.',
@@ -78,7 +71,7 @@ export const copy: Record<Lang, Copy> = {
       packages: [
         {
           title: 'Paket 1 – Markt-Check',
-          meta: '(ca. 2–3 Wochen) [TODO: Dauer bestätigen]',
+          meta: '(ca. 2–3 Wochen)',
           items: [
             'Zielmarkt, Zielkunden und Wettbewerb in DACH',
             'Was am Produkt/Angebot für DACH angepasst werden muss (Sprache, Verträge, DSGVO, Preise)',
@@ -87,7 +80,7 @@ export const copy: Record<Lang, Copy> = {
         },
         {
           title: 'Paket 2 – Go-to-Market-Plan',
-          meta: '(ca. 4–6 Wochen) [TODO]',
+          meta: '(ca. 4–6 Wochen)',
           items: [
             'Positionierung und Messaging auf Deutsch',
             'Vertriebsweg: direkt, Partner oder beides',
@@ -97,7 +90,7 @@ export const copy: Record<Lang, Copy> = {
         },
         {
           title: 'Paket 3 – Vertriebsaufbau / Interim Sales DACH',
-          meta: '(ab 3 Monate) [TODO]',
+          meta: '(ab 3 Monate)',
           items: [
             'Ich übernehme den Vertrieb in DACH auf Zeit: Pipeline aufbauen, erste Kunden gewinnen',
             'Prozesse und CRM so aufsetzen, dass ein festes Team übernehmen kann',
@@ -105,7 +98,7 @@ export const copy: Record<Lang, Copy> = {
           ],
         },
       ],
-      prices: 'Preise: auf Anfrage. [TODO: öffentlich machen ja/nein]',
+      prices: 'Preise: auf Anfrage.',
       cta: 'Erstgespräch vereinbaren – 30 Minuten, kostenlos, ohne Pitch-Deck-Pflicht.',
     },
     ren: {
@@ -125,7 +118,7 @@ export const copy: Record<Lang, Copy> = {
           title: 'Paket 2 – Kanal- und Partneraufbau',
           items: [
             'Ansprache von Distributoren, Großhändlern, Installateuren und EPC-Partnern',
-            'Vorbereitung und Begleitung von Fachmessen [TODO: welche Messen sind für Sie relevant?]',
+            'Vorbereitung und Begleitung von Fachmessen',
             'Partnerverträge und Konditionen strukturieren (juristische Prüfung durch Fachanwalt)',
           ],
         },
@@ -143,7 +136,6 @@ export const copy: Record<Lang, Copy> = {
     talent: {
       feeText:
         'Sie zahlen nur bei Erfolg. Das Honorar richtet sich nach dem Jahreszielgehalt und wird in zwei Raten fällig: die erste kurz nach Arbeitsantritt, die zweite nach drei Monaten. Geht die Person vorher, entfällt die zweite Rate. Konditionen besprechen wir im Erstgespräch.',
-      feeTodo: '[TODO: Temo entscheidet A oder B]',
     },
     imprint: {
       h1: 'Impressum',
@@ -241,20 +233,15 @@ export const copy: Record<Lang, Copy> = {
     about: {
       headline: 'I am Temo. I sell software, and I help others do it in DACH too.',
       intro: [
-        'Teimuraz Gogodze, everyone says Temo. I am based in Frankfurt and have been doing B2B sales for [TODO: Anzahl] years, mostly for SaaS.',
+        'Teimuraz Gogodze, everyone says Temo. I am based in Frankfurt and do B2B sales, mostly for SaaS.',
         'That means first calls nobody wants to take, buying committees with three approval loops, and deals that slip into the last quarter anyway. I know how the DACH market buys: slowly, thoroughly, with contracts in German. And I know how to make progress anyway.',
       ],
       bringTitle: 'What I bring',
       bring: [
         'B2B SaaS sales from prospecting to closing',
-        '[TODO: 2–3 concrete positions/industries, without confidential customer names]',
-        '[TODO: languages, e.g. German, English, …]',
-        'I have built my own products, e.g. CoRe (NIS2 compliance as a service), so I also know what it feels like to have to sell something yourself [TODO: mention CoRe – yes/no?]',
       ],
       wayTitle: 'How I work',
       way: 'Direct, without slide battles. First understand what you sell and to whom. Then a plan that fits on one page. Then implement, and measure whether it works. If something does not fit, I say so early. That saves us both money.',
-      photoTodo: '[TODO: portrait photo, landscape or 4:5, at least 1200 px wide, to `src/assets/temo.jpg`]',
-      photoNote: 'Until then: neutral placeholder in brand colours with the initials “TG”.',
     },
     gtm: {
       headline: 'Selling in DACH. Without two years of learning the hard way.',
@@ -263,7 +250,7 @@ export const copy: Record<Lang, Copy> = {
       packages: [
         {
           title: 'Package 1 – Market check',
-          meta: '(approx. 2–3 weeks) [TODO: confirm duration]',
+          meta: '(approx. 2–3 weeks)',
           items: [
             'Target market, target customers and competition in DACH',
             'What needs adapting in the product/offer for DACH (language, contracts, GDPR, pricing)',
@@ -272,7 +259,7 @@ export const copy: Record<Lang, Copy> = {
         },
         {
           title: 'Package 2 – Go-to-market plan',
-          meta: '(approx. 4–6 weeks) [TODO]',
+          meta: '(approx. 4–6 weeks)',
           items: [
             'Positioning and messaging in German',
             'Sales route: direct, partners, or both',
@@ -282,7 +269,7 @@ export const copy: Record<Lang, Copy> = {
         },
         {
           title: 'Package 3 – Sales build-up / interim sales DACH',
-          meta: '(from 3 months) [TODO]',
+          meta: '(from 3 months)',
           items: [
             'I take over sales in DACH on an interim basis: build the pipeline, win the first customers',
             'Set up processes and CRM so that a permanent team can take over',
@@ -290,7 +277,7 @@ export const copy: Record<Lang, Copy> = {
           ],
         },
       ],
-      prices: 'Prices: on request. [TODO: publish prices yes/no?]',
+      prices: 'Prices: on request.',
       cta: 'Book an intro call – 30 minutes, free, no pitch deck required.',
     },
     ren: {
@@ -310,7 +297,7 @@ export const copy: Record<Lang, Copy> = {
           title: 'Package 2 – Channel and partner build-up',
           items: [
             'Approaching distributors, wholesalers, installers and EPC partners',
-            'Preparing and supporting trade fairs [TODO: which trade fairs are relevant for you?]',
+            'Preparing and supporting trade fairs',
             'Structuring partner contracts and terms (legal review by a specialist lawyer)',
           ],
         },
@@ -328,7 +315,6 @@ export const copy: Record<Lang, Copy> = {
     talent: {
       feeText:
         'You only pay on success. The fee is based on the annual target salary and is due in two instalments: the first shortly after the start date, the second after three months. If the person leaves before then, the second instalment is dropped. We discuss the terms in the intro call.',
-      feeTodo: '[TODO: Temo entscheidet A oder B]',
     },
     imprint: {
       h1: 'Legal notice',

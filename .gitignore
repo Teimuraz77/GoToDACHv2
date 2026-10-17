@@ -24,3 +24,6 @@ pnpm-debug.log*
 .idea/
 
 _repos/
+
+# local Claude Code settings
+.claude/settings.local.json

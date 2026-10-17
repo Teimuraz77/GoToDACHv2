@@ -21,6 +21,7 @@ const c = copy[lang].about;
 	</header>
 
 	<section class="block">
+		<!-- TODO offen: Anzahl der Jahre im B2B-Vertrieb im Intro ergänzen; 2–3 konkrete Stationen/Branchen (ohne vertrauliche Kundennamen) und Sprachen ergänzen; CoRe (NIS2-Compliance-as-a-Service) erwähnen – ja/nein? -->
 		<h2>{c.bringTitle}</h2>
 		<ul>
 			{c.bring.map((item) => <li>{item}</li>)}
@@ -33,11 +34,8 @@ const c = copy[lang].about;
 	</section>
 
 	<section class="block photo">
+		<!-- TODO: Porträtfoto liefern (Querformat oder 4:5, mind. 1200 px breit), dann nach src/assets/temo.jpg und Platzhalter ersetzen -->
 		<div class="placeholder" aria-hidden="true">TG</div>
-		<div class="photo-text">
-			<p class="todo">{c.photoTodo}</p>
-			<p class="todo">{c.photoNote}</p>
-		</div>
 	</section>
 
 	<section class="block cta">
@@ -122,15 +120,6 @@ const c = copy[lang].about;
 		color: var(--color-copper);
 	}
 
-	.photo-text {
-		display: grid;
-		gap: 0.5rem;
-	}
-
-	.photo-text p {
-		max-width: none;
-	}
-
 	.body {
 		display: grid;
 		gap: 1rem;
@@ -184,8 +173,5 @@ const c = copy[lang].about;
 			grid-column: 1;
 		}
 
-		.photo > .photo-text {
-			grid-column: 2;
-		}
 	}
 </style>

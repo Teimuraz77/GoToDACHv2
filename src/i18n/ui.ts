@@ -29,7 +29,7 @@ export const ui = {
     'home.pillar.talent.title': 'Talent',
     'home.pillar.talent.text': 'B2B-Tech-Sales-Profis für Ihr Team, vermittelt auf Erfolgsbasis.',
     'home.about.title': 'Über Temo',
-    'home.about.text': 'Teimuraz „Temo“ Gogodze, Frankfurt am Main. [TODO: Kurztext zu Werdegang und Arbeitsweise von Temo]',
+    'home.about.text': 'Teimuraz „Temo“ Gogodze, Frankfurt am Main.',
     'home.about.link': 'Mehr über Temo',
     'home.contact.title': 'Schreiben Sie uns',
     'home.contact.text': 'Erzählen Sie kurz, was Sie vorhaben. Temo meldet sich persönlich.',
@@ -51,7 +51,7 @@ export const ui = {
       'GoToDACH Talent vermittelt B2B-Tech-Vertriebsprofis an Firmen im DACH-Raum, auf Erfolgsbasis.',
     'talent.h1': 'Vertriebsprofis aus dem B2B-Tech-Umfeld, vermittelt auf Erfolgsbasis.',
     'talent.intro':
-      'GoToDACH Talent sucht Vertriebsleute mit B2B-Tech-Erfahrung für Firmen im DACH-Raum. Wir suchen gezielt und stellen nur Profile vor, die zur Stelle passen.',
+      'GoToDACH Talent sucht Vertriebsleute mit B2B-Tech-Erfahrung für Firmen im DACH-Raum.',
     'talent.model.title': 'Vermittlung auf Erfolgsbasis',
     'talent.cta.title': 'Kontakt',
     'talent.cta.text': 'Schreiben Sie uns, ob Sie suchen oder gesucht werden. Temo antwortet persönlich.',
@@ -66,7 +66,7 @@ export const ui = {
     'contact.talent.text':
       'Suchen Sie Vertriebsleute oder suchen Sie selbst eine Stelle? Schreiben Sie das dazu.',
     'contact.call.title': 'Erstgespräch',
-    'contact.call.text': 'Einen Termin buchen Sie direkt online. [TODO: Calendly-Link, sobald Temo ihn freigibt]',
+    'contact.call.text': 'Ein Erstgespräch vereinbaren Sie per E-Mail.',
     'imprint.meta.title': 'Impressum: GoToDACH',
     'imprint.meta.description': 'Impressum von GoToDACH, Frankfurt am Main.',
     'privacy.meta.title': 'Datenschutz: GoToDACH',
@@ -96,7 +96,7 @@ export const ui = {
     'home.pillar.talent.title': 'Talent',
     'home.pillar.talent.text': 'B2B tech sales professionals for your team, placed on a success-fee basis.',
     'home.about.title': 'About Temo',
-    'home.about.text': 'Teimuraz “Temo” Gogodze, Frankfurt am Main. [TODO: short bio on Temo’s background and way of working]',
+    'home.about.text': 'Teimuraz “Temo” Gogodze, Frankfurt am Main.',
     'home.about.link': 'More about Temo',
     'home.contact.title': 'Write to us',
     'home.contact.text': 'Tell us briefly what you are planning. Temo replies personally.',
@@ -118,7 +118,7 @@ export const ui = {
       'GoToDACH Talent places B2B tech sales professionals with companies in the DACH region, on a success-fee basis.',
     'talent.h1': 'Sales professionals from the B2B tech world, placed on a success-fee basis.',
     'talent.intro':
-      'GoToDACH Talent looks for sales people with B2B tech experience for companies in the DACH region. We search with intent and only present profiles that fit the role.',
+      'GoToDACH Talent looks for sales people with B2B tech experience for companies in the DACH region.',
     'talent.model.title': 'Placement on a success-fee basis',
     'talent.cta.title': 'Contact',
     'talent.cta.text':
@@ -132,7 +132,7 @@ export const ui = {
       'Name the product or service at the center, the countries you want to sell in, and what you want to achieve in the next months.',
     'contact.talent.text': 'Are you looking for salespeople, or for a role yourself? Mention that in your message.',
     'contact.call.title': 'Intro call',
-    'contact.call.text': 'You can book a time online. [TODO: Calendly link, once Temo releases it]',
+    'contact.call.text': 'You arrange an intro call by email.',
     'imprint.meta.title': 'Legal notice: GoToDACH',
     'imprint.meta.description': 'Legal notice of GoToDACH, Frankfurt am Main.',
     'privacy.meta.title': 'Privacy: GoToDACH',
