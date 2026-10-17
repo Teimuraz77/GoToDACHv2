@@ -1,0 +1,47 @@
+---
+import { localePath, useTranslations } from '../i18n/utils';
+import type { Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+  kind: 'thanks' | 'notfound';
+}
+
+const { lang, kind } = Astro.props;
+const t = useTranslations(lang);
+const h1 = kind === 'thanks' ? t('thanks.h1') : t('notfound.h1');
+const text = kind === 'thanks' ? t('thanks.text') : t('notfound.text');
+---
+
+<article class="page">
+	<h1>{h1}</h1>
+	<p>{text}</p>
+	<p><a href={localePath(lang)}>{t('thanks.back')}</a></p>
+</article>
+
+<style>
+	.page {
+		max-width: 72rem;
+		margin: 0 auto;
+		padding: 4rem 1rem 3rem;
+		display: grid;
+		gap: 1.25rem;
+	}
+
+	h1 {
+		font-size: clamp(2rem, 6.5vw, 3.5rem);
+		line-height: 1.1;
+		max-width: 20ch;
+	}
+
+	p {
+		margin: 0;
+		color: var(--color-muted);
+	}
+
+	@media (min-width: 48rem) {
+		.page {
+			padding: 7rem 2rem 5rem;
+		}
+	}
+</style>

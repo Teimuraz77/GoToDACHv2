@@ -1,6 +1,7 @@
 ---
 import { useTranslations } from '../i18n/utils';
 import type { Lang } from '../i18n/ui';
+import ContactForm from './ContactForm.astro';
 
 interface Props {
   lang: Lang;
@@ -17,21 +18,23 @@ const t = useTranslations(lang);
 	</header>
 
 	<section class="block">
-		<h2>{t('contact.mail.title')}</h2>
+		<h2>{t('contact.form.title')}</h2>
 		<div class="stack">
-			<p>{t('contact.mail.text')}</p>
-			<p>{t('contact.talent.text')}</p>
-			<p class="action">
-				<a href="mailto:temo@gotodach.com">temo@gotodach.com</a>
-			</p>
+			<ContactForm lang={lang} />
 		</div>
 	</section>
 
 	<section class="block">
-		<!-- TODO: Calendly-Link, sobald Temo ihn freigibt -->
-		<h2>{t('contact.call.title')}</h2>
+		<!-- TODO: Calendly-Link ergänzen, sobald vorhanden -->
+		<h2>{t('contact.direct.title')}</h2>
 		<div class="stack">
-			<p class="todo">{t('contact.call.text')}</p>
+			<p>{t('contact.direct.text')}</p>
+			<p class="action">
+				<a href="mailto:temo@gotodach.com">temo@gotodach.com</a>
+			</p>
+			<p class="action">
+				<a href="tel:+491723196188">+49 172 319 61 88</a>
+			</p>
 		</div>
 	</section>
 </article>

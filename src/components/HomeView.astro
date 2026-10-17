@@ -1,6 +1,8 @@
 ---
 import { localePath, useTranslations } from '../i18n/utils';
 import type { Lang } from '../i18n/ui';
+import { Image } from 'astro:assets';
+import temo from '../assets/temo.jpg';
 
 interface Props {
   lang: Lang;
@@ -11,16 +13,15 @@ const t = useTranslations(lang);
 
 const pillars = [
   { href: 'go-to-market', title: t('home.pillar.gtm.title'), text: t('home.pillar.gtm.text') },
-  { href: 'renewable-energy', title: t('home.pillar.renewable.title'), text: t('home.pillar.renewable.text') },
   { href: 'talent', title: t('home.pillar.talent.title'), text: t('home.pillar.talent.text') },
+  { href: 'renewable-energy', title: t('home.pillar.renewable.title'), text: t('home.pillar.renewable.text') },
 ];
 ---
 
 <section class="lead">
 	<h1>{t('home.lead')}</h1>
 	<p class="cta">
-		<a href="mailto:temo@gotodach.com">{t('home.cta')}</a>
-		<!-- TODO: Calendly-Link, sobald Temo ihn freigibt -->
+		<a href={localePath(lang, 'kontakt')}>{t('home.cta')}</a>
 	</p>
 </section>
 
@@ -40,7 +41,7 @@ const pillars = [
 
 <section class="split">
 	<div>
-		<!-- TODO: Kurztext zu Werdegang und Arbeitsweise von Temo -->
+		<Image class="teaser-photo" src={temo} alt="" widths={[160, 320]} sizes="7rem" />
 		<h2>{t('home.about.title')}</h2>
 		<p>{t('home.about.text')}</p>
 		<p class="more"><a href={localePath(lang, 'ueber-temo')}>{t('home.about.link')}</a></p>
@@ -48,7 +49,7 @@ const pillars = [
 	<div id="kontakt">
 		<h2>{t('home.contact.title')}</h2>
 		<p>{t('home.contact.text')}</p>
-		<p class="more"><a href={`mailto:${t('home.contact.mail')}`}>{t('home.contact.mail')}</a></p>
+		<p class="more"><a href={localePath(lang, 'kontakt')}>{t('home.contact.link')}</a></p>
 	</div>
 </section>
 
@@ -122,6 +123,17 @@ const pillars = [
 		padding-block: 3.5rem 1rem;
 		display: grid;
 		gap: 2.5rem;
+	}
+
+	.split :global(.teaser-photo) {
+		display: block;
+		width: 7rem;
+		height: auto;
+		aspect-ratio: 1;
+		object-fit: cover;
+		object-position: 39% 30%;
+		border: 1px solid var(--color-copper);
+		margin-bottom: 1.25rem;
 	}
 
 	.split h2 {

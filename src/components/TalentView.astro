@@ -26,7 +26,7 @@ const t = useTranslations(lang);
 		<h2>{t('talent.cta.title')}</h2>
 		<p>{t('talent.cta.text')}</p>
 		<p class="action">
-			<a href="mailto:temo@gotodach.com">{t('home.cta')}</a>
+			<a href={localePath(lang, 'kontakt')}>{t('home.cta')}</a>
 		</p>
 		<p class="related">
 			<a href={localePath(lang, 'go-to-market')}>{t('nav.goToMarket')}</a>

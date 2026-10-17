@@ -10,11 +10,13 @@ const t = useTranslations(lang);
 const barePath = Astro.url.pathname.replace(/^\/en(?=\/|$)/, '') || '/';
 const otherLang = lang === 'de' ? 'en' : 'de';
 const otherHref = alternatePath(barePath, otherLang);
+const current = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isCurrent = (href: string) => (current === localePath(lang, href) ? 'page' : undefined);
 
 const nav = [
   { key: 'nav.goToMarket', href: 'go-to-market' },
-  { key: 'nav.renewable', href: 'renewable-energy' },
   { key: 'nav.talent', href: 'talent' },
+  { key: 'nav.renewable', href: 'renewable-energy' },
   { key: 'nav.about', href: 'ueber-temo' },
 ] as const;
 ---
@@ -27,9 +29,9 @@ const nav = [
 		<nav aria-label={lang === 'en' ? 'Main' : 'Hauptnavigation'}>
 			<ul>
 				{nav.map((item) => (
-					<li><a href={localePath(lang, item.href)}>{t(item.key)}</a></li>
+					<li><a href={localePath(lang, item.href)} aria-current={isCurrent(item.href)}>{t(item.key)}</a></li>
 				))}
-				<li><a href={localePath(lang, 'kontakt')}>{t('nav.contact')}</a></li>
+				<li><a href={localePath(lang, 'kontakt')} aria-current={isCurrent('kontakt')}>{t('nav.contact')}</a></li>
 			</ul>
 		</nav>
 		<a class="lang" href={otherHref} hreflang={otherLang} lang={otherLang} aria-label={t('lang.switch')}>
@@ -95,7 +97,8 @@ const nav = [
 		display: inline-block;
 	}
 
-	nav a:hover {
+	nav a:hover,
+	nav a[aria-current='page'] {
 		color: var(--color-copper);
 	}
 

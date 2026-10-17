@@ -2,6 +2,8 @@
 import { localePath, useTranslations } from '../i18n/utils';
 import type { Lang } from '../i18n/ui';
 import { copy } from '../i18n/copy';
+import { Image } from 'astro:assets';
+import temo from '../assets/temo.jpg';
 
 interface Props {
   lang: Lang;
@@ -10,18 +12,36 @@ interface Props {
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 const c = copy[lang].about;
+const photoAlt = lang === 'de' ? 'Porträt von Teimuraz „Temo“ Gogodze' : 'Portrait of Teimuraz “Temo” Gogodze';
 ---
 
 <article class="page">
 	<header class="intro">
-		<h1>{c.headline}</h1>
-		<div class="lede">
-			{c.intro.map((p) => <p>{p}</p>)}
+		<figure class="portrait">
+			<Image src={temo} alt={photoAlt} widths={[240, 480]} sizes="(min-width: 48rem) 15rem, 9rem" />
+		</figure>
+		<div class="intro-text">
+			<h1>{c.headline}</h1>
+			<div class="lede">
+				{c.intro.map((p) => <p>{p}</p>)}
+			</div>
 		</div>
 	</header>
 
 	<section class="block">
-		<!-- TODO offen: 2–3 konkrete Stationen/Branchen (ohne vertrauliche Kundennamen) ergänzen -->
+		<h2>{c.stationsTitle}</h2>
+		<ol class="stations">
+			{c.stations.map((st) => (
+				<li>
+					<p class="label">{st.label}</p>
+					<h3>{st.title}</h3>
+					<p>{st.text}</p>
+				</li>
+			))}
+		</ol>
+	</section>
+
+	<section class="block">
 		<h2>{c.bringTitle}</h2>
 		<ul>
 			{c.bring.map((item) => <li>{item}</li>)}
@@ -33,18 +53,12 @@ const c = copy[lang].about;
 		<p>{c.way}</p>
 	</section>
 
-	<section class="block photo">
-		<!-- TODO: Porträtfoto liefern (Querformat oder 4:5, mind. 1200 px breit), dann nach src/assets/temo.jpg und Platzhalter ersetzen -->
-		<div class="placeholder" aria-hidden="true">TG</div>
-	</section>
-
 	<section class="block cta">
 		<h2>{t('about.contact.title')}</h2>
 		<div class="body">
 			<p>{t('about.contact.text')}</p>
 			<p class="action">
-				<!-- TODO: Calendly-Link, sobald Temo ihn freigibt -->
-				<a href="mailto:temo@gotodach.com">{t('home.cta')}</a>
+				<a href={localePath(lang, 'kontakt')}>{t('home.cta')}</a>
 			</p>
 		</div>
 	</section>
@@ -59,6 +73,11 @@ const c = copy[lang].about;
 
 	.intro {
 		padding-block: 3rem 2.5rem;
+		display: grid;
+		gap: 1.5rem;
+	}
+
+	.intro-text {
 		display: grid;
 		gap: 1.5rem;
 	}
@@ -103,21 +122,54 @@ const c = copy[lang].about;
 		font-size: 0.95rem;
 	}
 
-	.photo {
-		justify-items: center;
-		text-align: center;
+	.portrait {
+		margin: 0;
+		width: 9rem;
 	}
 
-	.placeholder {
-		width: 10rem;
+	.portrait img {
+		display: block;
+		width: 100%;
+		height: auto;
 		aspect-ratio: 4 / 5;
+		object-fit: cover;
+		object-position: 39% 30%;
+		border: 1px solid var(--color-copper);
+	}
+
+	.stations {
+		list-style: none;
+		margin: 0;
+		padding: 0;
 		display: grid;
-		place-items: center;
-		background: var(--color-deep);
-		border: 1px solid var(--color-line);
+		gap: 2rem;
+	}
+
+	.stations li {
+		border-left: 1px solid var(--color-copper);
+		padding-left: 1.25rem;
+		display: grid;
+		gap: 0.4rem;
+	}
+
+	.stations .label {
+		margin: 0;
+		font-size: 0.8rem;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: var(--color-gold);
+	}
+
+	.stations h3 {
+		margin: 0;
 		font-family: var(--font-display);
-		font-size: 2.5rem;
-		color: var(--color-copper);
+		font-size: 1.4rem;
+		line-height: 1.2;
+	}
+
+	.stations li > p:last-child {
+		margin: 0;
+		color: var(--color-muted);
 	}
 
 	.body {
@@ -142,10 +194,14 @@ const c = copy[lang].about;
 		}
 
 		.intro {
-			padding-block: 6rem 4rem;
-			grid-template-columns: 1.4fr 1fr;
-			align-items: end;
+			padding-block: 5rem 4rem;
+			grid-template-columns: 15rem 1fr;
+			align-items: start;
 			gap: 3rem;
+		}
+
+		.portrait {
+			width: 15rem;
 		}
 
 		.block {
@@ -162,16 +218,6 @@ const c = copy[lang].about;
 			grid-column: 2;
 		}
 
-		.photo {
-			grid-template-columns: auto 1fr;
-			justify-items: start;
-			align-items: center;
-			text-align: left;
-		}
-
-		.photo > .placeholder {
-			grid-column: 1;
-		}
 
 	}
 </style>

@@ -1,0 +1,192 @@
+---
+import { localePath, useTranslations } from '../i18n/utils';
+import type { Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const thanks = localePath(lang, lang === 'en' ? 'thanks' : 'danke');
+const privacy = localePath('de', 'datenschutz');
+
+// Werte bleiben in beiden Sprachen gleich, damit Netlify alle Einsendungen in einem Formular sammelt.
+// Über ?thema=<wert> in der URL wird das Anliegen vorausgewählt (Links von den Leistungsseiten).
+const topics = [
+  { value: 'gtm', label: t('form.topic.gtm') },
+  { value: 'talent-hire', label: t('form.topic.talentHire') },
+  { value: 'talent-job', label: t('form.topic.talentJob') },
+  { value: 'renewable', label: t('form.topic.renewable') },
+  { value: 'other', label: t('form.topic.other') },
+];
+---
+
+<form
+	class="form"
+	name="kontakt"
+	method="POST"
+	action={thanks}
+	data-netlify="true"
+	netlify-honeypot="bot-field"
+>
+	<input type="hidden" name="form-name" value="kontakt" />
+	<input type="hidden" name="sprache" value={lang} />
+	<p class="hp" aria-hidden="true">
+		<label>Nicht ausfüllen <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
+	</p>
+
+	<div class="row">
+		<div class="field">
+			<label for="f-name">{t('form.name')}</label>
+			<input id="f-name" name="name" type="text" autocomplete="name" required />
+		</div>
+		<div class="field">
+			<label for="f-email">{t('form.email')}</label>
+			<input id="f-email" name="email" type="email" autocomplete="email" required />
+		</div>
+	</div>
+
+	<div class="field">
+		<label for="f-company">{t('form.company')} <span class="opt">{t('form.optional')}</span></label>
+		<input id="f-company" name="firma" type="text" autocomplete="organization" />
+	</div>
+
+	<div class="field">
+		<label for="f-topic">{t('form.topic')}</label>
+		<select id="f-topic" name="anliegen" required>
+			<option value="" disabled selected>{t('form.topic.choose')}</option>
+			{topics.map((o) => <option value={o.value}>{o.label}</option>)}
+		</select>
+	</div>
+
+	<div class="field">
+		<label for="f-msg">{t('form.message')}</label>
+		<textarea id="f-msg" name="nachricht" rows="6" required aria-describedby="f-msg-hint"></textarea>
+		<p id="f-msg-hint" class="hint">{t('form.messageHint')}</p>
+	</div>
+
+	<p class="privacy">
+		{t('form.privacy.pre')}<a href={privacy}>{t('form.privacy.link')}</a>{t('form.privacy.post')}
+	</p>
+
+	<p class="submit">
+		<button type="submit">{t('form.submit')}</button>
+	</p>
+</form>
+
+<script is:inline>
+	(function () {
+		var topic = new URLSearchParams(window.location.search).get('thema');
+		var select = document.getElementById('f-topic');
+		if (!topic || !select) return;
+		for (var i = 0; i < select.options.length; i++) {
+			if (select.options[i].value === topic) {
+				select.value = topic;
+				break;
+			}
+		}
+	})();
+</script>
+
+<style>
+	.form {
+		display: grid;
+		gap: 1.25rem;
+		max-width: 40rem;
+	}
+
+	.row {
+		display: grid;
+		gap: 1.25rem;
+	}
+
+	.field {
+		display: grid;
+		gap: 0.4rem;
+	}
+
+	label {
+		font-size: 0.95rem;
+		color: var(--color-paper);
+	}
+
+	.opt {
+		color: var(--color-muted);
+	}
+
+	input,
+	select,
+	textarea {
+		width: 100%;
+		box-sizing: border-box;
+		font: inherit;
+		color: var(--color-paper);
+		background: var(--color-deep);
+		border: 1px solid var(--color-line);
+		border-radius: 0;
+		padding: 0.7rem 0.8rem;
+	}
+
+	select {
+		appearance: none;
+		background-image: linear-gradient(45deg, transparent 50%, var(--color-copper) 50%),
+			linear-gradient(135deg, var(--color-copper) 50%, transparent 50%);
+		background-position: calc(100% - 1.15rem) 50%, calc(100% - 0.8rem) 50%;
+		background-size: 0.35rem 0.35rem;
+		background-repeat: no-repeat;
+		padding-right: 2.5rem;
+	}
+
+	textarea {
+		resize: vertical;
+		min-height: 9rem;
+	}
+
+	input:focus-visible,
+	select:focus-visible,
+	textarea:focus-visible {
+		outline: 2px solid var(--color-gold);
+		outline-offset: 1px;
+		border-color: var(--color-gold);
+	}
+
+	.hint,
+	.privacy {
+		margin: 0;
+		font-size: 0.9rem;
+		color: var(--color-muted);
+	}
+
+	.submit {
+		margin: 0;
+	}
+
+	button {
+		font: inherit;
+		font-weight: 500;
+		color: var(--color-deep);
+		background: var(--color-copper);
+		border: 0;
+		padding: 0.85rem 1.6rem;
+		cursor: pointer;
+	}
+
+	button:hover {
+		background: var(--color-gold);
+	}
+
+	.hp {
+		position: absolute;
+		left: -10000px;
+		width: 1px;
+		height: 1px;
+		overflow: hidden;
+	}
+
+	@media (min-width: 40rem) {
+		.row {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+</style>

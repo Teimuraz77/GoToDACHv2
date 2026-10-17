@@ -21,6 +21,7 @@ export interface ServicePage {
   packages: Package[];
   prices: string;
   cta: string;
+  topic: string;
 }
 
 export interface Copy {
@@ -29,6 +30,8 @@ export interface Copy {
     intro: string[];
     bringTitle: string;
     bring: string[];
+    stationsTitle: string;
+    stations: { label: string; title: string; text: string }[];
     wayTitle: string;
     way: string;
   };
@@ -55,18 +58,38 @@ export const copy: Record<Lang, Copy> = {
       headline: 'Ich bin Temo. Ich verkaufe Software – und helfe anderen, es in DACH auch zu tun.',
       intro: [
         'Teimuraz Gogodze, alle sagen Temo. Ich sitze in Frankfurt und mache seit mehr als 15 Jahren B2B-Vertrieb, vor allem für SaaS.',
+        'In dieser Zeit habe ich ziemlich viel gesehen: Konzerne wie IBM und Salesforce, in denen ein Deal durch mehr Freigaben geht als ein Bauantrag. Und mein eigenes erstes Startup in Georgien, bei dem jeder Fehler direkt auf dem eigenen Konto landet.',
         'Das heißt: Erstgespräche, die keiner annehmen will, Einkaufsabteilungen mit drei Freigabeschleifen und Deals, die im letzten Quartal doch noch rutschen. Ich weiß, wie der DACH-Markt kauft – langsam, gründlich, mit Vertrag auf Deutsch – und wie man trotzdem vorankommt.',
       ],
       bringTitle: 'Was ich mitbringe',
       bring: [
-        'Mehr als 15 Jahre B2B-Vertrieb, vor allem SaaS – von der Akquise bis zum Abschluss',
+        'Mehr als 15 Jahre B2B-Vertrieb, vor allem SaaS – von der Kaltakquise bis zur Unterschrift',
+        'Beide Welten: Enterprise-Vertrieb im Konzern und ein eigenes Startup mit eigenem Team',
         'Sprachen: Deutsch, Englisch, Russisch',
-        'Eigene Produkte gebaut, z. B. CoRe (NIS2-Compliance-as-a-Service) – ich weiß also auch, wie es sich anfühlt, selbst etwas verkaufen zu müssen',
+      ],
+      stationsTitle: 'Stationen',
+      stations: [
+        {
+          label: 'Konzern',
+          title: 'IBM und Salesforce',
+          text: 'Vertrieb bei zwei der bekanntesten Namen der Softwarebranche. Dort lernt man Forecasts, Account-Pläne und Einkaufsabteilungen mit mehr Fragen als Budget. Vor allem aber lernt man, warum große Kunden so kaufen, wie sie kaufen – und wie man trotzdem zum Abschluss kommt.',
+        },
+        {
+          label: 'Gründer',
+          title: 'Deals Team, Georgien',
+          text: 'Mein erstes eigenes Startup: ein Boutique-Callcenter für B2B. Akquise im Auftrag anderer Firmen, jeden Tag, mit eigenem Team. Nichts lehrt schneller, was ein Lead wirklich wert ist, als wenn man ihn selbst bezahlen muss.',
+        },
+        {
+          label: 'Heute',
+          title: 'GoToDACH',
+          text: 'Heute verbinde ich beides: die Disziplin aus dem Konzern und das Tempo aus dem Startup. Für Firmen, die in Deutschland, Österreich und der Schweiz verkaufen wollen, und für die Vertriebsleute, die das für sie tun. Nebenbei baue ich eigene Produkte wie CoRe, eine Compliance-as-a-Service-Lösung für NIS2.',
+        },
       ],
       wayTitle: 'Wie ich arbeite',
       way: 'Direkt, ohne Folienschlacht. Erst verstehen, was Sie verkaufen und an wen. Dann ein Plan, der in eine Seite passt. Dann umsetzen – und messen, ob es funktioniert. Wenn etwas nicht passt, sage ich das früh. Das spart uns beiden Geld.',
     },
     gtm: {
+      topic: 'gtm',
       headline: 'In DACH verkaufen. Ohne zwei Jahre Lehrgeld.',
       problem:
         'Der DACH-Markt ist groß, zahlungskräftig – und eigen. Wer mit dem US- oder UK-Playbook kommt, lernt schnell: Hier entscheiden Gremien, Datenschutz ist kein Fußnotenthema, und „Let’s hop on a call“ ersetzt keine deutsche Vertragsfassung.',
@@ -104,6 +127,7 @@ export const copy: Record<Lang, Copy> = {
       cta: 'Erstgespräch vereinbaren – 30 Minuten, kostenlos, ohne Pitch-Deck-Pflicht.',
     },
     ren: {
+      topic: 'renewable',
       headline: 'Erneuerbare für den DACH-Markt. Mit jemandem, der den Vertrieb kennt.',
       problem:
         'Deutschland, Österreich und die Schweiz bauen Solar, Speicher und Wind massiv aus. Für Hersteller und Anbieter von außen heißt das: großer Markt, viel Regulierung, eigene Vertriebskanäle über Großhandel, Installateure und EPCs.',
@@ -197,9 +221,11 @@ export const copy: Record<Lang, Copy> = {
           ],
         },
         {
-          title: '4. Kontakt per E-Mail oder Telefon',
+          title: '4. Kontaktformular, E-Mail und Telefon',
           paragraphs: [
-            'Wenn Sie uns kontaktieren, verarbeiten wir Ihre Angaben, um die Anfrage zu bearbeiten (Art. 6 Abs. 1 lit. b bzw. f DSGVO). Die Daten werden gelöscht, sobald sie nicht mehr erforderlich sind und keine gesetzlichen Aufbewahrungspflichten bestehen.',
+            'Wenn Sie das Kontaktformular nutzen, verarbeiten wir Ihre Angaben (Name, E-Mail-Adresse, optional Firma, Anliegen und Nachricht), um Ihre Anfrage zu beantworten. Das Formular wird über den Formulardienst unseres Hosters Netlify verarbeitet: Netlify speichert die Einsendung und leitet sie per E-Mail an uns weiter. Es gilt der unter Ziffer 2 genannte Auftragsverarbeitungsvertrag.',
+            'Wenn Sie uns per E-Mail oder Telefon kontaktieren, verarbeiten wir Ihre Angaben ebenfalls nur zur Bearbeitung der Anfrage.',
+            'Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO, soweit Ihre Anfrage auf einen Vertrag zielt, im Übrigen Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Beantwortung von Anfragen). Die Daten werden gelöscht, sobald sie nicht mehr erforderlich sind und keine gesetzlichen Aufbewahrungspflichten bestehen. Einsendungen im Formulardienst löschen wir, sobald die Anfrage erledigt ist.',
           ],
         },
         {
@@ -229,18 +255,38 @@ export const copy: Record<Lang, Copy> = {
       headline: 'I am Temo. I sell software, and I help others do it in DACH too.',
       intro: [
         'Teimuraz Gogodze, everyone says Temo. I am based in Frankfurt and have been doing B2B sales for more than 15 years, mostly for SaaS.',
+        'In that time I have seen quite a lot: corporations like IBM and Salesforce, where a deal goes through more approvals than a planning application. And my own first startup in Georgia, where every mistake lands straight on your own account.',
         'That means first calls nobody wants to take, buying committees with three approval loops, and deals that slip into the last quarter anyway. I know how the DACH market buys: slowly, thoroughly, with contracts in German. And I know how to make progress anyway.',
       ],
       bringTitle: 'What I bring',
       bring: [
-        'More than 15 years of B2B sales, mostly SaaS – from prospecting to closing',
+        'More than 15 years of B2B sales, mostly SaaS – from cold outreach to signature',
+        'Both worlds: enterprise sales in a corporation and a startup of my own with my own team',
         'Languages: German, English, Russian',
-        'Built my own products, e.g. CoRe (NIS2 compliance as a service) – so I also know what it feels like to have to sell something of my own',
+      ],
+      stationsTitle: 'Career',
+      stations: [
+        {
+          label: 'Corporate',
+          title: 'IBM and Salesforce',
+          text: 'Sales at two of the best-known names in software. That is where you learn forecasts, account plans and procurement departments with more questions than budget. Above all, you learn why large customers buy the way they do – and how to get to a signature anyway.',
+        },
+        {
+          label: 'Founder',
+          title: 'Deals Team, Georgia',
+          text: 'My first startup of my own: a boutique B2B call center. Prospecting on behalf of other companies, every day, with my own team. Nothing teaches you faster what a lead is really worth than having to pay for it yourself.',
+        },
+        {
+          label: 'Today',
+          title: 'GoToDACH',
+          text: 'Today I combine both: corporate discipline and startup speed. For companies that want to sell in Germany, Austria and Switzerland, and for the salespeople who do it for them. On the side I build my own products, such as CoRe, a compliance-as-a-service solution for NIS2.',
+        },
       ],
       wayTitle: 'How I work',
       way: 'Direct, without slide battles. First understand what you sell and to whom. Then a plan that fits on one page. Then implement, and measure whether it works. If something does not fit, I say so early. That saves us both money.',
     },
     gtm: {
+      topic: 'gtm',
       headline: 'Selling in DACH. Without two years of learning the hard way.',
       problem:
         'The DACH market is big, has money, and is its own thing. Anyone who brings the US or UK playbook learns quickly: committees make the decisions here, data protection is not a footnote, and “Let’s hop on a call” does not replace a German contract.',
@@ -278,6 +324,7 @@ export const copy: Record<Lang, Copy> = {
       cta: 'Book an intro call – 30 minutes, free, no pitch deck required.',
     },
     ren: {
+      topic: 'renewable',
       headline: 'Renewables for the DACH market. With someone who knows sales.',
       problem:
         'Germany, Austria and Switzerland are expanding solar, storage and wind massively. For manufacturers and providers from abroad, that means: a large market, a lot of regulation, and sales channels of their own via wholesalers, installers and EPCs.',

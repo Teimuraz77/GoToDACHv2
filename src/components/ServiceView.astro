@@ -1,5 +1,5 @@
 ---
-import { useTranslations } from '../i18n/utils';
+import { localePath, useTranslations } from '../i18n/utils';
 import type { Lang } from '../i18n/ui';
 import type { ServicePage } from '../i18n/copy';
 
@@ -43,7 +43,7 @@ const t = useTranslations(lang);
 		<div class="body">
 			<p>{page.prices}</p>
 			<p class="action">
-				<a href="mailto:temo@gotodach.com">{page.cta}</a>
+				<a href={`${localePath(lang, 'kontakt')}?thema=${page.topic}`}>{page.cta}</a>
 			</p>
 		</div>
 	</section>

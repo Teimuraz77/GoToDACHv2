@@ -20,5 +20,10 @@ export default defineConfig({
     plugins: [tailwindcss()]
   },
 
-  integrations: [sitemap()]
+  integrations: [
+    sitemap({
+      // Danke-Seiten nicht in die Sitemap
+      filter: (page) => !/\/(danke|thanks)\/?$/.test(page),
+    }),
+  ]
 });

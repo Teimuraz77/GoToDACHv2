@@ -1,0 +1,11 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ThanksView from '../components/ThanksView.astro';
+import { useTranslations } from '../i18n/utils';
+
+const t = useTranslations('de');
+---
+
+<Layout title={t('thanks.meta.title')} description={t('thanks.text')} noindex>
+	<ThanksView lang="de" kind="thanks" />
+</Layout>
