@@ -1,0 +1,129 @@
+---
+import { getLangFromUrl, localePath, useTranslations } from '../i18n/utils';
+import { languages } from '../i18n/ui';
+import logo from '../assets/logo.png';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Pfad ohne Sprachpräfix, damit der Umschalter auf dieselbe Seite zeigt.
+const barePath = Astro.url.pathname.replace(/^\/en(?=\/|$)/, '') || '/';
+const otherLang = lang === 'de' ? 'en' : 'de';
+const otherHref = localePath(otherLang, barePath);
+
+const nav = [
+  { key: 'nav.goToMarket', href: 'go-to-market' },
+  { key: 'nav.renewable', href: 'renewable-energy' },
+  { key: 'nav.talent', href: 'talent' },
+  { key: 'nav.about', href: 'ueber-temo' },
+] as const;
+---
+
+<header class="site-header">
+	<div class="bar">
+		<a class="brand" href={localePath(lang)}>
+			<img src={logo.src} width={logo.width} height={logo.height} alt="GoToDACH" />
+		</a>
+		<nav aria-label={lang === 'en' ? 'Main' : 'Hauptnavigation'}>
+			<ul>
+				{nav.map((item) => (
+					<li><a href={localePath(lang, item.href)}>{t(item.key)}</a></li>
+				))}
+				<li><a href={localePath(lang, 'kontakt')}>{t('nav.contact')}</a></li>
+			</ul>
+		</nav>
+		<a class="lang" href={otherHref} hreflang={otherLang} lang={otherLang} aria-label={t('lang.switch')}>
+			{languages[otherLang]}
+		</a>
+	</div>
+</header>
+
+<style>
+	.site-header {
+		border-bottom: 1px solid var(--color-line);
+	}
+
+	.bar {
+		display: grid;
+		gap: 0.75rem 1.5rem;
+		grid-template-columns: 1fr auto;
+		align-items: center;
+		padding: 1rem 1rem 0.75rem;
+		max-width: 72rem;
+		margin: 0 auto;
+	}
+
+	.brand {
+		display: inline-block;
+		line-height: 0;
+	}
+
+	.brand img {
+		height: 3.75rem;
+		width: auto;
+	}
+
+	@media (min-width: 48rem) {
+		.brand img {
+			height: 4.5rem;
+		}
+	}
+
+	.brand:hover img {
+		opacity: 0.8;
+	}
+
+	nav {
+		grid-column: 1 / -1;
+		order: 3;
+	}
+
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.25rem 1.25rem;
+	}
+
+	nav a {
+		color: var(--color-paper);
+		text-decoration: none;
+		font-size: 0.95rem;
+		padding: 0.25rem 0;
+		display: inline-block;
+	}
+
+	nav a:hover {
+		color: var(--color-copper);
+	}
+
+	.lang {
+		color: var(--color-muted);
+		font-size: 0.95rem;
+		text-decoration: none;
+		justify-self: end;
+	}
+
+	.lang:hover {
+		color: var(--color-gold);
+	}
+
+	@media (min-width: 48rem) {
+		.bar {
+			grid-template-columns: auto 1fr auto;
+			padding: 1.25rem 2rem;
+		}
+
+		nav {
+			grid-column: auto;
+			order: 0;
+		}
+
+		ul {
+			justify-content: flex-end;
+			gap: 0.25rem 1.75rem;
+		}
+	}
+</style>

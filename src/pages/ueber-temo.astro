@@ -1,0 +1,11 @@
+---
+import Layout from '../layouts/Layout.astro';
+import AboutView from '../components/AboutView.astro';
+import { useTranslations } from '../i18n/utils';
+
+const t = useTranslations('de');
+---
+
+<Layout title={t('about.meta.title')} description={t('about.meta.description')}>
+	<AboutView lang="de" />
+</Layout>

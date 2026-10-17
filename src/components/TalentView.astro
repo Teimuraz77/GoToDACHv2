@@ -1,0 +1,120 @@
+---
+import { localePath, useTranslations } from '../i18n/utils';
+import type { Lang } from '../i18n/ui';
+import { copy } from '../i18n/copy';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<article class="page">
+	<header class="intro">
+		<h1>{t('talent.h1')}</h1>
+		<p class="lede">{t('talent.intro')}</p>
+	</header>
+
+	<section class="block">
+		<h2>{t('talent.model.title')}</h2>
+		<p>{copy[lang].talent.feeText}</p>
+		<p class="todo">{copy[lang].talent.feeTodo}</p>
+	</section>
+
+	<section class="block cta">
+		<h2>{t('talent.cta.title')}</h2>
+		<p>{t('talent.cta.text')}</p>
+		<p class="action">
+			<a href="mailto:temo@gotodach.com">{t('home.cta')}</a>
+		</p>
+		<p class="related">
+			<a href={localePath(lang, 'go-to-market')}>{t('nav.goToMarket')}</a>
+		</p>
+	</section>
+</article>
+
+<style>
+	.page {
+		max-width: 72rem;
+		margin: 0 auto;
+		padding-inline: 1rem;
+	}
+
+	.intro {
+		padding-block: 3rem 2.5rem;
+		display: grid;
+		gap: 1.5rem;
+	}
+
+	.intro h1 {
+		font-size: clamp(2rem, 6.5vw, 3.75rem);
+		line-height: 1.1;
+		max-width: 20ch;
+	}
+
+	.lede {
+		font-size: 1.1rem;
+		color: var(--color-muted);
+	}
+
+	.block {
+		border-top: 1px solid var(--color-line);
+		padding-block: 2.5rem;
+		display: grid;
+		gap: 1.5rem;
+	}
+
+	.block h2 {
+		font-size: 1.6rem;
+	}
+
+	.todo,
+	.related {
+		color: var(--color-muted);
+		font-size: 0.95rem;
+	}
+
+	.cta {
+		margin-bottom: 2rem;
+	}
+
+	.cta .action {
+		margin: 0;
+	}
+
+	.cta .action a {
+		font-size: 1.05rem;
+		text-decoration-thickness: 2px;
+		text-underline-offset: 0.3em;
+	}
+
+	@media (min-width: 48rem) {
+		.page {
+			padding-inline: 2rem;
+		}
+
+		.intro {
+			padding-block: 6rem 4rem;
+			grid-template-columns: 1.4fr 1fr;
+			align-items: end;
+			gap: 3rem;
+		}
+
+		.block {
+			padding-block: 4rem;
+			grid-template-columns: 1fr 2fr;
+			gap: 3rem;
+		}
+
+		.block > h2 {
+			align-self: start;
+		}
+
+		.block > :not(h2) {
+			grid-column: 2;
+		}
+
+	}
+</style>

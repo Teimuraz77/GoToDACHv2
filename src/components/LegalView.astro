@@ -1,0 +1,126 @@
+---
+import { localePath } from '../i18n/utils';
+import type { Lang } from '../i18n/ui';
+import { copy } from '../i18n/copy';
+
+interface Props {
+  lang: Lang;
+  kind: 'imprint' | 'privacy';
+}
+
+const { lang, kind } = Astro.props;
+const c = copy[lang];
+
+// Englische Seiten verweisen auf die deutsche Fassung (INHALTE.md, Abschnitt 7).
+const isEnglish = lang === 'en';
+const deHref = kind === 'imprint' ? localePath('de', 'impressum') : localePath('de', 'datenschutz');
+const deLabel = kind === 'imprint' ? 'Impressum (Deutsch)' : 'Datenschutzerklärung (Deutsch)';
+const h1 = kind === 'imprint' ? c.imprint.h1 : c.privacy.h1;
+const sections = kind === 'imprint' ? c.imprint.sections : c.privacy.sections;
+const lead = kind === 'imprint' ? c.imprint.lead : '';
+---
+
+<article class="page">
+	<header class="intro">
+		<h1>{h1}</h1>
+		{lead && <p class="note">{lead}</p>}
+		{isEnglish && <p class="note">{c.legalNotice}</p>}
+	</header>
+
+	{
+		isEnglish ? (
+			<section class="block">
+				<p class="action">
+					<a href={deHref}>{deLabel}</a>
+				</p>
+				<p class="todo">[TODO: Temo bestätigt]</p>
+			</section>
+		) : (
+			sections.map((s) => (
+				<section class="block">
+					<h2>{s.title}</h2>
+					<div class="body">
+						{s.paragraphs.map((p) => (
+							<p>{p}</p>
+						))}
+					</div>
+				</section>
+			))
+		)
+	}
+</article>
+
+<style>
+	.page {
+		max-width: 72rem;
+		margin: 0 auto;
+		padding-inline: 1rem;
+	}
+
+	.intro {
+		padding-block: 3rem 2.5rem;
+		display: grid;
+		gap: 1rem;
+	}
+
+	.intro h1 {
+		font-size: clamp(2rem, 6.5vw, 3.75rem);
+		line-height: 1.1;
+	}
+
+	.note {
+		color: var(--color-muted);
+		font-size: 0.95rem;
+	}
+
+	.block {
+		border-top: 1px solid var(--color-line);
+		padding-block: 2rem;
+		display: grid;
+		gap: 0.75rem;
+	}
+
+	.block h2 {
+		font-size: 1.4rem;
+	}
+
+	.body {
+		display: grid;
+		gap: 0.5rem;
+	}
+
+	.todo {
+		color: var(--color-muted);
+		font-size: 0.95rem;
+	}
+
+	.action {
+		margin: 0;
+	}
+
+	@media (min-width: 48rem) {
+		.page {
+			padding-inline: 2rem;
+		}
+
+		.intro {
+			padding-block: 6rem 3rem;
+		}
+
+		.block {
+			padding-block: 2.5rem;
+			grid-template-columns: 1fr 2fr;
+			gap: 3rem;
+		}
+
+		.block > h2 {
+			align-self: start;
+		}
+
+		.block > .body,
+		.block > .action,
+		.block > .todo {
+			grid-column: 2;
+		}
+	}
+</style>

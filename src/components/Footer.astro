@@ -1,0 +1,59 @@
+---
+import { getLangFromUrl, localePath, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+	<div class="inner">
+		<p>{t('footer.rights')}, {year}</p>
+		<ul>
+			<li><a href={localePath(lang, lang === 'en' ? 'legal-notice' : 'impressum')}>{t('footer.legal')}</a></li>
+			<li><a href={localePath(lang, lang === 'en' ? 'privacy' : 'datenschutz')}>{t('footer.privacy')}</a></li>
+		</ul>
+	</div>
+</footer>
+
+<style>
+	.site-footer {
+		background: var(--color-deep);
+		border-top: 1px solid var(--color-line);
+		margin-top: 4rem;
+	}
+
+	.inner {
+		max-width: 72rem;
+		margin: 0 auto;
+		padding: 1.5rem 1rem 2rem;
+		display: grid;
+		gap: 0.75rem;
+		font-size: 0.9rem;
+		color: var(--color-muted);
+	}
+
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		gap: 1.5rem;
+	}
+
+	a {
+		color: var(--color-paper);
+	}
+
+	a:hover {
+		color: var(--color-copper);
+	}
+
+	@media (min-width: 48rem) {
+		.inner {
+			grid-template-columns: 1fr auto;
+			align-items: center;
+			padding: 2rem;
+		}
+	}
+</style>

@@ -1,0 +1,12 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ServiceView from '../../components/ServiceView.astro';
+import { copy } from '../../i18n/copy';
+import { useTranslations } from '../../i18n/utils';
+
+const t = useTranslations('en');
+---
+
+<Layout title={t('ren.meta.title')} description={t('ren.meta.description')}>
+	<ServiceView lang="en" page={copy.en.ren} />
+</Layout>

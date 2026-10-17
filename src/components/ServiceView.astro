@@ -1,0 +1,148 @@
+---
+import { useTranslations } from '../i18n/utils';
+import type { Lang } from '../i18n/ui';
+import type { ServicePage } from '../i18n/copy';
+
+interface Props {
+  lang: Lang;
+  page: ServicePage;
+}
+
+const { lang, page } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<article class="page">
+	<header class="intro">
+		<h1>{page.headline}</h1>
+		<p class="lede">{page.problem}</p>
+	</header>
+
+	{
+		page.packages.map((pkg) => (
+			<section class="block package">
+				<div class="title">
+					<h2>{pkg.title}</h2>
+					{pkg.meta && <p class="meta">{pkg.meta}</p>}
+				</div>
+				<div class="body">
+					<ul>
+						{pkg.items.map((item) => (
+							<li>{item}</li>
+						))}
+					</ul>
+					{pkg.result && <p class="result">{pkg.result}</p>}
+				</div>
+			</section>
+		))
+	}
+
+	<section class="block">
+		<h2>{t('service.cta.heading')}</h2>
+		<div class="body">
+			<p>{page.prices}</p>
+			<p class="action">
+				<a href="mailto:temo@gotodach.com">{page.cta}</a>
+			</p>
+		</div>
+	</section>
+</article>
+
+<style>
+	.page {
+		max-width: 72rem;
+		margin: 0 auto;
+		padding-inline: 1rem;
+	}
+
+	.intro {
+		padding-block: 3rem 2.5rem;
+		display: grid;
+		gap: 1.5rem;
+	}
+
+	.intro h1 {
+		font-size: clamp(2rem, 6.5vw, 3.75rem);
+		line-height: 1.1;
+		max-width: 20ch;
+	}
+
+	.lede {
+		font-size: 1.1rem;
+		color: var(--color-muted);
+	}
+
+	.block {
+		border-top: 1px solid var(--color-line);
+		padding-block: 2.5rem;
+		display: grid;
+		gap: 1.25rem;
+	}
+
+	.block h2 {
+		font-size: 1.6rem;
+	}
+
+	.meta {
+		color: var(--color-muted);
+		font-size: 0.95rem;
+		margin-top: 0.4rem;
+	}
+
+	.body {
+		display: grid;
+		gap: 1rem;
+		align-content: start;
+	}
+
+	ul {
+		list-style: disc outside;
+		margin: 0;
+		padding-left: 1.1rem;
+		display: grid;
+		gap: 0.5rem;
+	}
+
+	li::marker {
+		color: var(--color-copper);
+	}
+
+	.result {
+		color: var(--color-paper);
+		font-weight: 500;
+	}
+
+	.action {
+		margin: 0;
+	}
+
+	.action a {
+		font-size: 1.05rem;
+		text-decoration-thickness: 2px;
+		text-underline-offset: 0.3em;
+	}
+
+	@media (min-width: 48rem) {
+		.page {
+			padding-inline: 2rem;
+		}
+
+		.intro {
+			padding-block: 6rem 4rem;
+			grid-template-columns: 1.4fr 1fr;
+			align-items: end;
+			gap: 3rem;
+		}
+
+		.block {
+			padding-block: 3.5rem;
+			grid-template-columns: 1fr 2fr;
+			gap: 3rem;
+		}
+
+		.block > h2,
+		.title {
+			align-self: start;
+		}
+	}
+</style>

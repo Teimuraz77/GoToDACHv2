@@ -1,0 +1,11 @@
+---
+import Layout from '../layouts/Layout.astro';
+import LegalView from '../components/LegalView.astro';
+import { useTranslations } from '../i18n/utils';
+
+const t = useTranslations('de');
+---
+
+<Layout title={t('privacy.meta.title')} description={t('privacy.meta.description')}>
+	<LegalView lang="de" kind="privacy" />
+</Layout>

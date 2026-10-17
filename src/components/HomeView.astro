@@ -1,0 +1,172 @@
+---
+import { localePath, useTranslations } from '../i18n/utils';
+import type { Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const pillars = [
+  { href: 'go-to-market', title: t('home.pillar.gtm.title'), text: t('home.pillar.gtm.text') },
+  { href: 'renewable-energy', title: t('home.pillar.renewable.title'), text: t('home.pillar.renewable.text') },
+  { href: 'talent', title: t('home.pillar.talent.title'), text: t('home.pillar.talent.text') },
+];
+---
+
+<section class="lead">
+	<h1>{t('home.lead')}</h1>
+	<p class="cta">
+		<a href="mailto:temo@gotodach.com">{t('home.cta')}</a>
+		<!-- TODO: Calendly-Link, sobald Temo ihn freigibt -->
+	</p>
+</section>
+
+<section class="pillars" aria-labelledby="pillars-title">
+	<h2 id="pillars-title" class="sr-only">{lang === 'en' ? 'Services' : 'Leistungen'}</h2>
+	<ul>
+		{pillars.map((p) => (
+			<li>
+				<a class="pillar" href={localePath(lang, p.href)}>
+					<span class="pillar-title">{p.title}</span>
+					<span class="pillar-text">{p.text}</span>
+				</a>
+			</li>
+		))}
+	</ul>
+</section>
+
+<section class="split">
+	<div>
+		<h2>{t('home.about.title')}</h2>
+		<p>{t('home.about.text')}</p>
+		<p class="more"><a href={localePath(lang, 'ueber-temo')}>{t('home.about.link')}</a></p>
+	</div>
+	<div id="kontakt">
+		<h2>{t('home.contact.title')}</h2>
+		<p>{t('home.contact.text')}</p>
+		<p class="more"><a href={`mailto:${t('home.contact.mail')}`}>{t('home.contact.mail')}</a></p>
+	</div>
+</section>
+
+<style>
+	.lead,
+	.pillars,
+	.split {
+		max-width: 72rem;
+		margin: 0 auto;
+		padding-inline: 1rem;
+	}
+
+	.lead {
+		padding-block: 3rem 2.5rem;
+		display: grid;
+		gap: 2rem;
+	}
+
+	.lead h1 {
+		font-size: clamp(2rem, 7vw, 4.25rem);
+		line-height: 1.08;
+		max-width: 22ch;
+	}
+
+	.cta {
+		margin: 0;
+		max-width: none;
+	}
+
+	.cta a {
+		font-size: 1.05rem;
+		text-decoration-thickness: 2px;
+		text-underline-offset: 0.3em;
+	}
+
+	.pillars ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		border-top: 1px solid var(--color-line);
+	}
+
+	.pillars li {
+		border-bottom: 1px solid var(--color-line);
+	}
+
+	.pillar {
+		display: grid;
+		gap: 0.5rem;
+		padding-block: 1.5rem;
+		color: var(--color-paper);
+		text-decoration: none;
+	}
+
+	.pillar-title {
+		font-family: var(--font-display);
+		font-size: clamp(1.6rem, 5vw, 2.25rem);
+		line-height: 1.1;
+	}
+
+	.pillar-text {
+		color: var(--color-muted);
+		max-width: 52ch;
+	}
+
+	.pillar:hover .pillar-title {
+		color: var(--color-copper);
+	}
+
+	.split {
+		padding-block: 3.5rem 1rem;
+		display: grid;
+		gap: 2.5rem;
+	}
+
+	.split h2 {
+		font-size: 1.6rem;
+		margin-bottom: 0.75rem;
+	}
+
+	.split p {
+		color: var(--color-paper);
+	}
+
+	.split .more {
+		margin-top: 0.75rem;
+	}
+
+	@media (min-width: 48rem) {
+		.lead {
+			padding-block: 6rem 4rem;
+			padding-inline: 2rem;
+		}
+
+		.pillars,
+		.split {
+			padding-inline: 2rem;
+		}
+
+		.pillar {
+			grid-template-columns: minmax(12rem, 1fr) 2fr;
+			align-items: baseline;
+			gap: 2rem;
+			padding-block: 2rem;
+		}
+
+		.split {
+			grid-template-columns: 1fr 1fr;
+			gap: 4rem;
+			padding-block: 5rem 2rem;
+		}
+	}
+
+	.sr-only {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		overflow: hidden;
+		clip: rect(0 0 0 0);
+		white-space: nowrap;
+	}
+</style>
