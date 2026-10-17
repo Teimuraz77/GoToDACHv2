@@ -1,5 +1,5 @@
 ---
-import { getLangFromUrl, localePath, useTranslations } from '../i18n/utils';
+import { alternatePath, getLangFromUrl, localePath, useTranslations } from '../i18n/utils';
 import { languages } from '../i18n/ui';
 import logo from '../assets/logo.png';
 
@@ -9,7 +9,7 @@ const t = useTranslations(lang);
 // Pfad ohne Sprachpräfix, damit der Umschalter auf dieselbe Seite zeigt.
 const barePath = Astro.url.pathname.replace(/^\/en(?=\/|$)/, '') || '/';
 const otherLang = lang === 'de' ? 'en' : 'de';
-const otherHref = localePath(otherLang, barePath);
+const otherHref = alternatePath(barePath, otherLang);
 
 const nav = [
   { key: 'nav.goToMarket', href: 'go-to-market' },

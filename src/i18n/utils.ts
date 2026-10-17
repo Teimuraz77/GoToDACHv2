@@ -16,3 +16,17 @@ export function localePath(lang: Lang, path = '/') {
   if (lang === defaultLang) return `/${clean}`;
   return `/${lang}/${clean}`;
 }
+
+// Rechtsseiten haben im Englischen andere Slugs. Alle anderen Slugs sind in beiden Sprachen gleich.
+const legalSlugs: Record<string, Record<Lang, string>> = {
+  impressum: { de: 'impressum', en: 'legal-notice' },
+  datenschutz: { de: 'datenschutz', en: 'privacy' },
+};
+
+// Pfad ohne Sprachpräfix in die andere Sprache übertragen.
+export function alternatePath(barePath: string, toLang: Lang) {
+  const clean = barePath.replace(/^\/|\/$/g, '');
+  const entry = Object.values(legalSlugs).find((s) => s.de === clean || s.en === clean);
+  const slug = entry ? entry[toLang] : clean;
+  return localePath(toLang, slug);
+}
