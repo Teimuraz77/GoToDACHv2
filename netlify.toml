@@ -19,3 +19,45 @@
   for = "/_astro/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+
+# Englisch ist seit Okt. 2026 Standardsprache unter "/", Deutsch unter "/de/".
+# Alte URLs dauerhaft umleiten.
+[[redirects]]
+  from = "/en/kontakt"
+  to = "/contact"
+  status = 301
+
+[[redirects]]
+  from = "/en/ueber-temo"
+  to = "/about"
+  status = 301
+
+[[redirects]]
+  from = "/en/*"
+  to = "/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/kontakt"
+  to = "/de/kontakt"
+  status = 301
+
+[[redirects]]
+  from = "/ueber-temo"
+  to = "/de/ueber-temo"
+  status = 301
+
+[[redirects]]
+  from = "/impressum"
+  to = "/de/impressum"
+  status = 301
+
+[[redirects]]
+  from = "/datenschutz"
+  to = "/de/datenschutz"
+  status = 301
+
+[[redirects]]
+  from = "/danke"
+  to = "/de/danke"
+  status = 301

@@ -1,9 +1,11 @@
+// Reihenfolge = Reihenfolge im Sprachmenü. Neue Sprache: hier eintragen, Flagge in Flag.astro,
+// Texte in ui.ts und copy.ts, Slugs in utils.ts (routes), Seiten unter src/pages/<code>/.
 export const languages = {
-  de: 'Deutsch',
   en: 'English',
+  de: 'Deutsch',
 } as const;
 
-export const defaultLang = 'de';
+export const defaultLang = 'en';
 
 export type Lang = keyof typeof languages;
 
@@ -25,7 +27,7 @@ export const ui = {
     'home.pillar.gtm.title': 'Go-to-Market',
     'home.pillar.gtm.text': 'Markteintritt und Vertriebsaufbau im DACH-Raum für B2B- und SaaS-Firmen.',
     'home.pillar.renewable.title': 'Renewable Energy',
-    'home.pillar.renewable.text': 'Markteintritt für Solar, Wind und Speicher, mit den Besonderheiten dieser Branche.',
+    'home.pillar.renewable.text': 'Brücken von Deutschland nach Zentralasien: Markteintritt für Mittelstand und Konzerne, mit Universitäten und Konferenzen vor Ort.',
     'home.pillar.talent.title': 'Talent',
     'home.pillar.talent.text': 'B2B-Tech-Sales-Profis für Ihr Team, vermittelt auf Erfolgsbasis.',
     'home.about.title': 'Über Temo',
@@ -38,9 +40,9 @@ export const ui = {
     'gtm.meta.title': 'Go-to-Market: Markteintritt und Vertriebsaufbau im DACH-Raum',
     'gtm.meta.description':
       'Markteintritt und Vertriebsaufbau im DACH-Raum für B2B- und SaaS-Firmen: Märkte prüfen, Vertrieb aufbauen, die richtigen Leute finden.',
-    'ren.meta.title': 'Renewable Energy: Markteintritt in den DACH-Raum',
+    'ren.meta.title': 'Renewable Energy: deutsche Unternehmen nach Zentralasien',
     'ren.meta.description':
-      'Markteintritt in den DACH-Raum für Solar-, Wind- und Speicherfirmen: Märkte prüfen, Vertrieb aufbauen, die richtigen Leute finden.',
+      'Erneuerbare Energie aus Deutschland für Zentralasien: GoToDACH hilft Mittelstand und Konzernen beim Markteintritt, mit Universitäten und Konferenzen vor Ort.',
     'service.cta.heading': 'Erstgespräch',
     'about.meta.title': 'Über Temo: Teimuraz Gogodze, GoToDACH',
     'about.meta.description':
@@ -85,7 +87,7 @@ export const ui = {
     'form.topic.gtm': 'Go-to-Market: Markteintritt und Vertrieb in DACH',
     'form.topic.talentHire': 'Talent: Ich suche Vertriebsleute',
     'form.topic.talentJob': 'Talent: Ich suche eine Stelle im Vertrieb',
-    'form.topic.renewable': 'Renewable Energy: Markteintritt in DACH',
+    'form.topic.renewable': 'Renewable Energy: Markteintritt in Zentralasien',
     'form.topic.other': 'Etwas anderes',
     'form.message': 'Nachricht',
     'form.messageHint': 'Was verkaufen Sie, in welchen Ländern, und was soll in den nächsten Monaten passieren? Drei Sätze reichen.',
@@ -121,7 +123,7 @@ export const ui = {
     'home.pillar.gtm.title': 'Go-to-market',
     'home.pillar.gtm.text': 'Market entry and sales build-up in the DACH region for B2B and SaaS companies.',
     'home.pillar.renewable.title': 'Renewable energy',
-    'home.pillar.renewable.text': 'Market entry for solar, wind and storage, with the specifics of this industry.',
+    'home.pillar.renewable.text': 'Bridges from Germany to Central Asia: market entry for mid-sized companies and corporations, with local universities and conferences.',
     'home.pillar.talent.title': 'Talent',
     'home.pillar.talent.text': 'B2B tech sales professionals for your team, placed on a success-fee basis.',
     'home.about.title': 'About Temo',
@@ -134,9 +136,9 @@ export const ui = {
     'gtm.meta.title': 'Go-to-market: market entry and sales build-up in the DACH region',
     'gtm.meta.description':
       'Market entry and sales build-up in the DACH region for B2B and SaaS companies: check markets, build the sales team, find the right people.',
-    'ren.meta.title': 'Renewable energy: market entry into the DACH region',
+    'ren.meta.title': 'Renewable energy: German companies into Central Asia',
     'ren.meta.description':
-      'Market entry into the DACH region for solar, wind and storage companies: check markets, build sales, find the right people.',
+      'Renewable energy from Germany for Central Asia: GoToDACH helps mid-sized companies and corporations enter the market, with local universities and conferences.',
     'service.cta.heading': 'First call',
     'about.meta.title': 'About Temo: Teimuraz Gogodze, GoToDACH',
     'about.meta.description':
@@ -180,7 +182,7 @@ export const ui = {
     'form.topic.gtm': 'Go-to-market: market entry and sales in DACH',
     'form.topic.talentHire': 'Talent: I am looking for salespeople',
     'form.topic.talentJob': 'Talent: I am looking for a sales role',
-    'form.topic.renewable': 'Renewable energy: market entry into DACH',
+    'form.topic.renewable': 'Renewable energy: market entry into Central Asia',
     'form.topic.other': 'Something else',
     'form.message': 'Message',
     'form.messageHint': 'What do you sell, in which countries, and what should happen in the next few months? Three sentences are enough.',

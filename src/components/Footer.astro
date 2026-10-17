@@ -10,8 +10,8 @@ const year = new Date().getFullYear();
 	<div class="inner">
 		<p>{t('footer.rights')}, {year}</p>
 		<ul>
-			<li><a href={localePath(lang, lang === 'en' ? 'legal-notice' : 'impressum')}>{t('footer.legal')}</a></li>
-			<li><a href={localePath(lang, lang === 'en' ? 'privacy' : 'datenschutz')}>{t('footer.privacy')}</a></li>
+			<li><a href={localePath(lang, 'impressum')}>{t('footer.legal')}</a></li>
+			<li><a href={localePath(lang, 'datenschutz')}>{t('footer.privacy')}</a></li>
 		</ul>
 	</div>
 </footer>

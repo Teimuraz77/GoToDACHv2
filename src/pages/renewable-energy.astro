@@ -4,10 +4,9 @@ import ServiceView from '../components/ServiceView.astro';
 import { copy } from '../i18n/copy';
 import { useTranslations } from '../i18n/utils';
 
-const t = useTranslations('de');
+const t = useTranslations('en');
 ---
 
 <Layout title={t('ren.meta.title')} description={t('ren.meta.description')}>
-	<!-- TODO offen: Welche Fachmessen sind für Renewables relevant? (Paket 2) -->
-	<ServiceView lang="de" page={copy.de.ren} />
+	<ServiceView lang="en" page={copy.en.ren} />
 </Layout>

@@ -128,35 +128,37 @@ export const copy: Record<Lang, Copy> = {
     },
     ren: {
       topic: 'renewable',
-      headline: 'Erneuerbare für den DACH-Markt. Mit jemandem, der den Vertrieb kennt.',
+      headline: 'Erneuerbare Energie aus Deutschland für Zentralasien. Wir bauen die Brücke.',
       problem:
-        'Deutschland, Österreich und die Schweiz bauen Solar, Speicher und Wind massiv aus. Für Hersteller und Anbieter von außen heißt das: großer Markt, viel Regulierung, eigene Vertriebskanäle über Großhandel, Installateure und EPCs.',
+        'Fortschritt braucht Partner: Technologie, Know-how und Unternehmen, die bleiben. Deutsche Mittelständler und Konzerne bringen genau das mit – aber selten das Netzwerk vor Ort. GoToDACH verbindet beide Seiten. Wir helfen deutschen Unternehmen, in Zentralasien Fuß zu fassen, arbeiten dafür eng mit Universitäten in der Region zusammen und bringen die richtigen Leute auf unseren Konferenzen an einen Tisch.',
       packages: [
         {
-          title: 'Paket 1 – Markt-Check Renewables',
+          title: 'Markteintritt Zentralasien',
           items: [
-            'Zielsegmente (z. B. Gewerbe-PV, Heimspeicher, Großprojekte) und relevante Kanäle',
-            'Überblick über Zertifizierungen, Normen und Förderlogik, die für Ihr Produkt relevant sind – mit Fachpartnern, wo nötig',
+            'Welche Länder und Segmente zu Ihrem Angebot passen – von Solar und Wind über Speicher bis Netztechnik',
+            'Partner, Entscheider und Rahmenbedingungen vor Ort',
+            'Begleitung bei den ersten Gesprächen und Projekten',
           ],
-          result: 'Ergebnis: Einstiegsstrategie und Prioritäten',
+          result: 'Ergebnis: ein klarer Plan, wo und mit wem Sie starten',
         },
         {
-          title: 'Paket 2 – Kanal- und Partneraufbau',
+          title: 'Universitäten als Partner',
           items: [
-            'Ansprache von Distributoren, Großhändlern, Installateuren und EPC-Partnern',
-            'Vorbereitung und Begleitung von Fachmessen',
-            'Partnerverträge und Konditionen strukturieren (juristische Prüfung durch Fachanwalt)',
+            'Kooperationen mit Universitäten vor Ort',
+            'Zugang zu Fachkräften und Nachwuchs für Ihre Projekte in der Region',
+            'Wissenstransfer, der Ihr Unternehmen dort bekannt macht, bevor der erste Vertrieb anklopft',
           ],
         },
         {
-          title: 'Paket 3 – Interim Sales DACH für Renewables',
+          title: 'Konferenzen und Netzwerk',
           items: [
-            'Wie Go-to-Market Paket 3, mit Fokus auf Partnervertrieb',
-            'Vertriebsleute über GoToDACH Talent',
+            'Wir veranstalten Konferenzen, die deutsche Unternehmen, Hochschulen und Entscheider aus der Region zusammenbringen',
+            'Auftritt als Partner oder Sprecher',
+            'Gespräche mit möglichen Kunden und Partnern, die sonst Monate an Anlauf brauchen',
           ],
         },
       ],
-      prices: 'Preise: auf Anfrage.',
+      prices: 'Konditionen: auf Anfrage.',
       cta: 'Erstgespräch vereinbaren',
     },
     talent: {
@@ -325,35 +327,37 @@ export const copy: Record<Lang, Copy> = {
     },
     ren: {
       topic: 'renewable',
-      headline: 'Renewables for the DACH market. With someone who knows sales.',
+      headline: 'Renewable energy from Germany for Central Asia. We build the bridge.',
       problem:
-        'Germany, Austria and Switzerland are expanding solar, storage and wind massively. For manufacturers and providers from abroad, that means: a large market, a lot of regulation, and sales channels of their own via wholesalers, installers and EPCs.',
+        'Progress needs partners: technology, know-how and companies that stay. German mid-sized companies and corporations bring exactly that – but rarely the network on the ground. GoToDACH connects both sides. We help German companies gain a foothold in Central Asia, work closely with universities in the region, and bring the right people to one table at our conferences.',
       packages: [
         {
-          title: 'Package 1 – Renewables market check',
+          title: 'Market entry Central Asia',
           items: [
-            'Target segments (e.g. commercial PV, home storage, large projects) and relevant channels',
-            'Overview of certifications, standards and funding logic relevant to your product – with specialist partners where needed',
+            'Which countries and segments fit your offering – from solar and wind to storage and grid technology',
+            'Partners, decision-makers and conditions on the ground',
+            'Support in the first meetings and projects',
           ],
-          result: 'Result: entry strategy and priorities',
+          result: 'Result: a clear plan for where and with whom to start',
         },
         {
-          title: 'Package 2 – Channel and partner build-up',
+          title: 'Universities as partners',
           items: [
-            'Approaching distributors, wholesalers, installers and EPC partners',
-            'Preparing and supporting trade fairs',
-            'Structuring partner contracts and terms (legal review by a specialist lawyer)',
+            'Cooperation with local universities',
+            'Access to skilled professionals and young talent for your projects in the region',
+            'Knowledge transfer that makes your company known there before sales comes knocking',
           ],
         },
         {
-          title: 'Package 3 – Interim sales DACH for renewables',
+          title: 'Conferences and network',
           items: [
-            'As go-to-market package 3, focused on partner sales',
-            'Salespeople via GoToDACH Talent',
+            'We organise conferences that bring together German companies, universities and decision-makers from the region',
+            'Appearances as a partner or speaker',
+            'Conversations with potential customers and partners that would otherwise take months to set up',
           ],
         },
       ],
-      prices: 'Prices: on request.',
+      prices: 'Terms: on request.',
       cta: 'Book an intro call',
     },
     talent: {
@@ -369,6 +373,6 @@ export const copy: Record<Lang, Copy> = {
       h1: 'Privacy policy',
       sections: [],
     },
-    legalNotice: 'Legal notice and privacy policy are available in German only; the German version is legally binding.',
+    legalNotice: 'This page is available in German only. The German version is legally binding.',
   },
 };

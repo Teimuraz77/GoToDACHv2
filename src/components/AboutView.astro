@@ -17,14 +17,9 @@ const photoAlt = lang === 'de' ? 'Porträt von Teimuraz „Temo“ Gogodze' : 'P
 
 <article class="page">
 	<header class="intro">
-		<figure class="portrait">
-			<Image src={temo} alt={photoAlt} widths={[240, 480]} sizes="(min-width: 48rem) 15rem, 9rem" />
-		</figure>
-		<div class="intro-text">
-			<h1>{c.headline}</h1>
-			<div class="lede">
-				{c.intro.map((p) => <p>{p}</p>)}
-			</div>
+		<h1>{c.headline}</h1>
+		<div class="lede">
+			{c.intro.map((p) => <p>{p}</p>)}
 		</div>
 	</header>
 
@@ -53,6 +48,12 @@ const photoAlt = lang === 'de' ? 'Porträt von Teimuraz „Temo“ Gogodze' : 'P
 		<p>{c.way}</p>
 	</section>
 
+	<section class="block photo">
+		<figure class="portrait">
+			<Image src={temo} alt={photoAlt} widths={[640, 960, 1280]} sizes="(min-width: 48rem) 40rem, 100vw" quality={90} />
+		</figure>
+	</section>
+
 	<section class="block cta">
 		<h2>{t('about.contact.title')}</h2>
 		<div class="body">
@@ -73,11 +74,6 @@ const photoAlt = lang === 'de' ? 'Porträt von Teimuraz „Temo“ Gogodze' : 'P
 
 	.intro {
 		padding-block: 3rem 2.5rem;
-		display: grid;
-		gap: 1.5rem;
-	}
-
-	.intro-text {
 		display: grid;
 		gap: 1.5rem;
 	}
@@ -124,17 +120,14 @@ const photoAlt = lang === 'de' ? 'Porträt von Teimuraz „Temo“ Gogodze' : 'P
 
 	.portrait {
 		margin: 0;
-		width: 9rem;
+		max-width: 40rem;
 	}
 
 	.portrait img {
 		display: block;
 		width: 100%;
 		height: auto;
-		aspect-ratio: 4 / 5;
-		object-fit: cover;
-		object-position: 39% 30%;
-		border: 1px solid var(--color-copper);
+		border: 1px solid var(--color-line);
 	}
 
 	.stations {
@@ -194,14 +187,10 @@ const photoAlt = lang === 'de' ? 'Porträt von Teimuraz „Temo“ Gogodze' : 'P
 		}
 
 		.intro {
-			padding-block: 5rem 4rem;
-			grid-template-columns: 15rem 1fr;
-			align-items: start;
+			padding-block: 6rem 4rem;
+			grid-template-columns: 1.4fr 1fr;
+			align-items: end;
 			gap: 3rem;
-		}
-
-		.portrait {
-			width: 15rem;
 		}
 
 		.block {

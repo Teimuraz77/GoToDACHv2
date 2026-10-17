@@ -8,8 +8,8 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = useTranslations(lang);
-const thanks = localePath(lang, lang === 'en' ? 'thanks' : 'danke');
-const privacy = localePath('de', 'datenschutz');
+const thanks = localePath(lang, 'danke');
+const privacy = localePath(lang, 'datenschutz');
 
 // Werte bleiben in beiden Sprachen gleich, damit Netlify alle Einsendungen in einem Formular sammelt.
 // Über ?thema=<wert> in der URL wird das Anliegen vorausgewählt (Links von den Leistungsseiten).

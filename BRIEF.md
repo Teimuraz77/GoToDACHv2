@@ -12,7 +12,7 @@ Roter Faden: **Markteintritt + die Leute, die ihn umsetzen.** Jede Unterseite za
 |---|---|
 | `/` | Startseite: Positionierung in einem Satz, drei Säulen (Go-to-Market, Renewable Energy, Talent), Über-Temo-Teaser, Kontakt-CTA |
 | `/go-to-market` | Markteintritt & Vertriebsaufbau DACH für B2B-/SaaS-Firmen |
-| `/renewable-energy` | Markteintritt DACH speziell für Renewables-Firmen (Solar, Wind, Speicher …) |
+| `/renewable-energy` | Brücke Deutschland → Zentralasien: deutschen Mittelstand und Konzerne beim Markteintritt in der Region unterstützen, mit Universitäten vor Ort und eigenen Konferenzen |
 | `/talent` | Talent-Akquise: Vermittlung von B2B-Tech-Sales-Profis auf Erfolgsbasis (GoToDACH Talent) |
 | `/ueber-temo` | Persönliche Seite, Werdegang, Arbeitsweise |
 | `/insights` | Blog (Astro Content Collections, Markdown in `src/content/insights/`) |
@@ -25,7 +25,8 @@ Roter Faden: **Markteintritt + die Leute, die ihn umsetzen.** Jede Unterseite za
 - Sekundär: Sales-Kandidaten (für Talent)
 
 ## Sprache & Ton
-- Deutsch als Hauptsprache, Englisch als zweite Sprache (`/en/...`) – Struktur von Anfang an i18n-fähig anlegen
+- Englisch als Standardsprache unter `/`, Deutsch unter `/de/`; weitere Sprachen folgen (Sprachmenü mit Flaggen, Slugs in `src/i18n/utils.ts`)
+- Rechtstexte nur auf Deutsch (verbindlich), andere Sprachen zeigen den deutschen Text mit Hinweis
 - Klar, direkt, bodenständig, mit trockenem Humor. Kein Berater-Bullshit-Bingo, keine leeren Superlative.
 
 ## Design

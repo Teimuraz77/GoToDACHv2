@@ -1,15 +1,19 @@
 ---
-import { alternatePath, getLangFromUrl, localePath, useTranslations } from '../i18n/utils';
-import { languages } from '../i18n/ui';
+import { alternatePath, getLangFromUrl, localePath, stripLang, useTranslations } from '../i18n/utils';
+import { languages, type Lang } from '../i18n/ui';
+import Flag from './Flag.astro';
 import logo from '../assets/logo.png';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-// Pfad ohne Sprachpräfix, damit der Umschalter auf dieselbe Seite zeigt.
-const barePath = Astro.url.pathname.replace(/^\/en(?=\/|$)/, '') || '/';
-const otherLang = lang === 'de' ? 'en' : 'de';
-const otherHref = alternatePath(barePath, otherLang);
+// Pfad ohne Sprachpräfix, damit das Sprachmenü auf dieselbe Seite in der anderen Sprache zeigt.
+const barePath = stripLang(Astro.url.pathname);
+const langList = (Object.keys(languages) as Lang[]).map((code) => ({
+  code,
+  name: languages[code],
+  href: alternatePath(barePath, code),
+}));
 const current = Astro.url.pathname.replace(/\/$/, '') || '/';
 const isCurrent = (href: string) => (current === localePath(lang, href) ? 'page' : undefined);
 
@@ -34,9 +38,23 @@ const nav = [
 				<li><a href={localePath(lang, 'kontakt')} aria-current={isCurrent('kontakt')}>{t('nav.contact')}</a></li>
 			</ul>
 		</nav>
-		<a class="lang" href={otherHref} hreflang={otherLang} lang={otherLang} aria-label={t('lang.switch')}>
-			{languages[otherLang]}
-		</a>
+		<details class="lang">
+			<summary aria-label={`${t('lang.switch')}: ${languages[lang]}`}>
+				<Flag code={lang} />
+				<span class="code">{lang.toUpperCase()}</span>
+				<span class="caret" aria-hidden="true"></span>
+			</summary>
+			<ul class="lang-list">
+				{langList.map((l) => (
+					<li>
+						<a href={l.href} hreflang={l.code} lang={l.code} aria-current={l.code === lang ? 'true' : undefined}>
+							<Flag code={l.code} />
+							<span>{l.name}</span>
+						</a>
+					</li>
+				))}
+			</ul>
+		</details>
 	</div>
 </header>
 
@@ -103,14 +121,74 @@ const nav = [
 	}
 
 	.lang {
-		color: var(--color-muted);
-		font-size: 0.95rem;
-		text-decoration: none;
+		position: relative;
 		justify-self: end;
+		font-size: 0.95rem;
 	}
 
-	.lang:hover {
-		color: var(--color-gold);
+	.lang summary {
+		list-style: none;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.45rem;
+		cursor: pointer;
+		padding: 0.35rem 0.6rem;
+		border: 1px solid var(--color-line);
+		color: var(--color-paper);
+		user-select: none;
+	}
+
+	.lang summary::-webkit-details-marker {
+		display: none;
+	}
+
+	.lang summary:hover,
+	.lang[open] summary {
+		border-color: var(--color-copper);
+	}
+
+	.lang .caret {
+		width: 0.4rem;
+		height: 0.4rem;
+		border-right: 1.5px solid var(--color-copper);
+		border-bottom: 1.5px solid var(--color-copper);
+		transform: translateY(-0.15rem) rotate(45deg);
+	}
+
+	.lang[open] .caret {
+		transform: translateY(0.1rem) rotate(-135deg);
+	}
+
+	.lang-list {
+		position: absolute;
+		right: 0;
+		top: calc(100% + 0.35rem);
+		z-index: 20;
+		min-width: 10rem;
+		display: grid;
+		gap: 0;
+		padding: 0.35rem 0;
+		background: var(--color-deep);
+		border: 1px solid var(--color-line);
+		box-shadow: 0 12px 30px rgb(0 0 0 / 0.35);
+	}
+
+	.lang-list a {
+		display: flex;
+		align-items: center;
+		gap: 0.6rem;
+		padding: 0.5rem 0.9rem;
+		color: var(--color-paper);
+		text-decoration: none;
+	}
+
+	.lang-list a:hover {
+		background: var(--color-base);
+		color: var(--color-copper);
+	}
+
+	.lang-list a[aria-current='true'] {
+		color: var(--color-copper);
 	}
 
 	@media (min-width: 48rem) {
@@ -130,3 +208,19 @@ const nav = [
 		}
 	}
 </style>
+
+<script is:inline>
+	// Sprachmenü bei Klick außerhalb oder Escape schließen
+	document.addEventListener('click', function (e) {
+		document.querySelectorAll('details.lang[open]').forEach(function (d) {
+			if (!d.contains(e.target)) d.removeAttribute('open');
+		});
+	});
+	document.addEventListener('keydown', function (e) {
+		if (e.key !== 'Escape') return;
+		document.querySelectorAll('details.lang[open]').forEach(function (d) {
+			d.removeAttribute('open');
+			d.querySelector('summary').focus();
+		});
+	});
+</script>
