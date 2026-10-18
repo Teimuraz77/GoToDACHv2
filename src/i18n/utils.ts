@@ -11,7 +11,8 @@ export function useTranslations(lang: Lang) {
 }
 
 // Slugs je Sprache. Englisch (Standard) liegt unter "/", jede weitere Sprache unter "/<code>/".
-export const routes: Record<string, Record<Lang, string>> = {
+// Fehlt eine Sprache, gilt der englische Slug (z. B. /es/about, /ru/contact).
+export const routes: Record<string, { en: string } & Partial<Record<Lang, string>>> = {
   home: { en: '', de: '' },
   gtm: { en: 'go-to-market', de: 'go-to-market' },
   talent: { en: 'talent', de: 'talent' },
@@ -25,8 +26,8 @@ export const routes: Record<string, Record<Lang, string>> = {
 
 // Findet die Seite zu einem Slug aus irgendeiner Sprache und gibt den Slug in der Zielsprache zurück.
 function translateSlug(slug: string, toLang: Lang) {
-  const entry = Object.values(routes).find((r) => Object.values(r).includes(slug));
-  return entry ? entry[toLang] : slug;
+  const entry = Object.values(routes).find((r) => (Object.values(r) as string[]).includes(slug));
+  return entry ? (entry[toLang] ?? entry.en) : slug;
 }
 
 // Pfad zu einer Seite in einer Sprache. Akzeptiert Slugs aus jeder Sprache, z. B. 'kontakt' oder 'contact'.

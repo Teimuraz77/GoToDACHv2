@@ -1,0 +1,12 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ServiceView from '../../components/ServiceView.astro';
+import { copy } from '../../i18n/copy';
+import { useTranslations } from '../../i18n/utils';
+
+const t = useTranslations('es');
+---
+
+<Layout title={t('gtm.meta.title')} description={t('gtm.meta.description')}>
+	<ServiceView lang="es" page={copy.es.gtm} />
+</Layout>

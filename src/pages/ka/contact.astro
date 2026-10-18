@@ -1,0 +1,11 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ContactView from '../../components/ContactView.astro';
+import { useTranslations } from '../../i18n/utils';
+
+const t = useTranslations('ka');
+---
+
+<Layout title={t('contact.meta.title')} description={t('contact.meta.description')}>
+	<ContactView lang="ka" />
+</Layout>

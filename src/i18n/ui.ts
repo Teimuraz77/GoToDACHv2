@@ -1,9 +1,28 @@
 // Reihenfolge = Reihenfolge im Sprachmenü. Neue Sprache: hier eintragen, Flagge in Flag.astro,
 // Texte in ui.ts und copy.ts, Slugs in utils.ts (routes), Seiten unter src/pages/<code>/.
+import { uiEs } from './locales/es';
+import { uiFr } from './locales/fr';
+import { uiRu } from './locales/ru';
+import { uiKa } from './locales/ka';
+
 export const languages = {
   en: 'English',
   de: 'Deutsch',
+  es: 'Español',
+  fr: 'Français',
+  ru: 'Русский',
+  ka: 'ქართული',
 } as const;
+
+// Für Open Graph (Vorschau beim Teilen)
+export const ogLocales: Record<keyof typeof languages, string> = {
+  en: 'en_GB',
+  de: 'de_DE',
+  es: 'es_ES',
+  fr: 'fr_FR',
+  ru: 'ru_RU',
+  ka: 'ka_GE',
+};
 
 export const defaultLang = 'en';
 
@@ -20,6 +39,9 @@ export const ui = {
     'nav.about': 'Über Temo',
     'nav.contact': 'Kontakt',
     'nav.skip': 'Zum Inhalt springen',
+    'nav.main': 'Hauptnavigation',
+    'home.services': 'Leistungen',
+    'about.photoAlt': 'Porträt von Teimuraz „Temo“ Gogodze',
     'lang.switch': 'Sprache wechseln',
     'home.lead':
       'Sie wollen nach Deutschland, Österreich und in die Schweiz. Wir zeigen Ihnen den Weg dorthin und stellen die Leute, die dort verkaufen.',
@@ -116,6 +138,9 @@ export const ui = {
     'nav.about': 'About Temo',
     'nav.contact': 'Contact',
     'nav.skip': 'Skip to content',
+    'nav.main': 'Main navigation',
+    'home.services': 'Services',
+    'about.photoAlt': 'Portrait of Teimuraz “Temo” Gogodze',
     'lang.switch': 'Change language',
     'home.lead':
       'You want to sell in Germany, Austria and Switzerland. We show you the way there and bring the people who sell it.',
@@ -187,7 +212,7 @@ export const ui = {
     'form.message': 'Message',
     'form.messageHint': 'What do you sell, in which countries, and what should happen in the next few months? Three sentences are enough.',
     'form.privacy.pre': 'We only use your details to answer your request. Details in the ',
-    'form.privacy.link': 'privacy policy (German)',
+    'form.privacy.link': 'privacy policy',
     'form.privacy.post': '.',
     'form.submit': 'Send request',
     'thanks.meta.title': 'Thank you: GoToDACH',
@@ -201,4 +226,8 @@ export const ui = {
     'footer.privacy': 'Privacy',
     'footer.rights': 'GoToDACH, Frankfurt am Main',
   },
+  es: uiEs,
+  fr: uiFr,
+  ru: uiRu,
+  ka: uiKa,
 } as const;

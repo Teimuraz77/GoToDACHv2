@@ -30,7 +30,7 @@ const nav = [
 		<a class="brand" href={localePath(lang)}>
 			<img src={logo.src} width={logo.width} height={logo.height} alt="GoToDACH" />
 		</a>
-		<nav aria-label={lang === 'en' ? 'Main' : 'Hauptnavigation'}>
+		<nav aria-label={t('nav.main')}>
 			<ul>
 				{nav.map((item) => (
 					<li><a href={localePath(lang, item.href)} aria-current={isCurrent(item.href)}>{t(item.key)}</a></li>

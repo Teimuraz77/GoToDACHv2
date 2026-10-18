@@ -1,6 +1,7 @@
 ---
 import type { Lang } from '../i18n/ui';
 import { copy } from '../i18n/copy';
+import { localePath } from '../i18n/utils';
 
 interface Props {
   lang: Lang;
@@ -10,23 +11,30 @@ interface Props {
 const { lang, kind } = Astro.props;
 const c = copy[lang];
 
-// Rechtstexte gibt es nur auf Deutsch (verbindlich). Andere Sprachen zeigen den deutschen Text
-// direkt an, mit einem Hinweis in der jeweiligen Sprache darüber.
+// Rechtstexte sind übersetzt; verbindlich bleibt die deutsche Fassung (Hinweis + Link auf allen anderen Sprachen).
+// Fehlt eine Übersetzung, wird der deutsche Text angezeigt.
 const isGerman = lang === 'de';
-const de = copy.de;
-const h1 = kind === 'imprint' ? c.imprint.h1 : c.privacy.h1;
-const sections = kind === 'imprint' ? de.imprint.sections : de.privacy.sections;
-const lead = kind === 'imprint' ? de.imprint.lead : '';
+const src = kind === 'imprint' ? c.imprint : c.privacy;
+const fallback = kind === 'imprint' ? copy.de.imprint : copy.de.privacy;
+const translated = src.sections.length > 0;
+const h1 = src.h1;
+const sections = translated ? src.sections : fallback.sections;
+const lead = kind === 'imprint' ? (translated ? c.imprint.lead : copy.de.imprint.lead) : '';
+const deHref = localePath('de', kind === 'imprint' ? 'impressum' : 'datenschutz');
 ---
 
 <article class="page">
 	<header class="intro">
 		<h1>{h1}</h1>
-		{!isGerman && <p class="note">{c.legalNotice}</p>}
-		{lead && <p class="note" lang="de">{lead}</p>}
+		{!isGerman && (
+			<p class="note">
+				{c.legalNotice} <a href={deHref} hreflang="de" lang="de">{c.legalNoticeLink || 'Deutsche Fassung'}</a>
+			</p>
+		)}
+		{lead && <p class="note">{lead}</p>}
 	</header>
 
-	<div lang="de">
+	<div lang={translated ? lang : 'de'}>
 		{sections.map((s) => (
 			<section class="block">
 				<h2>{s.title}</h2>

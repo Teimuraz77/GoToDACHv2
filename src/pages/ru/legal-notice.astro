@@ -1,0 +1,11 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import LegalView from '../../components/LegalView.astro';
+import { useTranslations } from '../../i18n/utils';
+
+const t = useTranslations('ru');
+---
+
+<Layout title={t('imprint.meta.title')} description={t('imprint.meta.description')}>
+	<LegalView lang="ru" kind="imprint" />
+</Layout>

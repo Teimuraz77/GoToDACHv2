@@ -2,6 +2,10 @@
 // Alle anderen offenen Punkte stehen als HTML-Kommentar in den jeweiligen Komponenten.
 // EN-Texte sind Übersetzungen der deutschen Fassung und warten auf Prüfung durch Temo.
 import type { Lang } from './ui';
+import { copyEs } from './locales/es';
+import { copyFr } from './locales/fr';
+import { copyRu } from './locales/ru';
+import { copyKa } from './locales/ka';
 
 export interface Package {
   title: string;
@@ -50,6 +54,7 @@ export interface Copy {
     sections: Section[];
   };
   legalNotice: string;
+  legalNoticeLink: string;
 }
 
 export const copy: Record<Lang, Copy> = {
@@ -251,6 +256,7 @@ export const copy: Record<Lang, Copy> = {
       ],
     },
     legalNotice: '',
+    legalNoticeLink: '',
   },
   en: {
     about: {
@@ -366,13 +372,91 @@ export const copy: Record<Lang, Copy> = {
     },
     imprint: {
       h1: 'Legal notice',
-      lead: '',
-      sections: [],
+      lead: 'Information pursuant to § 5 DDG (German Digital Services Act)',
+      sections: [
+        {
+          title: 'Provider',
+          paragraphs: [
+            'Teimuraz Gogodze, GoToDACH (sole proprietorship)',
+            'Schlossstraße 28',
+            '60486 Frankfurt am Main',
+            'Germany',
+          ],
+        },
+        {
+          title: 'Contact',
+          paragraphs: ['Phone: +49 172 319 61 88', 'Email: temo@gotodach.com'],
+        },
+        {
+          title: 'VAT ID',
+          paragraphs: ['VAT identification number pursuant to § 27a UStG: DE813113094'],
+        },
+        {
+          title: 'Responsible for content',
+          paragraphs: ['Responsible for content pursuant to § 18 (2) MStV: Teimuraz Gogodze, address as above'],
+        },
+        {
+          title: 'Liability for content and links',
+          paragraphs: [
+            'The content of this website was created with care; however, we accept no liability for its accuracy, completeness or timeliness. The operators of external websites are responsible for their content. If we become aware of any legal violations, we will remove the content concerned immediately.',
+          ],
+        },
+      ],
     },
     privacy: {
       h1: 'Privacy policy',
-      sections: [],
+      sections: [
+        {
+          title: '1. Controller',
+          paragraphs: [
+            'Teimuraz Gogodze, GoToDACH (sole proprietorship), Schlossstraße 28, 60486 Frankfurt am Main, Germany, temo@gotodach.com',
+          ],
+        },
+        {
+          title: '2. Hosting',
+          paragraphs: [
+            'This website is hosted by Netlify, Inc., 101 2nd Street, San Francisco, CA 94105, USA. When you visit the website, technically necessary data (IP address, time, page visited, browser) is processed in server log files in order to deliver and secure the website. Legal basis: Art. 6 (1) (f) GDPR. We have concluded a data processing agreement (Data Processing Addendum) with Netlify. Netlify is certified under the EU-U.S. Data Privacy Framework; the transfer to the USA is based on this adequacy decision. More information: https://www.netlify.com/privacy/',
+          ],
+        },
+        {
+          title: '3. No cookies, no tracking',
+          paragraphs: [
+            'This website does not set any cookies and does not use any analytics or marketing tools. Fonts are served locally.',
+          ],
+        },
+        {
+          title: '4. Contact form, email and phone',
+          paragraphs: [
+            'If you use the contact form, we process your details (name, email address, optionally company, topic and message) in order to answer your request. The form is processed by the form service of our host Netlify: Netlify stores the submission and forwards it to us by email. The data processing agreement mentioned in section 2 applies.',
+            'If you contact us by email or phone, we likewise process your details only to handle your request.',
+            'The legal basis is Art. 6 (1) (b) GDPR where your request is aimed at a contract, otherwise Art. 6 (1) (f) GDPR (legitimate interest in answering requests). The data is deleted as soon as it is no longer required and no statutory retention obligations apply. We delete submissions in the form service once the request has been dealt with.',
+          ],
+        },
+        {
+          title: '5. Applicant data (GoToDACH Talent)',
+          paragraphs: [
+            'If you send us your CV or profile, we process this data in order to suggest suitable companies to you. We only pass your profile on to companies with your express consent (Art. 6 (1) (a) and (b) GDPR). If no placement takes place, we delete your data after 12 months at the latest, unless you consent to longer storage.',
+          ],
+        },
+        {
+          title: '6. Your rights',
+          paragraphs: [
+            'Access, rectification, erasure, restriction of processing, data portability and objection (Art. 15–21 GDPR); you can withdraw consent at any time with effect for the future. A request to temo@gotodach.com is sufficient.',
+          ],
+        },
+        {
+          title: '7. Right to lodge a complaint',
+          paragraphs: [
+            'You can lodge a complaint with a supervisory authority, e.g. the Hessian Commissioner for Data Protection and Freedom of Information (HBDI), Wiesbaden, Germany.',
+          ],
+        },
+      ],
     },
-    legalNotice: 'This page is available in German only. The German version is legally binding.',
+    legalNotice: 'This is a translation for your convenience. In case of doubt, the German version is legally binding.',
+    legalNoticeLink: 'German version',
   },
+  es: copyEs,
+  fr: copyFr,
+  ru: copyRu,
+  ka: copyKa,
 };

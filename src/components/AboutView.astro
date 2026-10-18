@@ -12,7 +12,7 @@ interface Props {
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 const c = copy[lang].about;
-const photoAlt = lang === 'de' ? 'Porträt von Teimuraz „Temo“ Gogodze' : 'Portrait of Teimuraz “Temo” Gogodze';
+const photoAlt = t('about.photoAlt');
 ---
 
 <article class="page">
