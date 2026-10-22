@@ -23,10 +23,7 @@ export default defineConfig({
   integrations: [
     sitemap({
       // Danke-Seiten nicht in die Sitemap
-      // Market Intelligence nur in übersetzten Sprachen (miTranslated in src/i18n/utils.ts)
-      filter: (page) =>
-        !/\/(danke|thanks)\/?$/.test(page) &&
-        !/\/(es|fr|ka)\/market-intelligence\/?$/.test(page),
+      filter: (page) => !/\/(danke|thanks)\/?$/.test(page),
     }),
   ]
 });

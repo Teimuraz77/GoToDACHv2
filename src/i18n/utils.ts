@@ -27,8 +27,8 @@ export const routes: Record<string, { en: string } & Partial<Record<Lang, string
 
 // Sprachen, in die "Market Intelligence & Pipeline" schon übersetzt ist. Alle anderen Fassungen
 // zeigen den englischen Text, stehen auf noindex und fehlen in Sitemap und hreflang.
-// TODO: Sprachcode ergänzen, sobald die mi.*-Texte übersetzt und von Temo geprüft sind
-// (dann auch den Sitemap-Filter in astro.config.mjs anpassen).
+// Kommt eine neue Sprache dazu, bevor die mi.*-Texte übersetzt sind: hier weglassen und
+// /<code>/market-intelligence im Sitemap-Filter in astro.config.mjs ausschließen.
 export const miTranslated: Lang[] = ['en', 'de', 'ru'];
 
 // Findet die Seite zu einem Slug aus irgendeiner Sprache und gibt den Slug in der Zielsprache zurück.

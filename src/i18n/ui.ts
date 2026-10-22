@@ -1,27 +1,18 @@
 // Reihenfolge = Reihenfolge im Sprachmenü. Neue Sprache: hier eintragen, Flagge in Flag.astro,
 // Texte in ui.ts und copy.ts, Slugs in utils.ts (routes), Seiten unter src/pages/<code>/.
-import { uiEs } from './locales/es';
-import { uiFr } from './locales/fr';
 import { uiRu } from './locales/ru';
-import { uiKa } from './locales/ka';
 
 export const languages = {
   en: 'English',
   de: 'Deutsch',
-  es: 'Español',
-  fr: 'Français',
   ru: 'Русский',
-  ka: 'ქართული',
 } as const;
 
 // Für Open Graph (Vorschau beim Teilen)
 export const ogLocales: Record<keyof typeof languages, string> = {
   en: 'en_GB',
   de: 'de_DE',
-  es: 'es_ES',
-  fr: 'fr_FR',
   ru: 'ru_RU',
-  ka: 'ka_GE',
 };
 
 export const defaultLang = 'en';
@@ -465,8 +456,5 @@ export const ui = {
     'mi.form.submit': 'Request my scoping call',
     'mi.contact.fallback': 'Prefer email? Write to',
   },
-  es: uiEs,
-  fr: uiFr,
   ru: uiRu,
-  ka: uiKa,
 } as const;

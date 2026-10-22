@@ -2,10 +2,7 @@
 // Alle anderen offenen Punkte stehen als HTML-Kommentar in den jeweiligen Komponenten.
 // EN-Texte sind Übersetzungen der deutschen Fassung und warten auf Prüfung durch Temo.
 import type { Lang } from './ui';
-import { copyEs } from './locales/es';
-import { copyFr } from './locales/fr';
 import { copyRu } from './locales/ru';
-import { copyKa } from './locales/ka';
 
 export interface Package {
   title: string;
@@ -455,8 +452,5 @@ export const copy: Record<Lang, Copy> = {
     legalNotice: 'This is a translation for your convenience. In case of doubt, the German version is legally binding.',
     legalNoticeLink: 'German version',
   },
-  es: copyEs,
-  fr: copyFr,
   ru: copyRu,
-  ka: copyKa,
 };
