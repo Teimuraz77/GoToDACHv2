@@ -438,7 +438,7 @@ export const ui = {
       'Then you have spent the price of a Snapshot instead of months of outreach, and you get the reasons in writing. I won’t sell you account research for a market I have just told you to skip.',
     'mi.contact.h2': 'Twenty minutes. One market. A straight answer.',
     'mi.contact.text':
-      'Tell me the market and what you sell. On the call you hear whether it is worth doing and which package fits.',
+      'Tell me the market and what you sell. On the call you’ll hear whether it is worth doing and which package fits.',
     'mi.form.name': 'Name',
     'mi.form.email': 'Work email',
     'mi.form.company': 'Company',
