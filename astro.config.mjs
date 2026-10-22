@@ -26,7 +26,7 @@ export default defineConfig({
       // Market Intelligence nur in übersetzten Sprachen (miTranslated in src/i18n/utils.ts)
       filter: (page) =>
         !/\/(danke|thanks)\/?$/.test(page) &&
-        !/\/(de|es|fr|ru|ka)\/market-intelligence\/?$/.test(page),
+        !/\/(es|fr|ka)\/market-intelligence\/?$/.test(page),
     }),
   ]
 });

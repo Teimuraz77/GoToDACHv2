@@ -29,7 +29,7 @@ export const routes: Record<string, { en: string } & Partial<Record<Lang, string
 // zeigen den englischen Text, stehen auf noindex und fehlen in Sitemap und hreflang.
 // TODO: Sprachcode ergänzen, sobald die mi.*-Texte übersetzt und von Temo geprüft sind
 // (dann auch den Sitemap-Filter in astro.config.mjs anpassen).
-export const miTranslated: Lang[] = ['en'];
+export const miTranslated: Lang[] = ['en', 'de', 'ru'];
 
 // Findet die Seite zu einem Slug aus irgendeiner Sprache und gibt den Slug in der Zielsprache zurück.
 function translateSlug(slug: string, toLang: Lang) {
