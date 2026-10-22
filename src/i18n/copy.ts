@@ -232,20 +232,30 @@ export const copy: Record<Lang, Copy> = {
             'Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO, soweit Ihre Anfrage auf einen Vertrag zielt, im Übrigen Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Beantwortung von Anfragen). Die Daten werden gelöscht, sobald sie nicht mehr erforderlich sind und keine gesetzlichen Aufbewahrungspflichten bestehen. Einsendungen im Formulardienst löschen wir, sobald die Anfrage erledigt ist.',
           ],
         },
+        // ENTWURF zur rechtlichen Prüfung (Okt. 2026): Abschnitt zum Formular "market-intelligence". Nicht ungeprüft veröffentlichen.
         {
-          title: '5. Bewerberdaten (GoToDACH Talent)',
+          title: '5. Anfrageformular für Erstgespräche (Marktanalyse und Vertriebspipeline)',
+          paragraphs: [
+            'Wenn Sie über das Formular auf der Seite „Marktanalyse und Vertriebspipeline“ ein Erstgespräch anfragen, verarbeiten wir folgende Angaben: Name, geschäftliche E-Mail-Adresse, Firma, Zielmarkt und die Leistung, für die Sie sich interessieren. Außerdem wird erfasst, aus welcher Sprachfassung der Seite Sie das Formular gesendet haben.',
+            'Wir nutzen diese Angaben nur, um Ihre Anfrage zu beantworten, das Erstgespräch vorzubereiten und einen Termin mit Ihnen zu vereinbaren.',
+            'Das Formular wird über den Formulardienst unseres Hosters Netlify verarbeitet: Netlify speichert die Einsendung und leitet sie per E-Mail an uns weiter. Es gelten der Auftragsverarbeitungsvertrag und die Zertifizierung unter dem EU-US Data Privacy Framework, die unter Ziffer 2 genannt sind.',
+            'Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche Maßnahmen auf Ihre Anfrage), im Übrigen Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Beantwortung von Anfragen). Einsendungen im Formulardienst löschen wir, sobald die Anfrage erledigt ist. Kommt kein Auftrag zustande, löschen wir die übrigen Angaben spätestens [TODO: Frist festlegen, z. B. 6 Monate] nach dem letzten Kontakt, sofern keine gesetzlichen Aufbewahrungspflichten bestehen.',
+          ],
+        },
+        {
+          title: '6. Bewerberdaten (GoToDACH Talent)',
           paragraphs: [
             'Wenn Sie uns Lebenslauf oder Profil schicken, verarbeiten wir diese Daten, um Ihnen passende Unternehmen vorzuschlagen. An Unternehmen geben wir Ihr Profil nur mit Ihrer ausdrücklichen Zustimmung weiter (Art. 6 Abs. 1 lit. a und b DSGVO). Ohne Vermittlung löschen wir Ihre Daten spätestens nach 12 Monaten, sofern Sie nicht länger zustimmen.',
           ],
         },
         {
-          title: '6. Ihre Rechte',
+          title: '7. Ihre Rechte',
           paragraphs: [
             'Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit und Widerspruch (Art. 15–21 DSGVO); Widerruf einer Einwilligung jederzeit mit Wirkung für die Zukunft. Anfrage genügt an temo@gotodach.com.',
           ],
         },
         {
-          title: '7. Beschwerderecht',
+          title: '8. Beschwerderecht',
           paragraphs: [
             'Sie können sich bei einer Aufsichtsbehörde beschweren, z. B. beim Hessischen Beauftragten für Datenschutz und Informationsfreiheit (HBDI), Wiesbaden.',
           ],
@@ -429,20 +439,30 @@ export const copy: Record<Lang, Copy> = {
             'The legal basis is Art. 6 (1) (b) GDPR where your request is aimed at a contract, otherwise Art. 6 (1) (f) GDPR (legitimate interest in answering requests). The data is deleted as soon as it is no longer required and no statutory retention obligations apply. We delete submissions in the form service once the request has been dealt with.',
           ],
         },
+        // ENTWURF zur rechtlichen Prüfung (Okt. 2026): Abschnitt zum Formular "market-intelligence". Nicht ungeprüft veröffentlichen.
         {
-          title: '5. Applicant data (GoToDACH Talent)',
+          title: '5. Request form for scoping calls (Market intelligence & pipeline)',
+          paragraphs: [
+            'If you request a scoping call via the form on the "Market intelligence & pipeline" page, we process the following details: name, business email address, company, target market and the service you are interested in. We also record which language version of the page you sent the form from.',
+            'We use these details only to answer your request, prepare the scoping call and arrange a date with you.',
+            'The form is processed by the form service of our host Netlify: Netlify stores the submission and forwards it to us by email. The data processing agreement and the certification under the EU-U.S. Data Privacy Framework mentioned in section 2 apply.',
+            'The legal basis is Art. 6 (1) (b) GDPR (steps prior to entering into a contract, taken at your request), otherwise Art. 6 (1) (f) GDPR (legitimate interest in answering requests). We delete submissions in the form service once the request has been dealt with. If no engagement follows, we delete the remaining details no later than [TODO: set period, e.g. 6 months] after the last contact, unless statutory retention obligations apply.',
+          ],
+        },
+        {
+          title: '6. Applicant data (GoToDACH Talent)',
           paragraphs: [
             'If you send us your CV or profile, we process this data in order to suggest suitable companies to you. We only pass your profile on to companies with your express consent (Art. 6 (1) (a) and (b) GDPR). If no placement takes place, we delete your data after 12 months at the latest, unless you consent to longer storage.',
           ],
         },
         {
-          title: '6. Your rights',
+          title: '7. Your rights',
           paragraphs: [
             'Access, rectification, erasure, restriction of processing, data portability and objection (Art. 15–21 GDPR); you can withdraw consent at any time with effect for the future. A request to temo@gotodach.com is sufficient.',
           ],
         },
         {
-          title: '7. Right to lodge a complaint',
+          title: '8. Right to lodge a complaint',
           paragraphs: [
             'You can lodge a complaint with a supervisory authority, e.g. the Hessian Commissioner for Data Protection and Freedom of Information (HBDI), Wiesbaden, Germany.',
           ],
