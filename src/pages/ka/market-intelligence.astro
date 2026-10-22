@@ -1,0 +1,16 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import MarketIntelView from '../../components/MarketIntelView.astro';
+import { miTranslated, useTranslations } from '../../i18n/utils';
+
+const t = useTranslations('ka');
+---
+
+<Layout
+	title={t('mi.meta.title')}
+	description={t('mi.meta.description')}
+	noindex={!miTranslated.includes('ka')}
+	alternateLangs={miTranslated}
+>
+	<MarketIntelView lang="ka" />
+</Layout>

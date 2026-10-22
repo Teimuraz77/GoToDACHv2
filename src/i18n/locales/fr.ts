@@ -92,6 +92,8 @@ export const uiFr: Record<string, string> = {
   'footer.legal': 'Mentions légales',
   'footer.privacy': 'Confidentialité',
   'footer.rights': 'GoToDACH, Francfort-sur-le-Main',
+  // TODO: translate gtm.mi.* and mi.* (Market Intelligence & Pipeline, see ui.ts "en").
+  // Until then the page shows English and /fr/market-intelligence is noindex (miTranslated in utils.ts).
 };
 
 export const copyFr: Copy = {

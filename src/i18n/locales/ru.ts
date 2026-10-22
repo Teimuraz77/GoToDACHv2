@@ -92,6 +92,8 @@ export const uiRu: Record<string, string> = {
   'footer.legal': 'Выходные данные',
   'footer.privacy': 'Конфиденциальность',
   'footer.rights': 'GoToDACH, Франкфурт-на-Майне',
+  // TODO: translate gtm.mi.* and mi.* (Market Intelligence & Pipeline, see ui.ts "en").
+  // Until then the page shows English and /ru/market-intelligence is noindex (miTranslated in utils.ts).
 };
 
 export const copyRu: Copy = {

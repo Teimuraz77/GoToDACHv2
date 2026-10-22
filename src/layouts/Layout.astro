@@ -11,13 +11,15 @@ interface Props {
   title: string;
   description: string;
   noindex?: boolean;
+  // Nur diese Sprachen als hreflang-Alternativen nennen (für Seiten, die noch nicht übersetzt sind)
+  alternateLangs?: Lang[];
 }
 
-const { title, description, noindex = false } = Astro.props;
+const { title, description, noindex = false, alternateLangs } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const barePath = stripLang(Astro.url.pathname);
-const langCodes = Object.keys(languages) as Lang[];
+const langCodes = alternateLangs ?? (Object.keys(languages) as Lang[]);
 const ogImage = await getImage({ src: temo, width: 1200, format: 'jpg' });
 const ogImageUrl = new URL(ogImage.src, Astro.site);
 

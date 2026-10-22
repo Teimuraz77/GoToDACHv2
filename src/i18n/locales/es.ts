@@ -92,6 +92,8 @@ export const uiEs: Record<string, string> = {
   'footer.legal': 'Aviso legal',
   'footer.privacy': 'Privacidad',
   'footer.rights': 'GoToDACH, Fráncfort del Meno',
+  // TODO: translate gtm.mi.* and mi.* (Market Intelligence & Pipeline, see ui.ts "en").
+  // Until then the page shows English and /es/market-intelligence is noindex (miTranslated in utils.ts).
 };
 
 export const copyEs: Copy = {

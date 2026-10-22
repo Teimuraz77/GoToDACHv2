@@ -1,0 +1,741 @@
+---
+import { Image } from 'astro:assets';
+import temo from '../assets/temo.jpg';
+import { localePath, useTranslations } from '../i18n/utils';
+import type { Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const thanks = localePath(lang, 'danke');
+const privacy = localePath(lang, 'datenschutz');
+
+const proof = [t('mi.proof.1'), t('mi.proof.2'), t('mi.proof.3'), t('mi.proof.4')];
+
+const problems = [
+  { title: t('mi.problem.1.title'), text: t('mi.problem.1.text') },
+  { title: t('mi.problem.2.title'), text: t('mi.problem.2.text') },
+  { title: t('mi.problem.3.title'), text: t('mi.problem.3.text') },
+];
+
+const steps = [
+  { title: t('mi.steps.1.title'), text: t('mi.steps.1.text'), pkg: t('mi.pkg.1.title') },
+  { title: t('mi.steps.2.title'), text: t('mi.steps.2.text'), pkg: t('mi.pkg.2.title') },
+  { title: t('mi.steps.3.title'), text: t('mi.steps.3.text'), pkg: t('mi.pkg.3.title') },
+];
+
+const packages = [
+  {
+    id: 'snapshot',
+    title: t('mi.pkg.1.title'),
+    price: t('mi.pkg.1.price'),
+    meta: t('mi.pkg.1.meta'),
+    items: [t('mi.pkg.1.item.1'), t('mi.pkg.1.item.2'), t('mi.pkg.1.item.3'), t('mi.pkg.1.item.4'), t('mi.pkg.1.item.5')],
+    credit: true,
+    featured: false,
+  },
+  {
+    id: 'accounts',
+    title: t('mi.pkg.2.title'),
+    price: t('mi.pkg.2.price'),
+    meta: t('mi.pkg.2.meta'),
+    items: [t('mi.pkg.2.item.1'), t('mi.pkg.2.item.2'), t('mi.pkg.2.item.3'), t('mi.pkg.2.item.4'), t('mi.pkg.2.item.5')],
+    credit: true,
+    featured: true,
+  },
+  {
+    id: 'outreach',
+    title: t('mi.pkg.3.title'),
+    price: t('mi.pkg.3.price'),
+    meta: t('mi.pkg.3.meta'),
+    listTitle: t('mi.pkg.3.listTitle'),
+    items: [
+      t('mi.pkg.3.item.1'),
+      t('mi.pkg.3.item.2'),
+      t('mi.pkg.3.item.3'),
+      t('mi.pkg.3.item.4'),
+      t('mi.pkg.3.item.5'),
+      t('mi.pkg.3.item.6'),
+    ],
+    featured: false,
+  },
+];
+
+const faq = [1, 2, 3, 4, 5].map((n) => ({
+  q: t(`mi.faq.${n}.q` as Parameters<typeof t>[0]),
+  a: t(`mi.faq.${n}.a` as Parameters<typeof t>[0]),
+}));
+
+// Werte bleiben in allen Sprachen gleich, damit Netlify alle Einsendungen in einem Formular sammelt.
+const markets = [
+  { value: 'dach', label: t('mi.form.market.dach') },
+  { value: 'uzbekistan', label: t('mi.form.market.uz') },
+  { value: 'central-asia-other', label: t('mi.form.market.ca') },
+  { value: 'unsure', label: t('mi.form.market.unsure') },
+];
+const needs = [
+  { value: 'snapshot', label: t('mi.form.need.snapshot') },
+  { value: 'accounts', label: t('mi.form.need.accounts') },
+  { value: 'outreach', label: t('mi.form.need.outreach') },
+  { value: 'unsure', label: t('mi.form.need.unsure') },
+];
+---
+
+<article class="page">
+	<header class="hero">
+		<p class="label">{t('mi.hero.label')}</p>
+		<h1>
+			<span>{t('mi.hero.h1.1')}</span>
+			<span>{t('mi.hero.h1.2')}</span>
+			<span>{t('mi.hero.h1.3')}</span>
+		</h1>
+		<p class="lede">{t('mi.hero.sub')}</p>
+		<p class="actions">
+			<a class="btn primary" href="#contact">{t('mi.hero.cta.call')}</a>
+			<a class="btn secondary" href="#packages">{t('mi.hero.cta.packages')}</a>
+		</p>
+		<ul class="proof" aria-label={t('mi.proof.label')}>
+			{proof.map((item) => <li>{item}</li>)}
+		</ul>
+	</header>
+
+	<section class="block wide" aria-labelledby="mi-problem">
+		<h2 id="mi-problem">{t('mi.problem.h2')}</h2>
+		<ul class="problems">
+			{
+				problems.map((p) => (
+					<li>
+						<h3>{p.title}</h3>
+						<p>{p.text}</p>
+					</li>
+				))
+			}
+		</ul>
+		<div class="section-cta">
+			<p>{t('mi.problem.cta')}</p>
+			<a class="btn secondary" href="#contact">{t('mi.cta.call')}</a>
+		</div>
+	</section>
+
+	<section class="block" aria-labelledby="mi-steps">
+		<div>
+			<h2 id="mi-steps">{t('mi.steps.h2')}</h2>
+			<p class="note">{t('mi.steps.intro')}</p>
+		</div>
+		<ol class="steps">
+			{
+				steps.map((s) => (
+					<li>
+						<h3>{s.title}</h3>
+						<p>{s.text}</p>
+						<p class="pkg">{s.pkg}</p>
+					</li>
+				))
+			}
+		</ol>
+		<div class="section-cta">
+			<p>{t('mi.steps.cta')}</p>
+			<a class="btn secondary" href="#contact">{t('mi.cta.call')}</a>
+		</div>
+	</section>
+
+	<section id="packages" class="block wide" aria-labelledby="mi-packages">
+		<h2 id="mi-packages">{t('mi.pkg.h2')}</h2>
+		<div class="packages">
+			{
+				packages.map((pkg) => (
+					<section class:list={['package', { featured: pkg.featured }]} aria-labelledby={`pkg-${pkg.id}`}>
+						{pkg.featured && <p class="badge">{t('mi.pkg.featured')}</p>}
+						<h3 id={`pkg-${pkg.id}`}>{pkg.title}</h3>
+						<p class="price">{pkg.price}</p>
+						<p class="meta">{pkg.meta}</p>
+						{pkg.credit && <p class="credit">{t('mi.pkg.credit')}</p>}
+						{pkg.listTitle && <h4 class="list-title">{pkg.listTitle}</h4>}
+						<ul>
+							{pkg.items.map((item) => (
+								<li>{item}</li>
+							))}
+						</ul>
+						<a class:list={['btn', pkg.featured ? 'primary' : 'secondary']} href="#contact">
+							{t('mi.cta.call')}
+						</a>
+					</section>
+				))
+			}
+		</div>
+		<p class="note">{t('mi.pkg.note')}</p>
+	</section>
+
+	<section class="block" aria-labelledby="mi-about">
+		<div class="portrait">
+			<Image src={temo} alt={t('mi.about.photoAlt')} widths={[320, 640]} sizes="(min-width: 48rem) 20rem, 100vw" quality={85} />
+		</div>
+		<div class="about">
+			<h2 id="mi-about">{t('mi.about.h2')}</h2>
+			<p>{t('mi.about.p1')}</p>
+			<p>{t('mi.about.p2')}</p>
+			<aside class="wont" aria-labelledby="mi-wont">
+				<h3 id="mi-wont">{t('mi.wont.title')}</h3>
+				<ul>
+					<li>{t('mi.wont.1')}</li>
+					<li>{t('mi.wont.2')}</li>
+					<li>{t('mi.wont.3')}</li>
+				</ul>
+			</aside>
+		</div>
+		<div class="section-cta">
+			<p>{t('mi.about.cta')}</p>
+			<a class="btn secondary" href="#contact">{t('mi.cta.call')}</a>
+		</div>
+	</section>
+
+	<section class="block" aria-labelledby="mi-faq">
+		<h2 id="mi-faq">{t('mi.faq.h2')}</h2>
+		<div class="faq">
+			{
+				faq.map((item) => (
+					<details>
+						<summary>{item.q}</summary>
+						<p>{item.a}</p>
+					</details>
+				))
+			}
+		</div>
+		<div class="section-cta">
+			<p>{t('mi.faq.cta')}</p>
+			<a class="btn secondary" href="#contact">{t('mi.cta.call')}</a>
+		</div>
+	</section>
+
+	<section id="contact" class="block" aria-labelledby="mi-contact">
+		<div>
+			<h2 id="mi-contact">{t('mi.contact.h2')}</h2>
+			<p class="note">{t('mi.contact.text')}</p>
+		</div>
+		<div class="contact">
+			<form
+				class="form"
+				name="market-intelligence"
+				method="POST"
+				action={thanks}
+				data-netlify="true"
+				netlify-honeypot="bot-field"
+			>
+				<input type="hidden" name="form-name" value="market-intelligence" />
+				<input type="hidden" name="sprache" value={lang} />
+				<p class="hp" aria-hidden="true">
+					<label>Nicht ausfüllen <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
+				</p>
+				<div class="row">
+					<div class="field">
+						<label for="mi-name">{t('mi.form.name')}</label>
+						<input id="mi-name" name="name" type="text" autocomplete="name" required />
+					</div>
+					<div class="field">
+						<label for="mi-email">{t('mi.form.email')}</label>
+						<input id="mi-email" name="email" type="email" autocomplete="email" required />
+					</div>
+				</div>
+				<div class="field">
+					<label for="mi-company">{t('mi.form.company')}</label>
+					<input id="mi-company" name="firma" type="text" autocomplete="organization" required />
+				</div>
+				<div class="row">
+					<div class="field">
+						<label for="mi-market">{t('mi.form.market')}</label>
+						<select id="mi-market" name="zielmarkt" required>
+							<option value="" disabled selected>{t('mi.form.choose')}</option>
+							{markets.map((o) => <option value={o.value}>{o.label}</option>)}
+						</select>
+					</div>
+					<div class="field">
+						<label for="mi-need">{t('mi.form.need')}</label>
+						<select id="mi-need" name="bedarf" required>
+							<option value="" disabled selected>{t('mi.form.choose')}</option>
+							{needs.map((o) => <option value={o.value}>{o.label}</option>)}
+						</select>
+					</div>
+				</div>
+				<p class="privacy">
+					{t('form.privacy.pre')}<a href={privacy}>{t('form.privacy.link')}</a>{t('form.privacy.post')}
+				</p>
+				<p class="submit">
+					<button class="btn primary" type="submit">{t('mi.form.submit')}</button>
+				</p>
+			</form>
+			<p class="fallback">
+				{t('mi.contact.fallback')} <a href="mailto:temo@gotodach.com">temo@gotodach.com</a>
+			</p>
+		</div>
+	</section>
+</article>
+
+<style>
+	.page {
+		max-width: 72rem;
+		margin: 0 auto;
+		padding-inline: 1rem;
+	}
+
+	/* Hero: die drei Zeilen der Überschrift sind die drei Schritte weiter unten */
+	.hero {
+		padding-block: 3rem 2.5rem;
+		display: grid;
+		gap: 1.5rem;
+	}
+
+	.label {
+		color: var(--color-gold);
+		font-size: 0.95rem;
+	}
+
+	.hero h1 {
+		font-size: clamp(2.4rem, 8vw, 5rem);
+		line-height: 1.02;
+	}
+
+	.hero h1 span {
+		display: block;
+	}
+
+	.lede {
+		font-size: 1.1rem;
+		color: var(--color-muted);
+	}
+
+	.actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+		margin: 0;
+	}
+
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 2.75rem;
+		padding: 0.6rem 1.4rem;
+		font: inherit;
+		font-weight: 500;
+		text-decoration: none;
+		text-align: center;
+		border: 1px solid var(--color-copper);
+		cursor: pointer;
+		box-sizing: border-box;
+	}
+
+	.btn.primary {
+		background: var(--color-copper);
+		color: var(--color-deep);
+	}
+
+	.btn.primary:hover {
+		background: var(--color-gold);
+		border-color: var(--color-gold);
+		color: var(--color-deep);
+	}
+
+	.btn.secondary {
+		background: transparent;
+		color: var(--color-paper);
+	}
+
+	.btn.secondary:hover {
+		border-color: var(--color-gold);
+		color: var(--color-gold);
+	}
+
+	.proof {
+		list-style: none;
+		margin: 1rem 0 0;
+		padding: 1rem 0 0;
+		border-top: 1px solid var(--color-line);
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem 1.5rem;
+		font-size: 0.95rem;
+		color: var(--color-muted);
+	}
+
+	/* Abschnitte: gleiches Raster wie auf den Leistungsseiten */
+	.block {
+		border-top: 1px solid var(--color-line);
+		padding-block: 2.5rem;
+		display: grid;
+		gap: 1.5rem;
+	}
+
+	.block h2 {
+		font-size: 1.6rem;
+	}
+
+	h3 {
+		font-family: var(--font-display);
+		font-size: 1.3rem;
+	}
+
+	.note {
+		color: var(--color-muted);
+		margin-top: 0.75rem;
+	}
+
+	ul,
+	ol {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.problems,
+	.steps {
+		display: grid;
+		gap: 1.75rem;
+	}
+
+	.problems li,
+	.steps li {
+		display: grid;
+		gap: 0.4rem;
+	}
+
+	/* Schritte sind eine echte Reihenfolge: Nummer und Kupferlinie verbinden sie */
+	.steps {
+		counter-reset: step;
+	}
+
+	.steps li {
+		counter-increment: step;
+		position: relative;
+		padding-left: 3.25rem;
+	}
+
+	.steps li::before {
+		content: counter(step);
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 2.25rem;
+		height: 2.25rem;
+		display: grid;
+		place-items: center;
+		border: 1px solid var(--color-copper);
+		border-radius: 50%;
+		color: var(--color-copper);
+		font-family: var(--font-display);
+	}
+
+	.steps li:not(:last-child)::after {
+		content: '';
+		position: absolute;
+		left: 1.125rem;
+		top: 2.5rem;
+		bottom: -1.5rem;
+		border-left: 1px solid var(--color-copper);
+	}
+
+	/* Abschluss jedes Abschnitts: Überleitung zum Erstgespräch (#contact) */
+	.section-cta {
+		grid-column: -2 / -1;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.75rem 1.25rem;
+	}
+
+	.section-cta p {
+		color: var(--color-muted);
+	}
+
+	.pkg {
+		color: var(--color-gold);
+		font-size: 0.9rem;
+	}
+
+	/* Pakete */
+	.packages {
+		display: grid;
+		gap: 1.25rem;
+	}
+
+	.package {
+		display: flex;
+		flex-direction: column;
+		gap: 0.6rem;
+		padding: 1.5rem;
+		border: 1px solid var(--color-line);
+		background: var(--color-base);
+	}
+
+	.package.featured {
+		background: var(--color-deep);
+		border-color: var(--color-copper);
+		border-top-width: 3px;
+	}
+
+	.badge {
+		color: var(--color-gold);
+		font-size: 0.9rem;
+	}
+
+	.price {
+		font-family: var(--font-display);
+		font-size: 2rem;
+		line-height: 1.1;
+	}
+
+	.package .meta {
+		color: var(--color-muted);
+		font-size: 0.95rem;
+	}
+
+	.credit {
+		color: var(--color-gold);
+		font-size: 0.9rem;
+	}
+
+	.list-title {
+		margin: 0.4rem 0 0;
+		padding-top: 0.75rem;
+		border-top: 1px solid var(--color-line);
+		font-size: 0.95rem;
+		font-weight: 500;
+	}
+
+	.list-title + ul {
+		border-top: 0;
+		margin-top: 0;
+		padding-top: 0;
+	}
+
+	.package ul {
+		display: grid;
+		gap: 0.45rem;
+		padding-block: 0.75rem;
+		border-top: 1px solid var(--color-line);
+		margin-top: 0.4rem;
+		align-content: start;
+		flex-grow: 1;
+	}
+
+	.package li,
+	.wont li {
+		padding-left: 1.1rem;
+		position: relative;
+	}
+
+	.package li::before {
+		content: '';
+		position: absolute;
+		left: 0;
+		top: 0.7em;
+		width: 0.4rem;
+		height: 1px;
+		background: var(--color-copper);
+	}
+
+	/* About */
+	.portrait :global(img) {
+		display: block;
+		width: 100%;
+		max-width: 20rem;
+		height: auto;
+	}
+
+	.about {
+		display: grid;
+		gap: 1rem;
+		align-content: start;
+	}
+
+	.wont {
+		margin-top: 0.75rem;
+		padding: 1.25rem 1.25rem 1.25rem 1.5rem;
+		border-left: 3px solid var(--color-copper);
+		background: var(--color-deep);
+		display: grid;
+		gap: 0.6rem;
+	}
+
+	.wont h3 {
+		font-size: 1.15rem;
+		color: var(--color-gold);
+	}
+
+	.wont li::before {
+		content: '×';
+		position: absolute;
+		left: 0;
+		color: var(--color-copper);
+	}
+
+	/* FAQ */
+	.faq {
+		display: grid;
+	}
+
+	details {
+		border-bottom: 1px solid var(--color-line);
+	}
+
+	details:first-child {
+		border-top: 1px solid var(--color-line);
+	}
+
+	summary {
+		min-height: 2.75rem;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+		padding-block: 0.6rem;
+		cursor: pointer;
+		list-style: none;
+		font-weight: 500;
+	}
+
+	summary::-webkit-details-marker {
+		display: none;
+	}
+
+	summary::after {
+		content: '+';
+		color: var(--color-copper);
+		font-size: 1.4rem;
+		line-height: 1;
+	}
+
+	details[open] summary::after {
+		content: '−';
+	}
+
+	details p {
+		padding-bottom: 1.25rem;
+		color: var(--color-muted);
+	}
+
+	/* Kontaktformular: gleiche Felder wie ContactForm.astro */
+	.contact {
+		display: grid;
+		gap: 1.25rem;
+	}
+
+	.form {
+		display: grid;
+		gap: 1.25rem;
+		max-width: 40rem;
+	}
+
+	.row {
+		display: grid;
+		gap: 1.25rem;
+	}
+
+	.field {
+		display: grid;
+		gap: 0.4rem;
+	}
+
+	label {
+		font-size: 0.95rem;
+	}
+
+	input,
+	select {
+		width: 100%;
+		min-height: 2.75rem;
+		box-sizing: border-box;
+		font: inherit;
+		color: var(--color-paper);
+		background: var(--color-deep);
+		border: 1px solid var(--color-line);
+		border-radius: 0;
+		padding: 0.6rem 0.8rem;
+	}
+
+	select {
+		appearance: none;
+		background-image: linear-gradient(45deg, transparent 50%, var(--color-copper) 50%),
+			linear-gradient(135deg, var(--color-copper) 50%, transparent 50%);
+		background-position: calc(100% - 1.15rem) 50%, calc(100% - 0.8rem) 50%;
+		background-size: 0.35rem 0.35rem;
+		background-repeat: no-repeat;
+		padding-right: 2.5rem;
+	}
+
+	input:focus-visible,
+	select:focus-visible {
+		outline: 2px solid var(--color-gold);
+		outline-offset: 1px;
+		border-color: var(--color-gold);
+	}
+
+	.privacy,
+	.fallback {
+		margin: 0;
+		font-size: 0.9rem;
+		color: var(--color-muted);
+	}
+
+	.submit {
+		margin: 0;
+	}
+
+	.hp {
+		position: absolute;
+		left: -10000px;
+		width: 1px;
+		height: 1px;
+		overflow: hidden;
+	}
+
+	@media (min-width: 40rem) {
+		.row {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+
+	@media (min-width: 48rem) {
+		.page {
+			padding-inline: 2rem;
+		}
+
+		.hero {
+			padding-block: 6rem 4rem;
+		}
+
+		.lede {
+			max-width: 46ch;
+		}
+
+		.block {
+			padding-block: 3.5rem;
+			grid-template-columns: 1fr 2fr;
+			gap: 3rem;
+		}
+
+		.block.wide {
+			grid-template-columns: 1fr;
+		}
+
+		.problems {
+			grid-template-columns: repeat(3, 1fr);
+			gap: 2rem;
+		}
+	}
+
+	@media (min-width: 64rem) {
+		.packages {
+			grid-template-columns: repeat(3, 1fr);
+			align-items: stretch;
+		}
+
+		.package.featured {
+			margin-top: -0.75rem;
+			margin-bottom: -0.75rem;
+		}
+	}
+</style>

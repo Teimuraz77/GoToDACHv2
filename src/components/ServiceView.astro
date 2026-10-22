@@ -1,5 +1,5 @@
 ---
-import { localePath, useTranslations } from '../i18n/utils';
+import { localePath, miTranslated, useTranslations } from '../i18n/utils';
 import type { Lang } from '../i18n/ui';
 import type { ServicePage } from '../i18n/copy';
 
@@ -36,6 +36,17 @@ const t = useTranslations(lang);
 				</div>
 			</section>
 		))
+	}
+
+	{
+		page.topic === 'gtm' && miTranslated.includes(lang) && (
+			<section class="block related">
+				<p>{t('gtm.mi.text')}</p>
+				<p class="action">
+					<a href={localePath(lang, 'market-intelligence')}>{t('gtm.mi.link')}</a>
+				</p>
+			</section>
+		)
 	}
 
 	<section class="block">
