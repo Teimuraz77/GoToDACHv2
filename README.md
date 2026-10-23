@@ -1,6 +1,6 @@
 # Astro Starter Kit: Basics
 
-**Social-Media-Links:** Die URLs für LinkedIn und die NNWW-Kanäle trägst du in `src/config/social.ts` ein. Footer und Über-Seite zeigen nur Einträge mit gültiger https-URL.
+**Social-Media-Links:** Die URLs für LinkedIn und die Humanity-Update-Kanäle trägst du in `src/config/social.ts` ein. Footer und Über-Seite zeigen nur Einträge mit gültiger https-URL.
 
 ```sh
 npm create astro@latest -- --template basics

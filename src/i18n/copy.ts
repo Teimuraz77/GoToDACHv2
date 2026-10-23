@@ -84,7 +84,7 @@ export const copy: Record<Lang, Copy> = {
         {
           label: 'Heute',
           title: 'GoToDACH',
-          text: 'Heute verbinde ich beides: die Disziplin aus dem Konzern und das Tempo aus dem Startup. Für Firmen, die in Deutschland, Österreich und der Schweiz verkaufen wollen, und für die Vertriebsleute, die das für sie tun. Nebenbei baue ich eigene Produkte wie CoRe, eine Compliance-as-a-Service-Lösung für NIS2, und meinen Kurzvideo-Kanal No Nonsense Worldwide Web.',
+          text: 'Heute verbinde ich beides: die Disziplin aus dem Konzern und das Tempo aus dem Startup. Für Firmen, die in Deutschland, Österreich und der Schweiz verkaufen wollen, und für die Vertriebsleute, die das für sie tun. Nebenbei baue ich eigene Produkte wie CoRe, eine Compliance-as-a-Service-Lösung für NIS2, und meinen Kurzvideo-Kanal Humanity Update.',
         },
       ],
       wayTitle: 'Wie ich arbeite',
@@ -294,7 +294,7 @@ export const copy: Record<Lang, Copy> = {
         {
           label: 'Today',
           title: 'GoToDACH',
-          text: 'Today I combine both: corporate discipline and startup speed. For companies that want to sell in Germany, Austria and Switzerland, and for the salespeople who do it for them. On the side I build my own products, such as CoRe, a compliance-as-a-service solution for NIS2, and my short-video channel No Nonsense Worldwide Web.',
+          text: 'Today I combine both: corporate discipline and startup speed. For companies that want to sell in Germany, Austria and Switzerland, and for the salespeople who do it for them. On the side I build my own products, such as CoRe, a compliance-as-a-service solution for NIS2, and my short-video channel Humanity Update.',
         },
       ],
       wayTitle: 'How I work',

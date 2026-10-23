@@ -7,15 +7,15 @@ export interface SocialLink {
   platform: SocialPlatform;
   label: string;
   url: string;
-  // true = Kanal No Nonsense Worldwide Web; die erste gültige URL verlinkt den Kanalnamen auf der Über-Seite
-  nnww: boolean;
+  // true = Kanal Humanity Update; die erste gültige URL verlinkt den Kanalnamen auf der Über-Seite
+  humanityUpdate: boolean;
 }
 
 export const social: SocialLink[] = [
-  { platform: 'linkedin', label: 'LinkedIn (Temo)', url: '', nnww: false }, // TODO: URL eintragen
-  { platform: 'youtube', label: 'NNWW YouTube', url: '', nnww: true }, // TODO: URL eintragen
-  { platform: 'tiktok', label: 'NNWW TikTok', url: '', nnww: true }, // TODO: URL eintragen
-  { platform: 'instagram', label: 'NNWW Instagram', url: '', nnww: true }, // TODO: URL eintragen
+  { platform: 'linkedin', label: 'LinkedIn (Temo)', url: '', humanityUpdate: false }, // TODO: URL eintragen
+  { platform: 'youtube', label: 'Humanity Update YouTube', url: '', humanityUpdate: true }, // TODO: URL eintragen
+  { platform: 'tiktok', label: 'Humanity Update TikTok', url: '', humanityUpdate: true }, // TODO: URL eintragen
+  { platform: 'instagram', label: 'Humanity Update Instagram', url: '', humanityUpdate: true }, // TODO: URL eintragen
 ];
 
 const isHttpsUrl = (url: string) => {
@@ -28,4 +28,4 @@ const isHttpsUrl = (url: string) => {
 
 export const activeSocial = social.filter((s) => isHttpsUrl(s.url));
 
-export const nnwwUrl = activeSocial.find((s) => s.nnww)?.url;
+export const humanityUpdateUrl = activeSocial.find((s) => s.humanityUpdate)?.url;
