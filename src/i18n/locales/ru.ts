@@ -157,7 +157,7 @@ export const uiRu: Record<string, string> = {
   'mi.pkg.2.item.4': 'Подход к разговору на нужном языке',
   'mi.pkg.2.item.5': 'Таблица, готовая для загрузки в CRM',
   'mi.pkg.3.title': 'Outreach by Temo',
-  'mi.pkg.3.price': '5 000 € за 3 месяца',
+  'mi.pkg.3.price': '5 000 € за 3 месяца',
   'mi.pkg.3.meta': 'плюс вознаграждение за закрытые сделки, согласованное заранее',
   'mi.pkg.3.listTitle': 'Что Вы получаете',
   'mi.pkg.3.item.1': '4 часа в неделю личного времени Темо',
