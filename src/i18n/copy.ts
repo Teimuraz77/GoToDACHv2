@@ -239,7 +239,7 @@ export const copy: Record<Lang, Copy> = {
             'Wenn Sie über das Formular auf der Seite „Marktanalyse und Vertriebspipeline“ ein Erstgespräch anfragen, verarbeiten wir folgende Angaben: Name, geschäftliche E-Mail-Adresse, Firma, Zielmarkt und die Leistung, für die Sie sich interessieren. Außerdem wird erfasst, aus welcher Sprachfassung der Seite Sie das Formular gesendet haben.',
             'Wir nutzen diese Angaben nur, um Ihre Anfrage zu beantworten, das Erstgespräch vorzubereiten und einen Termin mit Ihnen zu vereinbaren.',
             'Das Formular wird über den Formulardienst unseres Hosters Netlify verarbeitet: Netlify speichert die Einsendung und leitet sie per E-Mail an uns weiter. Es gelten der Auftragsverarbeitungsvertrag und die Zertifizierung unter dem EU-US Data Privacy Framework, die unter Ziffer 2 genannt sind.',
-            'Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche Maßnahmen auf Ihre Anfrage), im Übrigen Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Beantwortung von Anfragen). Wir löschen die Daten, sobald die Anfrage erledigt ist, spätestens 6 Monate nach dem letzten Kontakt. Entsteht daraus ein Auftrag, gelten die gesetzlichen Aufbewahrungsfristen (6 bzw. 10 Jahre).',
+            'Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche Maßnahmen auf Ihre Anfrage), im Übrigen Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Beantwortung von Anfragen). Wir löschen die Daten, sobald die Anfrage erledigt ist, spätestens 6 Monate nach dem letzten Kontakt. Entsteht daraus ein Auftrag, gelten die gesetzlichen Aufbewahrungsfristen (je nach Dokument 6, 8 oder 10 Jahre).',
           ],
         },
         {
@@ -446,7 +446,7 @@ export const copy: Record<Lang, Copy> = {
             'If you request a scoping call via the form on the "Market intelligence & pipeline" page, we process the following details: name, business email address, company, target market and the service you are interested in. We also record which language version of the page you sent the form from.',
             'We use these details only to answer your request, prepare the scoping call and arrange a date with you.',
             'The form is processed by the form service of our host Netlify: Netlify stores the submission and forwards it to us by email. The data processing agreement and the certification under the EU-U.S. Data Privacy Framework mentioned in section 2 apply.',
-            'The legal basis is Art. 6 (1) (b) GDPR (steps prior to entering into a contract, taken at your request), otherwise Art. 6 (1) (f) GDPR (legitimate interest in answering requests). We delete the data as soon as the request has been dealt with, and no later than 6 months after the last contact. If an engagement results from it, the statutory retention periods (6 or 10 years) apply.',
+            'The legal basis is Art. 6 (1) (b) GDPR (steps prior to entering into a contract, taken at your request), otherwise Art. 6 (1) (f) GDPR (legitimate interest in answering requests). We delete the data as soon as the request has been dealt with, and no later than 6 months after the last contact. If an engagement results from it, the statutory retention periods (6, 8 or 10 years, depending on the document) apply.',
           ],
         },
         {
