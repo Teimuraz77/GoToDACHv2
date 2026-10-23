@@ -402,6 +402,11 @@ const needs = [
 		gap: 0.4rem;
 	}
 
+	/* Kürzere Spalten nicht strecken, damit die Texte oben bündig beginnen */
+	.problems li {
+		align-content: start;
+	}
+
 	/* Schritte sind eine echte Reihenfolge: Nummer und Kupferlinie verbinden sie */
 	.steps {
 		counter-reset: step;
