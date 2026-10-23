@@ -4,6 +4,8 @@ import type { Lang } from '../i18n/ui';
 import { copy } from '../i18n/copy';
 import { Image } from 'astro:assets';
 import temo from '../assets/temo.jpg';
+import SocialLinks from './SocialLinks.astro';
+import { nnwwUrl } from '../config/social';
 
 interface Props {
   lang: Lang;
@@ -13,6 +15,9 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 const c = copy[lang].about;
 const photoAlt = t('about.photoAlt');
+
+// Kanalname wird nur verlinkt, wenn in src/config/social.ts eine NNWW-URL steht.
+const nnww = 'No Nonsense Worldwide Web';
 ---
 
 <article class="page">
@@ -30,7 +35,11 @@ const photoAlt = t('about.photoAlt');
 				<li>
 					<p class="label">{st.label}</p>
 					<h3>{st.title}</h3>
-					<p>{st.text}</p>
+					{nnwwUrl && st.text.includes(nnww) ? (
+						<p>{st.text.split(nnww)[0]}<a href={nnwwUrl} rel="me">{nnww}</a>{st.text.split(nnww)[1]}</p>
+					) : (
+						<p>{st.text}</p>
+					)}
 				</li>
 			))}
 		</ol>
@@ -61,6 +70,7 @@ const photoAlt = t('about.photoAlt');
 			<p class="action">
 				<a href={localePath(lang, 'kontakt')}>{t('home.cta')}</a>
 			</p>
+			<SocialLinks />
 		</div>
 	</section>
 </article>

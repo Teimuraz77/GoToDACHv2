@@ -1,5 +1,6 @@
 ---
 import { getLangFromUrl, localePath, useTranslations } from '../i18n/utils';
+import SocialLinks from './SocialLinks.astro';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -13,6 +14,7 @@ const year = new Date().getFullYear();
 			<li><a href={localePath(lang, 'impressum')}>{t('footer.legal')}</a></li>
 			<li><a href={localePath(lang, 'datenschutz')}>{t('footer.privacy')}</a></li>
 		</ul>
+		<SocialLinks />
 	</div>
 </footer>
 
@@ -51,7 +53,10 @@ const year = new Date().getFullYear();
 
 	@media (min-width: 48rem) {
 		.inner {
-			grid-template-columns: 1fr auto;
+			grid-template-columns: 1fr;
+			grid-auto-flow: column;
+			grid-auto-columns: auto;
+			column-gap: 2rem;
 			align-items: center;
 			padding: 2rem;
 		}
