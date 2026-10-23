@@ -1,0 +1,67 @@
+---
+import { activeSocial } from '../config/social';
+---
+
+{activeSocial.length > 0 && (
+	<ul class="social">
+		{activeSocial.map((s) => (
+			<li>
+				<a href={s.url} rel="me" aria-label={s.label} title={s.label}>
+					<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+						{s.platform === 'linkedin' && (
+							<Fragment>
+								<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z" />
+								<rect width="4" height="12" x="2" y="9" />
+								<circle cx="4" cy="4" r="2" />
+							</Fragment>
+						)}
+						{s.platform === 'youtube' && (
+							<Fragment>
+								<path d="M2.5 17a24 24 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.6 49.6 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24 24 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.6 49.6 0 0 1-16.2 0A2 2 0 0 1 2.5 17" />
+								<path d="m10 15 5-3-5-3z" />
+							</Fragment>
+						)}
+						{s.platform === 'tiktok' && (
+							<Fragment>
+								<path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5" />
+								<path d="M14 3a5 5 0 0 0 5 5" />
+							</Fragment>
+						)}
+						{s.platform === 'instagram' && (
+							<Fragment>
+								<rect width="20" height="20" x="2" y="2" rx="5" />
+								<circle cx="12" cy="12" r="4" />
+								<path d="M17.5 6.5h.01" />
+							</Fragment>
+						)}
+					</svg>
+				</a>
+			</li>
+		))}
+	</ul>
+)}
+
+<style>
+	.social {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		gap: 1rem;
+	}
+
+	a {
+		color: var(--color-paper);
+		display: inline-flex;
+		padding: 0.25rem;
+		margin: -0.25rem;
+	}
+
+	a:hover {
+		color: var(--color-copper);
+	}
+
+	svg {
+		display: block;
+	}
+</style>

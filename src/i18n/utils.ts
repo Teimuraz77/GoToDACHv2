@@ -17,12 +17,19 @@ export const routes: Record<string, { en: string } & Partial<Record<Lang, string
   gtm: { en: 'go-to-market', de: 'go-to-market' },
   talent: { en: 'talent', de: 'talent' },
   renewable: { en: 'renewable-energy', de: 'renewable-energy' },
+  mi: { en: 'market-intelligence', de: 'market-intelligence' },
   about: { en: 'about', de: 'ueber-temo' },
   contact: { en: 'contact', de: 'kontakt' },
   imprint: { en: 'legal-notice', de: 'impressum' },
   privacy: { en: 'privacy', de: 'datenschutz' },
   thanks: { en: 'thanks', de: 'danke' },
 };
+
+// Sprachen, in die "Market Intelligence & Pipeline" schon übersetzt ist. Alle anderen Fassungen
+// zeigen den englischen Text, stehen auf noindex und fehlen in Sitemap und hreflang.
+// Kommt eine neue Sprache dazu, bevor die mi.*-Texte übersetzt sind: hier weglassen und
+// /<code>/market-intelligence im Sitemap-Filter in astro.config.mjs ausschließen.
+export const miTranslated: Lang[] = ['en', 'de', 'ru'];
 
 // Findet die Seite zu einem Slug aus irgendeiner Sprache und gibt den Slug in der Zielsprache zurück.
 function translateSlug(slug: string, toLang: Lang) {
