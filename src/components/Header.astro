@@ -120,22 +120,15 @@ const nav = [
 		color: var(--color-copper);
 	}
 
-	/* Handy: Navigation in einer Zeile, bei Platzmangel seitlich wischen statt umbrechen */
+	/* Handy: Navigation bricht um, mit kleinerer Schrift und engeren Abständen, damit alle Links sichtbar bleiben */
 	@media (max-width: 47.99rem) {
 		nav ul {
-			flex-wrap: nowrap;
-			overflow-x: auto;
-			scrollbar-width: none;
-			gap: 1rem;
-			white-space: nowrap;
-		}
-
-		nav ul::-webkit-scrollbar {
-			display: none;
+			gap: 0 1rem;
 		}
 
 		nav a {
-			font-size: 0.9rem;
+			font-size: 0.875rem;
+			padding: 0.2rem 0;
 		}
 	}
 
