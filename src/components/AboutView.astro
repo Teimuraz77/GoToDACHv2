@@ -4,6 +4,8 @@ import type { Lang } from '../i18n/ui';
 import { copy } from '../i18n/copy';
 import { Image } from 'astro:assets';
 import temo from '../assets/temo.jpg';
+import SocialLinks from './SocialLinks.astro';
+import { humanityUpdateUrl } from '../config/social';
 
 interface Props {
   lang: Lang;
@@ -13,6 +15,9 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 const c = copy[lang].about;
 const photoAlt = t('about.photoAlt');
+
+// Kanalname wird nur verlinkt, wenn in src/config/social.ts eine Humanity-Update-URL steht.
+const humanityUpdate = 'Humanity Update';
 ---
 
 <article class="page">
@@ -30,7 +35,11 @@ const photoAlt = t('about.photoAlt');
 				<li>
 					<p class="label">{st.label}</p>
 					<h3>{st.title}</h3>
-					<p>{st.text}</p>
+					{humanityUpdateUrl && st.text.includes(humanityUpdate) ? (
+						<p>{st.text.split(humanityUpdate)[0]}<a href={humanityUpdateUrl} rel="me">{humanityUpdate}</a>{st.text.split(humanityUpdate)[1]}</p>
+					) : (
+						<p>{st.text}</p>
+					)}
 				</li>
 			))}
 		</ol>
@@ -61,6 +70,7 @@ const photoAlt = t('about.photoAlt');
 			<p class="action">
 				<a href={localePath(lang, 'kontakt')}>{t('home.cta')}</a>
 			</p>
+			<SocialLinks />
 		</div>
 	</section>
 </article>

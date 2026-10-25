@@ -6,11 +6,11 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://gotodach.com',
+  site: 'https://www.gotodach.com',
 
   i18n: {
-    defaultLocale: 'de',
-    locales: ['de', 'en'],
+    defaultLocale: 'en',
+    locales: ['en', 'de', 'ru'],
     routing: {
       prefixDefaultLocale: false
     }

@@ -4,18 +4,13 @@
 @import "@fontsource/libre-franklin/400.css";
 @import "@fontsource/libre-franklin/500.css";
 @import "@fontsource/libre-franklin/700.css";
-/* Ergänzungsschriften für Kyrillisch (RU) und Georgisch (KA). Dank unicode-range lädt der Browser
+/* Ergänzungsschriften für Kyrillisch (RU). Dank unicode-range lädt der Browser
    sie nur, wenn solche Zeichen auf der Seite stehen. */
 @import "@fontsource/noto-serif/400.css";
 @import "@fontsource/noto-serif/500.css";
 @import "@fontsource/noto-sans/400.css";
 @import "@fontsource/noto-sans/500.css";
 @import "@fontsource/noto-sans/700.css";
-@import "@fontsource/noto-serif-georgian/400.css";
-@import "@fontsource/noto-serif-georgian/500.css";
-@import "@fontsource/noto-sans-georgian/400.css";
-@import "@fontsource/noto-sans-georgian/500.css";
-@import "@fontsource/noto-sans-georgian/700.css";
 
 @import "tailwindcss";
 
@@ -28,8 +23,8 @@
   --color-gold: #e0c27e;
   --color-line: rgb(239 231 219 / 0.16);
 
-  --font-display: "Newsreader", "Noto Serif", "Noto Serif Georgian", Georgia, serif;
-  --font-sans: "Libre Franklin", "Noto Sans", "Noto Sans Georgian", system-ui, sans-serif;
+  --font-display: "Newsreader", "Noto Serif", Georgia, serif;
+  --font-sans: "Libre Franklin", "Noto Sans", system-ui, sans-serif;
 }
 
 @layer base {

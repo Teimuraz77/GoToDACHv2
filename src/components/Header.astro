@@ -120,6 +120,18 @@ const nav = [
 		color: var(--color-copper);
 	}
 
+	/* Handy: Navigation bricht um, mit kleinerer Schrift und engeren Abständen, damit alle Links sichtbar bleiben */
+	@media (max-width: 47.99rem) {
+		nav ul {
+			gap: 0 1rem;
+		}
+
+		nav a {
+			font-size: 0.875rem;
+			padding: 0.2rem 0;
+		}
+	}
+
 	.lang {
 		position: relative;
 		justify-self: end;
