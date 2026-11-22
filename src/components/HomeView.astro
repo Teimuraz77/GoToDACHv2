@@ -4,6 +4,7 @@ import type { Lang } from '../i18n/ui';
 import { Image } from 'astro:assets';
 import temo from '../assets/temo-home.jpg';
 import LeadPackages from './LeadPackages.astro';
+import { bookingUrl } from '../config/booking';
 
 interface Props {
   lang: Lang;
@@ -12,8 +13,8 @@ interface Props {
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 
-// Cal.com-Buchungsseite. Der Kalender lädt erst nach Klick (Datenschutz: keine Verbindung zu Cal.com ohne Zustimmung).
-const calUrl = 'https://cal.com/teimuraz-gogodze-cmnqn1';
+// Buchungskalender (HubSpot Meetings) lädt erst nach Klick: ohne Zustimmung keine Verbindung zu HubSpot.
+const embedUrl = bookingUrl ? `${bookingUrl}${bookingUrl.includes('?') ? '&' : '?'}embed=true` : '';
 
 const creds = [t('home.creds.1'), t('home.creds.2'), t('home.creds.3'), t('home.creds.4')];
 const problems = [1, 2, 3].map((n) => ({
@@ -124,12 +125,19 @@ const also = [
 		<p>{t('home.book.mail')} <a href="mailto:temo@gotodach.com">temo@gotodach.com</a></p>
 		<p><a href={localePath(lang, 'kontakt')}>{t('home.contact.link')}</a></p>
 	</div>
-	<div class="cal" data-cal-src={`${calUrl}?embed=true`} data-cal-title={t('home.cal.frameTitle')}>
-		<p class="cal-title">{t('home.cal.title')}</p>
-		<p class="small">{t('home.cal.notice')}</p>
-		<button type="button" class="btn" data-cal-load>{t('home.cal.load')}</button>
-		<a href={calUrl} target="_blank" rel="noopener">{t('home.cal.open')}</a>
-	</div>
+	{bookingUrl ? (
+		<div class="cal" data-cal-src={embedUrl} data-cal-title={t('home.cal.frameTitle')}>
+			<p class="cal-title">{t('home.cal.title')}</p>
+			<p class="small">{t('home.cal.notice')}</p>
+			<button type="button" class="btn" data-cal-load>{t('home.cal.load')}</button>
+			<a href={bookingUrl} target="_blank" rel="noopener">{t('home.cal.open')}</a>
+		</div>
+	) : (
+		<div class="cal">
+			<p class="cal-title">{t('home.cal.title')}</p>
+			<a class="btn" href="mailto:temo@gotodach.com">temo@gotodach.com</a>
+		</div>
+	)}
 </section>
 
 <section class="wrap also" aria-labelledby="also-title">
@@ -145,7 +153,7 @@ const also = [
 </section>
 
 <script is:inline>
-	// Cal.com erst nach Klick laden, dann den Platzhalter durch den Kalender ersetzen.
+	// Buchungskalender erst nach Klick laden, dann den Platzhalter durch den Kalender ersetzen.
 	document.querySelectorAll('[data-cal-load]').forEach(function (btn) {
 		btn.addEventListener('click', function () {
 			var box = btn.closest('.cal');
