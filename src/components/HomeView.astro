@@ -1,6 +1,9 @@
 ---
 import { localePath, useTranslations } from '../i18n/utils';
 import type { Lang } from '../i18n/ui';
+import { Image } from 'astro:assets';
+import temo from '../assets/temo-home.jpg';
+import LeadPackages from './LeadPackages.astro';
 
 interface Props {
   lang: Lang;
@@ -9,163 +12,464 @@ interface Props {
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 
-const pillars = [
-  { href: 'go-to-market', title: t('home.pillar.gtm.title'), text: t('home.pillar.gtm.text') },
+// Cal.com-Buchungsseite. Der Kalender lädt erst nach Klick (Datenschutz: keine Verbindung zu Cal.com ohne Zustimmung).
+const calUrl = 'https://cal.com/teimuraz-gogodze-cmnqn1';
+
+const creds = [t('home.creds.1'), t('home.creds.2'), t('home.creds.3'), t('home.creds.4')];
+const problems = [1, 2, 3].map((n) => ({
+  title: t(`home.problem.${n}.title` as Parameters<typeof t>[0]),
+  text: t(`home.problem.${n}.text` as Parameters<typeof t>[0]),
+}));
+const projects = [1, 2, 3].map((n) => ({
+  title: t(`home.projects.${n}.title` as Parameters<typeof t>[0]),
+  meta: t(`home.projects.${n}.meta` as Parameters<typeof t>[0]),
+  text: t(`home.projects.${n}.text` as Parameters<typeof t>[0]),
+}));
+const also = [
   { href: 'talent', title: t('home.pillar.talent.title'), text: t('home.pillar.talent.text') },
   { href: 'renewable-energy', title: t('home.pillar.renewable.title'), text: t('home.pillar.renewable.text') },
 ];
 ---
 
-<section class="lead">
-	<h1>{t('home.lead')}</h1>
-	<p class="cta">
-		<a href={localePath(lang, 'kontakt')}>{t('home.cta')}</a>
-	</p>
+<section class="hero wrap">
+	<p class="eyebrow">{t('home.hero.label')}</p>
+	<h1>{t('home.hero.h1')}</h1>
+	<p class="sub">{t('home.hero.sub')}</p>
+	<div class="actions">
+		<a class="btn" href="#book">{t('home.book.cta')}</a>
+		<a href="#packages">{t('home.hero.packages')} →</a>
+	</div>
+	<p class="small">{t('home.hero.note')}</p>
+	<ul class="creds">
+		{creds.map((c) => <li>{c}</li>)}
+	</ul>
 </section>
 
-<section class="pillars" aria-labelledby="pillars-title">
-	<h2 id="pillars-title" class="sr-only">{t('home.services')}</h2>
-	<ul>
-		{pillars.map((p) => (
+<section class="band" aria-labelledby="clients-title">
+	<div class="wrap proof">
+		<div class="clients">
+			<h2 id="clients-title" class="eyebrow muted">{t('home.clients.label')}</h2>
+			<p class="names"><span>Lichtblick Digital</span><span>codeitlabs</span></p>
+		</div>
+		<!-- TODO Temo: echtes Kundenzitat einsetzen (codeitlabs oder Lichtblick Digital), mit Name und Rolle. Erst dann mergen. -->
+		<figure class="quote todo">
+			<blockquote>[TODO: client quote, two sentences, from codeitlabs or Lichtblick Digital]</blockquote>
+			<figcaption>[TODO: name, role, company]</figcaption>
+		</figure>
+	</div>
+</section>
+
+<section class="wrap block" aria-labelledby="problem-title">
+	<h2 id="problem-title">{t('home.problem.h2')}</h2>
+	<div class="grid3">
+		{problems.map((p) => (
+			<div class="problem">
+				<h3>{p.title}</h3>
+				<p>{p.text}</p>
+			</div>
+		))}
+	</div>
+</section>
+
+<section id="packages" class="band" aria-labelledby="packages-title">
+	<div class="wrap block">
+		<div class="intro">
+			<p class="eyebrow">{t('home.packages.label')}</p>
+			<h2 id="packages-title">{t('home.packages.h2')}</h2>
+			<p>{t('home.packages.intro')}</p>
+		</div>
+		<LeadPackages lang={lang} />
+		<div class="actions">
+			<a class="btn" href="#book">{t('home.packages.cta')}</a>
+		</div>
+		<p class="small">{t('leads.note')}</p>
+	</div>
+</section>
+
+<section class="wrap block" aria-labelledby="projects-title">
+	<div class="intro">
+		<p class="eyebrow">{t('home.projects.label')}</p>
+		<h2 id="projects-title">{t('home.projects.h2')}</h2>
+	</div>
+	<ol class="grid3 steps">
+		{projects.map((p, i) => (
 			<li>
-				<a class="pillar" href={localePath(lang, p.href)}>
-					<span class="pillar-title">{p.title}</span>
-					<span class="pillar-text">{p.text}</span>
-				</a>
+				<span class="num" aria-hidden="true">{i + 1}</span>
+				<h3>{p.title}</h3>
+				<p class="small">{p.meta}</p>
+				<p>{p.text}</p>
+			</li>
+		))}
+	</ol>
+	<p class="small">{t('home.projects.note')} <a href={localePath(lang, 'go-to-market')}>{t('home.projects.link')}</a></p>
+</section>
+
+<section class="band" aria-labelledby="about-title">
+	<div class="wrap block about">
+		<Image src={temo} alt={t('about.photoAlt')} widths={[480, 720, 960]} sizes="(min-width: 48rem) 28rem, 100vw" quality={85} />
+		<div class="about-text">
+			<p class="eyebrow">{t('home.about.label')}</p>
+			<h2 id="about-title">{t('home.about.title')}</h2>
+			<p>{t('home.about.text')}</p>
+			<p>{t('home.about.text2')}</p>
+			<p><a href={localePath(lang, 'about')}>{t('home.about.link')}</a></p>
+		</div>
+	</div>
+</section>
+
+<section id="book" class="wrap block book" aria-labelledby="book-title">
+	<div class="book-text">
+		<h2 id="book-title">{t('home.book.h2')}</h2>
+		<p>{t('home.book.text')}</p>
+		<p>{t('home.book.mail')} <a href="mailto:temo@gotodach.com">temo@gotodach.com</a></p>
+		<p><a href={localePath(lang, 'kontakt')}>{t('home.contact.link')}</a></p>
+	</div>
+	<div class="cal" data-cal-src={`${calUrl}?embed=true`} data-cal-title={t('home.cal.frameTitle')}>
+		<p class="cal-title">{t('home.cal.title')}</p>
+		<p class="small">{t('home.cal.notice')}</p>
+		<button type="button" class="btn" data-cal-load>{t('home.cal.load')}</button>
+		<a href={calUrl} target="_blank" rel="noopener">{t('home.cal.open')}</a>
+	</div>
+</section>
+
+<section class="wrap also" aria-labelledby="also-title">
+	<h2 id="also-title" class="eyebrow muted">{t('home.also.label')}</h2>
+	<ul class="grid2">
+		{also.map((a) => (
+			<li>
+				<a href={localePath(lang, a.href)}>{a.title} →</a>
+				<p>{a.text}</p>
 			</li>
 		))}
 	</ul>
 </section>
 
-<section class="split">
-	<div>
-		<h2>{t('home.about.title')}</h2>
-		<p>{t('home.about.text')}</p>
-		<p class="more"><a href={localePath(lang, 'ueber-temo')}>{t('home.about.link')}</a></p>
-	</div>
-	<div id="kontakt">
-		<h2>{t('home.contact.title')}</h2>
-		<p>{t('home.contact.text')}</p>
-		<p class="more"><a href={localePath(lang, 'kontakt')}>{t('home.contact.link')}</a></p>
-	</div>
-</section>
+<script is:inline>
+	// Cal.com erst nach Klick laden, dann den Platzhalter durch den Kalender ersetzen.
+	document.querySelectorAll('[data-cal-load]').forEach(function (btn) {
+		btn.addEventListener('click', function () {
+			var box = btn.closest('.cal');
+			var frame = document.createElement('iframe');
+			frame.src = box.getAttribute('data-cal-src');
+			frame.title = box.getAttribute('data-cal-title');
+			frame.loading = 'lazy';
+			box.classList.add('loaded');
+			box.replaceChildren(frame);
+			frame.focus();
+		});
+	});
+</script>
 
 <style>
-	.lead,
-	.pillars,
-	.split {
+	.wrap {
 		max-width: 72rem;
 		margin: 0 auto;
 		padding-inline: 1rem;
 	}
 
-	.lead {
-		padding-block: 3rem 2.5rem;
+	.band {
+		background: var(--color-deep);
+		border-block: 1px solid var(--color-line);
+	}
+
+	.block {
+		padding-block: 3.5rem;
 		display: grid;
 		gap: 2rem;
 	}
 
-	.lead h1 {
-		font-size: clamp(2rem, 7vw, 4.25rem);
-		line-height: 1.08;
-		max-width: 22ch;
+	.intro {
+		display: grid;
+		gap: 0.75rem;
+		max-width: 46rem;
 	}
 
-	.cta {
-		margin: 0;
-		max-width: none;
+	h2 {
+		font-size: clamp(1.75rem, 4vw, 2.6rem);
 	}
 
-	.cta a {
+	h3 {
+		font-family: var(--font-sans);
+		font-weight: 700;
 		font-size: 1.05rem;
-		text-decoration-thickness: 2px;
-		text-underline-offset: 0.3em;
+		line-height: 1.3;
 	}
 
-	.pillars ul {
+	.eyebrow {
+		margin: 0;
+		font-family: var(--font-sans);
+		font-size: 0.8rem;
+		font-weight: 700;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: var(--color-copper);
+	}
+
+	.eyebrow.muted {
+		color: var(--color-muted);
+	}
+
+	.small {
+		font-size: 0.875rem;
+		color: var(--color-muted);
+	}
+
+	.btn {
+		display: inline-block;
+		background: var(--color-copper);
+		color: var(--color-base);
+		font: inherit;
+		font-weight: 700;
+		padding: 0.8rem 1.3rem;
+		border: 0;
+		border-radius: 4px;
+		text-decoration: none;
+		cursor: pointer;
+	}
+
+	.btn:hover {
+		background: var(--color-gold);
+		color: var(--color-base);
+	}
+
+	.actions {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 1rem 1.75rem;
+	}
+
+	/* Hero */
+	.hero {
+		padding-block: 3rem 3rem;
+		display: grid;
+		gap: 1.5rem;
+	}
+
+	.hero h1 {
+		font-size: clamp(2.2rem, 7vw, 4.4rem);
+		line-height: 1.06;
+		max-width: 20ch;
+	}
+
+	.sub {
+		font-size: 1.15rem;
+		color: var(--color-paper);
+		max-width: 40rem;
+	}
+
+	.creds {
+		list-style: none;
+		margin: 0.5rem 0 0;
+		padding: 1.25rem 0 0;
+		border-top: 1px solid var(--color-line);
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem 2rem;
+		font-size: 0.9rem;
+		color: var(--color-muted);
+	}
+
+	/* Kunden */
+	.proof {
+		padding-block: 2.5rem;
+		display: grid;
+		gap: 2rem;
+		align-items: center;
+	}
+
+	.clients {
+		display: grid;
+		gap: 0.5rem;
+	}
+
+	.names {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.25rem 2rem;
+		font-family: var(--font-display);
+		font-size: 1.6rem;
+	}
+
+	.quote {
+		margin: 0;
+	}
+
+	.quote blockquote {
+		margin: 0;
+		font-family: var(--font-display);
+		font-size: 1.25rem;
+		line-height: 1.45;
+	}
+
+	.quote figcaption {
+		margin-top: 0.5rem;
+		font-size: 0.875rem;
+		color: var(--color-muted);
+	}
+
+	.quote.todo {
+		border: 1px dashed var(--color-gold);
+		padding: 1.25rem 1.5rem;
+	}
+
+	/* Raster */
+	.grid3,
+	.grid2 {
 		list-style: none;
 		margin: 0;
 		padding: 0;
-		border-top: 1px solid var(--color-line);
+		display: grid;
+		gap: 1.75rem;
 	}
 
-	.pillars li {
-		border-bottom: 1px solid var(--color-line);
-	}
-
-	.pillar {
+	.problem {
+		border-top: 2px solid var(--color-copper);
+		padding-top: 1rem;
 		display: grid;
 		gap: 0.5rem;
-		padding-block: 1.5rem;
+		align-content: start;
+	}
+
+	.steps li {
+		display: grid;
+		gap: 0.4rem;
+		align-content: start;
+	}
+
+	.num {
+		font-family: var(--font-display);
+		font-size: 2rem;
+		line-height: 1;
+		color: var(--color-copper);
+	}
+
+	/* Über Temo */
+	.about {
+		align-items: center;
+	}
+
+	.about img {
+		width: 100%;
+		max-width: 28rem;
+		height: auto;
+		aspect-ratio: 1 / 1.05;
+		object-fit: cover;
+		object-position: 50% 30%;
+	}
+
+	.about-text {
+		display: grid;
+		gap: 1rem;
+	}
+
+	/* Buchen */
+	.book-text {
+		display: grid;
+		gap: 1rem;
+		align-content: start;
+	}
+
+	.cal {
+		min-height: 22rem;
+		border: 1px dashed var(--color-line);
+		background: var(--color-deep);
+		padding: 2rem 1.5rem;
+		display: grid;
+		gap: 1rem;
+		place-content: center;
+		justify-items: center;
+		text-align: center;
+	}
+
+	.cal .small {
+		max-width: 30rem;
+	}
+
+	.cal-title {
+		font-family: var(--font-display);
+		font-size: 1.5rem;
+	}
+
+	.cal.loaded {
+		padding: 0;
+		border-style: solid;
+		display: block;
+		min-height: 0;
+	}
+
+	.cal iframe {
+		display: block;
+		width: 100%;
+		height: 44rem;
+		border: 0;
+		background: #fff;
+	}
+
+	/* Weitere Angebote */
+	.also {
+		padding-block: 2.5rem 3rem;
+		border-top: 1px solid var(--color-line);
+		display: grid;
+		gap: 1.25rem;
+	}
+
+	.also a {
+		font-family: var(--font-display);
+		font-size: 1.4rem;
 		color: var(--color-paper);
 		text-decoration: none;
 	}
 
-	.pillar-title {
-		font-family: var(--font-display);
-		font-size: clamp(1.6rem, 5vw, 2.25rem);
-		line-height: 1.1;
-	}
-
-	.pillar-text {
-		color: var(--color-muted);
-		max-width: 52ch;
-	}
-
-	.pillar:hover .pillar-title {
+	.also a:hover {
 		color: var(--color-copper);
 	}
 
-	.split {
-		padding-block: 3.5rem 1rem;
+	.also li {
 		display: grid;
-		gap: 2.5rem;
+		gap: 0.35rem;
 	}
 
-	.split h2 {
-		font-size: 1.6rem;
-		margin-bottom: 0.75rem;
-	}
-
-	.split p {
-		color: var(--color-paper);
-	}
-
-	.split .more {
-		margin-top: 0.75rem;
+	.also p {
+		color: var(--color-muted);
 	}
 
 	@media (min-width: 48rem) {
-		.lead {
-			padding-block: 6rem 4rem;
+		.wrap {
 			padding-inline: 2rem;
 		}
 
-		.pillars,
-		.split {
-			padding-inline: 2rem;
+		.hero {
+			padding-block: 5.5rem 4rem;
 		}
 
-		.pillar {
-			grid-template-columns: minmax(12rem, 1fr) 2fr;
-			align-items: baseline;
-			gap: 2rem;
-			padding-block: 2rem;
+		.block {
+			padding-block: 5rem;
+			gap: 2.5rem;
 		}
 
-		.split {
-			grid-template-columns: 1fr 1fr;
+		.proof {
+			grid-template-columns: 1fr 2fr;
+			gap: 3rem;
+		}
+
+		.grid3 {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+		}
+
+		.grid2 {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+
+		.about {
+			grid-template-columns: 2fr 3fr;
 			gap: 4rem;
-			padding-block: 5rem 2rem;
 		}
-	}
 
-	.sr-only {
-		position: absolute;
-		width: 1px;
-		height: 1px;
-		overflow: hidden;
-		clip: rect(0 0 0 0);
-		white-space: nowrap;
+		.book {
+			grid-template-columns: 2fr 3fr;
+			gap: 4rem;
+			align-items: start;
+		}
 	}
 </style>

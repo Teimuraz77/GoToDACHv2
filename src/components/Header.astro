@@ -36,6 +36,7 @@ const nav = [
 					<li><a href={localePath(lang, item.href)} aria-current={isCurrent(item.href)}>{t(item.key)}</a></li>
 				))}
 				<li><a href={localePath(lang, 'kontakt')} aria-current={isCurrent('kontakt')}>{t('nav.contact')}</a></li>
+				<li><a class="nav-cta" href={`${localePath(lang)}#book`}>{t('home.book.cta')}</a></li>
 			</ul>
 		</nav>
 		<details class="lang">
@@ -118,6 +119,19 @@ const nav = [
 	nav a:hover,
 	nav a[aria-current='page'] {
 		color: var(--color-copper);
+	}
+
+	nav a.nav-cta {
+		background: var(--color-copper);
+		color: var(--color-base);
+		font-weight: 700;
+		padding: 0.45rem 0.9rem;
+		border-radius: 4px;
+	}
+
+	nav a.nav-cta:hover {
+		background: var(--color-gold);
+		color: var(--color-base);
 	}
 
 	/* Handy: Navigation bricht um, mit kleinerer Schrift und engeren Abständen, damit alle Links sichtbar bleiben */
