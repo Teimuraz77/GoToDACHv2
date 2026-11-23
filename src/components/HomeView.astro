@@ -52,11 +52,7 @@ const also = [
 			<h2 id="clients-title" class="eyebrow muted">{t('home.clients.label')}</h2>
 			<p class="names"><span>Lichtblick Digital</span><span>codeitlabs</span></p>
 		</div>
-		<!-- TODO Temo: echtes Kundenzitat einsetzen (codeitlabs oder Lichtblick Digital), mit Name und Rolle. Erst dann mergen. -->
-		<figure class="quote todo">
-			<blockquote>[TODO: client quote, two sentences, from codeitlabs or Lichtblick Digital]</blockquote>
-			<figcaption>[TODO: name, role, company]</figcaption>
-		</figure>
+		<!-- Kundenzitat kommt hier hin, sobald eins vorliegt (codeitlabs oder Lichtblick Digital): <figure class="quote"><blockquote>…</blockquote><figcaption>Name, Rolle, Firma</figcaption></figure> -->
 	</div>
 </section>
 
@@ -316,11 +312,6 @@ const also = [
 		color: var(--color-muted);
 	}
 
-	.quote.todo {
-		border: 1px dashed var(--color-gold);
-		padding: 1.25rem 1.5rem;
-	}
-
 	/* Raster */
 	.grid3,
 	.grid2 {
@@ -454,11 +445,6 @@ const also = [
 		.block {
 			padding-block: 5rem;
 			gap: 2.5rem;
-		}
-
-		.proof {
-			grid-template-columns: 1fr 2fr;
-			gap: 3rem;
 		}
 
 		.grid3 {

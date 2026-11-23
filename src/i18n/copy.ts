@@ -219,9 +219,10 @@ export const copy: Record<Lang, Copy> = {
           ],
         },
         {
-          title: '3. Keine Cookies, kein Tracking',
+          title: '3. Cookies und Tracking',
           paragraphs: [
             'Diese Website setzt keine Cookies und verwendet keine Analyse- oder Marketing-Tools. Schriften werden lokal ausgeliefert.',
+            'Ausnahme: Der Buchungskalender auf der Startseite wird erst geladen, wenn Sie auf „Kalender laden“ klicken (siehe Ziffer 6). Erst dann verbindet sich Ihr Browser mit HubSpot, und HubSpot kann dabei Cookies setzen.',
           ],
         },
         {
@@ -230,6 +231,7 @@ export const copy: Record<Lang, Copy> = {
             'Wenn Sie das Kontaktformular nutzen, verarbeiten wir Ihre Angaben (Name, E-Mail-Adresse, optional Firma, Anliegen und Nachricht), um Ihre Anfrage zu beantworten. Das Formular wird über den Formulardienst unseres Hosters Netlify verarbeitet: Netlify speichert die Einsendung und leitet sie per E-Mail an uns weiter. Es gilt der unter Ziffer 2 genannte Auftragsverarbeitungsvertrag.',
             'Wenn Sie uns per E-Mail oder Telefon kontaktieren, verarbeiten wir Ihre Angaben ebenfalls nur zur Bearbeitung der Anfrage.',
             'Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO, soweit Ihre Anfrage auf einen Vertrag zielt, im Übrigen Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Beantwortung von Anfragen). Die Daten werden gelöscht, sobald sie nicht mehr erforderlich sind und keine gesetzlichen Aufbewahrungspflichten bestehen. Einsendungen im Formulardienst löschen wir, sobald die Anfrage erledigt ist.',
+            'Zusätzlich übertragen wir Ihre Angaben aus dem Formular in unser CRM-System HubSpot (siehe Ziffer 6), damit wir Ihre Anfrage dort bearbeiten und nachverfolgen können.',
           ],
         },
         // ENTWURF zur rechtlichen Prüfung (Okt. 2026): Abschnitt zum Formular "market-intelligence". Nicht ungeprüft veröffentlichen.
@@ -240,22 +242,33 @@ export const copy: Record<Lang, Copy> = {
             'Wir nutzen diese Angaben nur, um Ihre Anfrage zu beantworten, das Erstgespräch vorzubereiten und einen Termin mit Ihnen zu vereinbaren.',
             'Das Formular wird über den Formulardienst unseres Hosters Netlify verarbeitet: Netlify speichert die Einsendung und leitet sie per E-Mail an uns weiter. Es gelten der Auftragsverarbeitungsvertrag und die Zertifizierung unter dem EU-US Data Privacy Framework, die unter Ziffer 2 genannt sind.',
             'Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche Maßnahmen auf Ihre Anfrage), im Übrigen Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Beantwortung von Anfragen). Wir löschen die Daten, sobald die Anfrage erledigt ist, spätestens 6 Monate nach dem letzten Kontakt. Entsteht daraus ein Auftrag, gelten die gesetzlichen Aufbewahrungsfristen (je nach Dokument 6, 8 oder 10 Jahre).',
+            'Zusätzlich übertragen wir Ihre Angaben aus dem Formular in unser CRM-System HubSpot (siehe Ziffer 6), damit wir Ihre Anfrage dort bearbeiten und nachverfolgen können.',
+          ],
+        },
+        // ENTWURF zur rechtlichen Prüfung (Nov. 2026): HubSpot (CRM und Terminbuchung). Vor Veröffentlichung prüfen lassen.
+        {
+          title: '6. CRM-System und Terminbuchung (HubSpot)',
+          paragraphs: [
+            'Wir nutzen HubSpot als CRM-System, um Anfragen und Kundenbeziehungen zu verwalten. Anbieter ist HubSpot, Inc., 2 Canal Park, Cambridge, MA 02141, USA, für Kunden in der EU die HubSpot Ireland Ltd., One Sir John Rogerson’s Quay, Dublin 2, Irland. Unsere Daten liegen in HubSpots Rechenzentrum in der EU. Mit HubSpot besteht ein Auftragsverarbeitungsvertrag. Soweit Daten in die USA übermittelt werden, stützt sich dies auf die Zertifizierung von HubSpot unter dem EU-US Data Privacy Framework.',
+            'In HubSpot speichern wir die Angaben aus unseren Formularen (Ziffern 4 und 5) und eine Notiz mit Ihrer Nachricht. Rechtsgrundlagen und Löschfristen richten sich nach Ziffer 4 und 5.',
+            'Für das Erstgespräch können Sie über HubSpot Meetings einen Termin wählen. Der Kalender wird erst geladen, wenn Sie auf „Kalender laden“ klicken. Dann verarbeitet HubSpot technische Daten (z. B. IP-Adresse und Browserangaben) sowie die Angaben, die Sie bei der Buchung machen (Name, E-Mail-Adresse und Antworten auf die Buchungsfragen), und kann Cookies setzen. Rechtsgrundlage für das Laden des Kalenders ist Ihre Einwilligung durch den Klick (Art. 6 Abs. 1 lit. a DSGVO, § 25 Abs. 1 TDDDG), für die Terminbuchung Art. 6 Abs. 1 lit. b DSGVO. Sie können einen Termin auch per E-Mail vereinbaren.',
+            'Weitere Informationen: https://legal.hubspot.com/privacy-policy',
           ],
         },
         {
-          title: '6. Bewerberdaten (GoToDACH Talent)',
+          title: '7. Bewerberdaten (GoToDACH Talent)',
           paragraphs: [
             'Wenn Sie uns Lebenslauf oder Profil schicken, verarbeiten wir diese Daten, um Ihnen passende Unternehmen vorzuschlagen. An Unternehmen geben wir Ihr Profil nur mit Ihrer ausdrücklichen Zustimmung weiter (Art. 6 Abs. 1 lit. a und b DSGVO). Ohne Vermittlung löschen wir Ihre Daten spätestens nach 12 Monaten, sofern Sie nicht länger zustimmen.',
           ],
         },
         {
-          title: '7. Ihre Rechte',
+          title: '8. Ihre Rechte',
           paragraphs: [
             'Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit und Widerspruch (Art. 15–21 DSGVO); Widerruf einer Einwilligung jederzeit mit Wirkung für die Zukunft. Anfrage genügt an temo@gotodach.com.',
           ],
         },
         {
-          title: '8. Beschwerderecht',
+          title: '9. Beschwerderecht',
           paragraphs: [
             'Sie können sich bei einer Aufsichtsbehörde beschweren, z. B. beim Hessischen Beauftragten für Datenschutz und Informationsfreiheit (HBDI), Wiesbaden.',
           ],
@@ -426,9 +439,10 @@ export const copy: Record<Lang, Copy> = {
           ],
         },
         {
-          title: '3. No cookies, no tracking',
+          title: '3. Cookies and tracking',
           paragraphs: [
             'This website does not set any cookies and does not use any analytics or marketing tools. Fonts are served locally.',
+            'Exception: the booking calendar on the homepage only loads when you click “Load calendar” (see section 6). Only then does your browser connect to HubSpot, and HubSpot may set cookies.',
           ],
         },
         {
@@ -437,6 +451,7 @@ export const copy: Record<Lang, Copy> = {
             'If you use the contact form, we process your details (name, email address, optionally company, topic and message) in order to answer your request. The form is processed by the form service of our host Netlify: Netlify stores the submission and forwards it to us by email. The data processing agreement mentioned in section 2 applies.',
             'If you contact us by email or phone, we likewise process your details only to handle your request.',
             'The legal basis is Art. 6 (1) (b) GDPR where your request is aimed at a contract, otherwise Art. 6 (1) (f) GDPR (legitimate interest in answering requests). The data is deleted as soon as it is no longer required and no statutory retention obligations apply. We delete submissions in the form service once the request has been dealt with.',
+            'We also transfer the details from the form to our CRM system HubSpot (see section 6) so that we can handle and follow up your request there.',
           ],
         },
         // ENTWURF zur rechtlichen Prüfung (Okt. 2026): Abschnitt zum Formular "market-intelligence". Nicht ungeprüft veröffentlichen.
@@ -447,22 +462,33 @@ export const copy: Record<Lang, Copy> = {
             'We use these details only to answer your request, prepare the scoping call and arrange a date with you.',
             'The form is processed by the form service of our host Netlify: Netlify stores the submission and forwards it to us by email. The data processing agreement and the certification under the EU-U.S. Data Privacy Framework mentioned in section 2 apply.',
             'The legal basis is Art. 6 (1) (b) GDPR (steps prior to entering into a contract, taken at your request), otherwise Art. 6 (1) (f) GDPR (legitimate interest in answering requests). We delete the data as soon as the request has been dealt with, and no later than 6 months after the last contact. If an engagement results from it, the statutory retention periods (6, 8 or 10 years, depending on the document) apply.',
+            'We also transfer the details from the form to our CRM system HubSpot (see section 6) so that we can handle and follow up your request there.',
+          ],
+        },
+        // ENTWURF zur rechtlichen Prüfung (Nov. 2026): HubSpot (CRM und Terminbuchung). Vor Veröffentlichung prüfen lassen.
+        {
+          title: '6. CRM system and booking (HubSpot)',
+          paragraphs: [
+            'We use HubSpot as our CRM system to manage requests and customer relationships. The provider is HubSpot, Inc., 2 Canal Park, Cambridge, MA 02141, USA, and for customers in the EU HubSpot Ireland Ltd., One Sir John Rogerson’s Quay, Dublin 2, Ireland. Our data is stored in HubSpot’s data centre in the EU. We have concluded a data processing agreement with HubSpot. Where data is transferred to the USA, this is based on HubSpot’s certification under the EU-U.S. Data Privacy Framework.',
+            'In HubSpot we store the details from our forms (sections 4 and 5) and a note with your message. Legal bases and deletion periods are as set out in sections 4 and 5.',
+            'For the first call you can choose a time via HubSpot Meetings. The calendar only loads when you click “Load calendar”. HubSpot then processes technical data (e.g. IP address and browser details) and the details you enter when booking (name, email address and answers to the booking questions), and may set cookies. The legal basis for loading the calendar is your consent given by the click (Art. 6 (1) (a) GDPR, Section 25 (1) TDDDG); for the booking itself it is Art. 6 (1) (b) GDPR. You can also arrange a call by email.',
+            'More information: https://legal.hubspot.com/privacy-policy',
           ],
         },
         {
-          title: '6. Applicant data (GoToDACH Talent)',
+          title: '7. Applicant data (GoToDACH Talent)',
           paragraphs: [
             'If you send us your CV or profile, we process this data in order to suggest suitable companies to you. We only pass your profile on to companies with your express consent (Art. 6 (1) (a) and (b) GDPR). If no placement takes place, we delete your data after 12 months at the latest, unless you consent to longer storage.',
           ],
         },
         {
-          title: '7. Your rights',
+          title: '8. Your rights',
           paragraphs: [
             'Access, rectification, erasure, restriction of processing, data portability and objection (Art. 15–21 GDPR); you can withdraw consent at any time with effect for the future. A request to temo@gotodach.com is sufficient.',
           ],
         },
         {
-          title: '8. Right to lodge a complaint',
+          title: '9. Right to lodge a complaint',
           paragraphs: [
             'You can lodge a complaint with a supervisory authority, e.g. the Hessian Commissioner for Data Protection and Freedom of Information (HBDI), Wiesbaden, Germany.',
           ],
