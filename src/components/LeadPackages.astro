@@ -1,0 +1,122 @@
+---
+// Leadpakete Bronze/Silber/Gold. Eine Quelle für Startseite und Market-Intelligence-Seite,
+// damit Preise und Leistungen überall gleich sind. Texte: leads.* in ui.ts und locales/ru.ts.
+import { useTranslations } from '../i18n/utils';
+import type { Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+type Key = Parameters<typeof t>[0];
+
+const leadTiers = [
+  { id: 'bronze', items: 4, featured: false },
+  { id: 'silver', items: 5, featured: false },
+  { id: 'gold', items: 5, featured: true },
+] as const;
+
+const tiers = leadTiers.map((tier) => ({
+  ...tier,
+  label: t(`leads.${tier.id}.label` as Key),
+  title: t(`leads.${tier.id}.title` as Key),
+  price: t(`leads.${tier.id}.price` as Key),
+  priceNote: tier.id === 'gold' ? t('leads.gold.meta') : undefined,
+  list: Array.from({ length: tier.items }, (_, i) => t(`leads.${tier.id}.item.${i + 1}` as Key)),
+}));
+---
+
+<div class="tiers">
+	{tiers.map((tier) => (
+		<section class:list={['tier', { featured: tier.featured }]} aria-labelledby={`tier-${tier.id}`}>
+			<p class="label">{tier.label}</p>
+			<h3 id={`tier-${tier.id}`}>{tier.title}</h3>
+			<p class="price">{tier.price}</p>
+			{tier.priceNote && <p class="price-note">{tier.priceNote}</p>}
+			<ul>
+				{tier.list.map((item) => <li>{item}</li>)}
+			</ul>
+		</section>
+	))}
+</div>
+
+<style>
+	.tiers {
+		display: grid;
+		gap: 1.25rem;
+	}
+
+	.tier {
+		background: var(--color-base);
+		border: 1px solid var(--color-line);
+		border-radius: 6px;
+		padding: 1.5rem;
+		display: grid;
+		gap: 0.75rem;
+		align-content: start;
+	}
+
+	.tier.featured {
+		border: 2px solid var(--color-copper);
+		padding: calc(1.5rem - 1px);
+	}
+
+	.label {
+		font-size: 0.8rem;
+		font-weight: 700;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: var(--color-copper);
+	}
+
+	h3 {
+		font-family: var(--font-display);
+		font-weight: 400;
+		font-size: 1.5rem;
+	}
+
+	.price {
+		font-family: var(--font-display);
+		font-size: 2.25rem;
+		line-height: 1;
+		margin-top: 0.25rem;
+	}
+
+	.price-note {
+		font-size: 0.875rem;
+		color: var(--color-muted);
+		margin-top: -0.25rem;
+	}
+
+	ul {
+		list-style: none;
+		margin: 0.5rem 0 0;
+		padding: 0;
+		display: grid;
+		gap: 0.6rem;
+		font-size: 0.95rem;
+	}
+
+	li {
+		position: relative;
+		padding-left: 1.1rem;
+	}
+
+	li::before {
+		content: '';
+		position: absolute;
+		left: 0;
+		top: 0.6em;
+		width: 0.4rem;
+		height: 0.4rem;
+		background: var(--color-copper);
+	}
+
+	@media (min-width: 60rem) {
+		.tiers {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+		}
+	}
+</style>

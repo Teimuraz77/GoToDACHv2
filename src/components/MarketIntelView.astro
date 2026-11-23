@@ -23,9 +23,21 @@ const problems = [
 
 const steps = [
   { title: t('mi.steps.1.title'), text: t('mi.steps.1.text'), pkg: t('mi.pkg.1.title') },
-  { title: t('mi.steps.2.title'), text: t('mi.steps.2.text'), pkg: t('mi.pkg.2.title') },
-  { title: t('mi.steps.3.title'), text: t('mi.steps.3.text'), pkg: t('mi.pkg.3.title') },
+  { title: t('mi.steps.2.title'), text: t('mi.steps.2.text'), pkg: `${t('leads.bronze.label')} · ${t('leads.silver.label')}` },
+  { title: t('mi.steps.3.title'), text: t('mi.steps.3.text'), pkg: t('leads.gold.label') },
 ];
+
+// Bronze/Silber/Gold kommen aus denselben Texten wie auf der Startseite (leads.* in ui.ts), damit die Preise überall gleich sind.
+type Key = Parameters<typeof t>[0];
+const leadPkg = (id: 'bronze' | 'silver' | 'gold', count: number, featured = false) => ({
+  id,
+  title: `${t(`leads.${id}.label` as Key)}: ${t(`leads.${id}.title` as Key)}`,
+  price: t(`leads.${id}.price` as Key),
+  meta: t(`leads.${id}.meta` as Key),
+  items: Array.from({ length: count }, (_, i) => t(`leads.${id}.item.${i + 1}` as Key)),
+  credit: false,
+  featured,
+});
 
 const packages = [
   {
@@ -37,31 +49,9 @@ const packages = [
     credit: true,
     featured: false,
   },
-  {
-    id: 'accounts',
-    title: t('mi.pkg.2.title'),
-    price: t('mi.pkg.2.price'),
-    meta: t('mi.pkg.2.meta'),
-    items: [t('mi.pkg.2.item.1'), t('mi.pkg.2.item.2'), t('mi.pkg.2.item.3'), t('mi.pkg.2.item.4'), t('mi.pkg.2.item.5')],
-    credit: true,
-    featured: true,
-  },
-  {
-    id: 'outreach',
-    title: t('mi.pkg.3.title'),
-    price: t('mi.pkg.3.price'),
-    meta: t('mi.pkg.3.meta'),
-    listTitle: t('mi.pkg.3.listTitle'),
-    items: [
-      t('mi.pkg.3.item.1'),
-      t('mi.pkg.3.item.2'),
-      t('mi.pkg.3.item.3'),
-      t('mi.pkg.3.item.4'),
-      t('mi.pkg.3.item.5'),
-      t('mi.pkg.3.item.6'),
-    ],
-    featured: false,
-  },
+  leadPkg('bronze', 4, true),
+  leadPkg('silver', 5),
+  leadPkg('gold', 5),
 ];
 
 const faq = [1, 2, 3, 4, 5].map((n) => ({
@@ -78,8 +68,9 @@ const markets = [
 ];
 const needs = [
   { value: 'snapshot', label: t('mi.form.need.snapshot') },
-  { value: 'accounts', label: t('mi.form.need.accounts') },
-  { value: 'outreach', label: t('mi.form.need.outreach') },
+  { value: 'bronze', label: t('mi.form.need.bronze') },
+  { value: 'silver', label: t('mi.form.need.silver') },
+  { value: 'gold', label: t('mi.form.need.gold') },
   { value: 'unsure', label: t('mi.form.need.unsure') },
 ];
 ---
@@ -153,7 +144,6 @@ const needs = [
 						<p class="price">{pkg.price}</p>
 						<p class="meta">{pkg.meta}</p>
 						{pkg.credit && <p class="credit">{t('mi.pkg.credit')}</p>}
-						{pkg.listTitle && <h4 class="list-title">{pkg.listTitle}</h4>}
 						<ul>
 							{pkg.items.map((item) => (
 								<li>{item}</li>
@@ -166,7 +156,7 @@ const needs = [
 				))
 			}
 		</div>
-		<p class="note">{t('mi.pkg.note')}</p>
+		<p class="note">{t('leads.note')}</p>
 	</section>
 
 	<section class="block" aria-labelledby="mi-about">
@@ -502,20 +492,6 @@ const needs = [
 		font-size: 0.9rem;
 	}
 
-	.list-title {
-		margin: 0.4rem 0 0;
-		padding-top: 0.75rem;
-		border-top: 1px solid var(--color-line);
-		font-size: 0.95rem;
-		font-weight: 500;
-	}
-
-	.list-title + ul {
-		border-top: 0;
-		margin-top: 0;
-		padding-top: 0;
-	}
-
 	.package ul {
 		display: grid;
 		gap: 0.45rem;
@@ -731,9 +707,15 @@ const needs = [
 		}
 	}
 
-	@media (min-width: 64rem) {
+	@media (min-width: 40rem) {
 		.packages {
-			grid-template-columns: repeat(3, 1fr);
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	@media (min-width: 72rem) {
+		.packages {
+			grid-template-columns: repeat(4, 1fr);
 			align-items: stretch;
 		}
 	}
