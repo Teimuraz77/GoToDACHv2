@@ -397,7 +397,8 @@ const also = [
 		min-height: 0;
 	}
 
-	.cal iframe {
+	/* :global, weil das iframe erst per Skript entsteht und kein Astro-Scope-Attribut hat */
+	.cal :global(iframe) {
 		display: block;
 		width: 100%;
 		height: 44rem;
